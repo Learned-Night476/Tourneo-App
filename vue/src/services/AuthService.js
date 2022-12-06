@@ -12,6 +12,10 @@ export default {
 
   getProfile(userId) {
     return axios.get(`/profile/${userId}`)
+  },
+
+  getAllUsers() {
+    return axios.get('/users')
   }
 
 }
