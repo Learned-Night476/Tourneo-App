@@ -20,6 +20,9 @@ import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @RestController
 @CrossOrigin
 public class AuthenticationController {
@@ -65,10 +68,17 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
-    @RequestMapping(path = "/profile/{id}", method = RequestMethod.GET)
+    @RequestMapping(path = "/profile/{userId}", method = RequestMethod.GET)
     public Player getProfile(@PathVariable int userId) {
         Player player = playerDao.getPlayer(userId);
         return player;
+
+    }
+
+    @RequestMapping(path = "/users", method = RequestMethod.GET)
+    public List<User> listUsers() {
+        List<User> list = new ArrayList<>();
+        return userDao.findAll();
 
     }
 
