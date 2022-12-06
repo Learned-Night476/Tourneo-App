@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -75,11 +76,22 @@ public class JdbcUserDao implements UserDao {
 
     @Override
     public boolean create(String username, String password, String role) {
-        String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
+        String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?) RETURNING user_id;";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
 
-        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
+        Integer newUserId;
+        newUserId = jdbcTemplate.queryForObject(insertUserSql, Integer.class, username, password_hash, ssRole);
+
+        String sql = "INSERT INTO players (wins, losses, user_id) values (0, 0, ?);";
+        try {
+            jdbcTemplate.update(sql, newUserId);
+        } catch (DataAccessException e) {
+            return false;
+        }
+
+            return true;
+//        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole) == 1;
     }
 
     private User mapRowToUser(SqlRowSet rs) {
