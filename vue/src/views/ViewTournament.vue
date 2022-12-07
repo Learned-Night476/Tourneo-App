@@ -134,4 +134,21 @@ background: linear-gradient(to right, #E4E5E6, #00416A); /* W3C, IE 10+/ Edge, F
   }
 }
 
+</style> -->
+<template>
+  <div>
+    <view-tournament/>
+  </div>
+</template>
+
+<script>
+import ViewTournament from '../components/ViewTournament.vue'
+export default {
+  components: { ViewTournament },
+
+}
+</script>
+
+<style>
+
 </style>
