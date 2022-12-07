@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.dao.PlayerDao;
+import com.techelevator.dao.TournamentUsersDao;
 import com.techelevator.dao.TournamentsDao;
 import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
@@ -33,13 +34,15 @@ public class AuthenticationController {
     private UserDao userDao;
     private PlayerDao playerDao;
     private TournamentsDao tournamentsDao;
+    private TournamentUsersDao tournamentUsersDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
         this.playerDao = playerDao;
         this.tournamentsDao = tournamentsDao;
+        this.tournamentUsersDao = tournamentUsersDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -79,9 +82,24 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
+    @RequestMapping(path = "/tournaments/{id}", method = RequestMethod.GET)
+    public Tournaments getTournamentById(@PathVariable int id) {
+        Tournaments tournament = tournamentsDao.getTournament(id);
+        return tournament;
+
+    }
+
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments", method = RequestMethod.POST)
     public void createTournament(@Valid @RequestBody Tournaments tournament) {
         tournamentsDao.createTournament(tournament);
+
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/tournaments/tournamentUsers", method = RequestMethod.POST)
+    public void createTournamentUsers(int tournamentId, int playerId) {
+        tournamentUsersDao.createTournamentUser(tournamentId, playerId);
 
     }
 
