@@ -1,6 +1,6 @@
 
 
-DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, match;
+DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, tournament_match;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -47,7 +47,7 @@ create TABLE tournament_type (
 	CONSTRAINT PK_tournament_type_id PRIMARY KEY (tournament_type_id)
 );
 
-create TABLE match (
+create TABLE tournament_match (
 	match_id SERIAL NOT NULL,
 	home int,
 	away int,
@@ -65,8 +65,8 @@ create TABLE match (
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	ALTER TABLE players ADD CONSTRAINT FK_username FOREIGN KEY (username) REFERENCES users(username);
-	ALTER TABLE match ADD CONSTRAINT FK_home FOREIGN KEY (home) REFERENCES users(user_id);
-	ALTER TABLE match ADD CONSTRAINT FK_away FOREIGN KEY (away) REFERENCES users(user_id);
-	ALTER TABLE match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_home FOREIGN KEY (home) REFERENCES users(user_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_away FOREIGN KEY (away) REFERENCES users(user_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 
 
