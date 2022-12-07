@@ -29,8 +29,10 @@ export default {
 </script>
 
 <style>
+
 body {
   background: linear-gradient(black, rgb(145, 68, 145));
+  color: white;
 }
 
 .background-graphic {
