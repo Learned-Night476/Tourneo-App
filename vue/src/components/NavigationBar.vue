@@ -10,7 +10,7 @@
             </div>
         </div>
         <div>
-            <input type="text" class="resizedTextbox" v:bind:value="search"/>
+            <input type="text" class="resizedTextbox" v-model="search.username"/>
         </div>
             <div id="logout">
                 <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
@@ -21,7 +21,20 @@
 
 <script>
 export default {
- name: "navigation-bar"
+ name: "navigation-bar",
+ data() {
+     return {
+         search: {
+             username: ''
+         }
+     }
+ },
+ computed: {
+     
+ },
+ created() {
+     
+ }
 }
 </script>
 
