@@ -49,7 +49,7 @@ header {
 
 #left-half {
     display: flex;
-    background: red;
+    background:grey;
     
 }
 
@@ -57,8 +57,8 @@ header {
 
 
  #logout {
-     background: red;
-     padding: 5px;
+     background: grey;
+     padding: 10px;
  
  }
 </style>
