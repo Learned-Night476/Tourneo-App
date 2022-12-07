@@ -23,13 +23,14 @@
 import authService from '../services/AuthService'
 
 export default {
+  name: "create-tournament",
 data() {
   return {
     users: [],
     tournament: {
       tournamentId: Math.floor(Math.random() * (1000 - 100) + 100),
       participants: null,
-      adminUser: this.$store.user.id,
+      adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
       tournamentType: 1,
       tournamentName: ""
