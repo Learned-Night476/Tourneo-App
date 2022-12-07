@@ -79,7 +79,7 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
-    @RequestMapping(path = "/tournaments", method = RequestMethod.POST)
+    @RequestMapping(value = "/tournaments", method = RequestMethod.POST)
     public Tournaments createTournament(@Valid @RequestBody Tournaments tournament) {
         return tournamentsDao.createTournament(tournament);
 
