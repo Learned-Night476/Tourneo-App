@@ -94,4 +94,34 @@ const bracketApp = new Vue({
 
 <style>
 
+</style> -->
+<template>
+  <div>
+    <div>
+      <h1>{{tournament.participants}}</h1>
+    </div>
+  </div>
+</template>
+
+<script>
+import authService from "../services/AuthService"
+export default {
+  name: "view-tournament",
+data() {
+  return{
+    tournamentId : this.$route.params.tournamentId,
+    tournament: {}
+  }
+},
+
+created() {
+  authService.getTournamentById(this.tournamentId).then((response) =>{
+    this.tournament = response.data;
+  })
+}
+}
+</script>
+
+<style>
+
 </style>
