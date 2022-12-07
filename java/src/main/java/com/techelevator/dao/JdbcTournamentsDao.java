@@ -48,12 +48,12 @@ public class JdbcTournamentsDao implements TournamentsDao {
     }
 
     @Override
-    public Tournaments createTournament(Tournaments tournament) {
+    public boolean createTournament(Tournaments tournament) {
         String sql = "insert into tournaments (participants, winner, admin_user, tournament_status, tournament_type, tournament_name) values (?, ?, ?, ?, ?, ?); ";
 
         Integer newUserId = jdbcTemplate.queryForObject(sql, Integer.class, tournament.getParticipants(), tournament.getWinner(), tournament.getAdminUser(), tournament.getTournamentStatus(), tournament.getTournamentTypeId(), tournament.getTournamentName());
 
-        return getTournament(newUserId);
+        return true;
 
     }
 

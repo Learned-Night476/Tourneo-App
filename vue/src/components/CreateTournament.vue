@@ -16,7 +16,7 @@
             <option value="16">16</option>
             <option value="32">32</option>
           </select> <br><br>
-          <button type="button" v-on:click="submitTournament">Create Tournament</button>
+          <button :disabled="isDisabled" type="button" v-on:click="submitTournament" >Create Tournament</button>
   </div>
 </template>
 
@@ -33,7 +33,7 @@ data() {
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
-      tournamentType: "1",
+      tournamentType: "0",
       tournamentName: "",
       winner: null
     }
@@ -45,22 +45,28 @@ methods: {
     const newTournament = {
         tournamentId: this.tournament.tournamentId,
         participants: this.tournament.participants,
-        adminUser: 1,
+        adminUser: this.tournament.adminUser,
         tournamentStatus: this.tournament.tournamentStatus,
         tournamentType: this.tournament.tournamentType,
         tournamentName: this.tournament.tournamentName,
         winner: 1
       };
 
-      if(this.tournament.tournamentId === 0) {
-        authService.createATournament(newTournament).then(response => {
-          if(response.status === 201) {
-            this.$router.push('/');
-          }
-        })
-      }
+    
+        authService.createATournament(newTournament);
+        this.$router.push('/');
+      
   }
   
+}, computed: {
+  isDisabled(){
+    if(this.tournament.tournamentName ==="" || this.tournament.participants === null) {
+      return true;
+    }
+    else{
+      return false;
+    }
+  }
 }
 }
 
