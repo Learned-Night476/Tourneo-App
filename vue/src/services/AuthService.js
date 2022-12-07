@@ -16,6 +16,10 @@ export default {
 
   getAllUsers() {
     return axios.get('/users')
+  },
+
+  createATournament(tournament) {
+    return axios.post(`/tournaments`, tournament);
   }
 
 }
