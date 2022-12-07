@@ -1,13 +1,14 @@
 <template>
-  <div>
-      <div id="player-wins">
+      <div id="wins-and-losses">
+      <div class="wins-in-profile" id="player-wins">
           <h1>Wins {{ player.wins }} </h1>
       </div>
-      <div id="player-loses">
+      <div class="losses-in-profile" id="player-losses">
           <h1>Losses {{ player.losses }}  </h1>
 
       </div>
-  </div>
+      </div>
+    
 </template>
 
 <script>
@@ -35,5 +36,26 @@ created() {
 </script>
 
 <style>
+
+
+#wins-and-losses {
+    display: flex;
+    justify-content: space-evenly;
+     border: grey;
+    border-width: 2px;
+}
+
+div.wins-in-profile {
+    border: grey;
+    border-width: 2px;
+
+}
+
+div.losses-in-profile {
+    border: grey;
+    border-width: 2px;
+
+
+}
 
 </style>

@@ -83,7 +83,6 @@ export default {
   margin-top: 10px;
   text-align: center;
   justify-content: space-between;
-  font-family: 'Audrey', Helvetica, sans-serif;
 
 }
 
