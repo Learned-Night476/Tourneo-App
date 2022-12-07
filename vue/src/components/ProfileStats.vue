@@ -1,10 +1,12 @@
 <template>
       <div id="wins-and-losses">
       <div class="wins-in-profile" id="player-wins">
-          <h1>Wins {{ player.wins }} </h1>
+          <h2>{{ player.wins }} </h2>
+          <p>Total Match Wins</p>
       </div>
       <div class="losses-in-profile" id="player-losses">
-          <h1>Losses {{ player.losses }}  </h1>
+          <h2>{{ player.losses }}  </h2>
+          <p>Total Match Losses</p>
 
       </div>
       </div>
@@ -41,21 +43,26 @@ created() {
 #wins-and-losses {
     display: flex;
     justify-content: space-evenly;
-     border: grey;
-    border-width: 2px;
+   
 }
 
 div.wins-in-profile {
-    border: grey;
-    border-width: 2px;
-
+    background: rgb(57, 57, 57);
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
 }
 
+
 div.losses-in-profile {
-    border: grey;
-    border-width: 2px;
-
-
+    background: rgb(57, 57, 57);
+    width: 300px;
+    text-align: center;
+    margin-top: 20px;
+}
+h2 {
+    font-size: 50px;
+    padding: -25px;
 }
 
 </style>
