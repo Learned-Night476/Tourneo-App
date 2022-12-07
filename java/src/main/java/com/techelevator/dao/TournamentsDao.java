@@ -5,9 +5,11 @@ import com.techelevator.model.Tournaments;
 import java.util.List;
 
 public interface TournamentsDao {
-    Tournaments getTournament(int id);
+     Tournaments getTournament(int id);
 
      boolean createTournament(Tournaments tournament);
 
      List<Tournaments> getAllTournaments();
+
+
 }
