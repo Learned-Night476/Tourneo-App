@@ -7,7 +7,7 @@ import java.util.List;
 public interface TournamentsDao {
     Tournaments getTournament(int id);
 
-     Tournaments createTournament(Tournaments tournament);
+     boolean createTournament(Tournaments tournament);
 
      List<Tournaments> getAllTournaments();
 }
