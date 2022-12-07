@@ -8,6 +8,7 @@ import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
 import java.util.Objects;
+
 @Component
 public class JdbcPlayerDao implements PlayerDao {
     private final JdbcTemplate jdbcTemplate;
