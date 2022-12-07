@@ -20,7 +20,7 @@ public class JdbcPlayerDao implements PlayerDao {
 
     @Override
     public Player getPlayer(int userId) {
-        String sql = "select player_id, wins, losses, user_id from players where user_id = ?;";
+        String sql = "select player_id, wins, losses, user_id, username from players where user_id = ?;";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
         Player player = new Player();
@@ -39,6 +39,7 @@ public class JdbcPlayerDao implements PlayerDao {
         player.setLosses(rs.getInt("losses"));
         player.setWins(rs.getInt("wins"));
         player.setUserId(rs.getInt("user_id"));
+        player.setUsername(rs.getString("username"));
 
         return player;
 

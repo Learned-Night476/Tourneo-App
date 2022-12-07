@@ -15,7 +15,8 @@
             <option value="8">8</option>
             <option value="16">16</option>
             <option value="32">32</option>
-          </select>
+          </select> <br><br>
+          <button type="button" v-on:click="submitTournament">Create Tournament</button>
   </div>
 </template>
 
@@ -28,7 +29,7 @@ data() {
   return {
     users: [],
     tournament: {
-      tournamentId: Math.floor(Math.random() * (1000 - 100) + 100),
+      tournamentId: 0,
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
@@ -38,12 +39,29 @@ data() {
   };
 },
 
-created() {
-  authService.getAllUsers().then((response) => {
-    this.users = response.data;
-  })
+methods: {
+  submitTournament() {
+    const newTournament = {
+        tournamentId: this.tournament.tournamentId,
+        participants: this.tournament.participants,
+        adminUser: this.tournament.adminUser,
+        tournamentStatus: this.tournament.tournamentStatus,
+        tournamentType: this.tournament.tournamentType,
+        tournamentName: this.tournament.tournamentType
+      };
+
+      if(this.tournament.tournamentId === 0) {
+        authService.createATournament(newTournament).then(response => {
+          if(response.status === 201) {
+            this.$router.push('/');
+          }
+        })
+      }
+  }
+  
 }
 }
+
 </script>
 
 <style>

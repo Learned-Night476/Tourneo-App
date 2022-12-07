@@ -60,7 +60,7 @@ const router = new Router({
       name: "newTournament",
       component: CreateTournament,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     }
   ]

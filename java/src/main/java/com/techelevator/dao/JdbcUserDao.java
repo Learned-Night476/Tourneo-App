@@ -83,9 +83,9 @@ public class JdbcUserDao implements UserDao {
         Integer newUserId;
         newUserId = jdbcTemplate.queryForObject(insertUserSql, Integer.class, username, password_hash, ssRole);
 
-        String sql = "INSERT INTO players (wins, losses, user_id) values (0, 0, ?);";
+        String sql = "INSERT INTO players (wins, losses, user_id, username) values (0, 0, ?, ?);";
         try {
-            jdbcTemplate.update(sql, newUserId);
+            jdbcTemplate.update(sql, newUserId, username);
         } catch (DataAccessException e) {
             return false;
         }
