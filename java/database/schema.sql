@@ -1,6 +1,6 @@
 
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, tournament_match;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -15,8 +15,9 @@ create TABLE tournaments (
 	participants int NOT NULL,
 	winner int,
 	admin_user int NOT NULL,
-	tournament_status int NOT NULL,
+	tournament_status varchar(30) NOT NULL,
 	tournament_type int NOT NULL,
+	tournament_name varchar (75),
 	CONSTRAINT PK_tournament PRIMARY KEY (tournament_id)
 
 
@@ -27,6 +28,7 @@ create TABLE players (
 	wins int NOT NULL,
 	losses int NOT NULL,
 	user_id int NOT NULL,
+	username varchar (50) NOT NULL,
 
 	CONSTRAINT PK_player PRIMARY KEY (player_id)
 
@@ -45,11 +47,26 @@ create TABLE tournament_type (
 	CONSTRAINT PK_tournament_type_id PRIMARY KEY (tournament_type_id)
 );
 
+create TABLE tournament_match (
+	match_id SERIAL NOT NULL,
+	home int,
+	away int,
+	round int,
+	winner int,
+	tournament_id int NOT NULL,
+
+	CONSTRAINT PK_match_id PRIMARY KEY (match_id)
+);
+
 	ALTER TABLE tournaments ADD CONSTRAINT FK_winner FOREIGN KEY (winner) REFERENCES players(player_id);
 	ALTER TABLE tournaments ADD CONSTRAINT FK_admin_user FOREIGN KEY (admin_user) REFERENCES players(player_id);
 	ALTER TABLE tournaments ADD CONSTRAINT FK_tournament_type FOREIGN KEY (tournament_type) REFERENCES tournament_type(tournament_type_id);
 	ALTER TABLE players ADD CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id);
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
+	ALTER TABLE players ADD CONSTRAINT FK_username FOREIGN KEY (username) REFERENCES users(username);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_home FOREIGN KEY (home) REFERENCES users(user_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_away FOREIGN KEY (away) REFERENCES users(user_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 
 
