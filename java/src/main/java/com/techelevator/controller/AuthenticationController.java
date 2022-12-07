@@ -3,6 +3,7 @@ package com.techelevator.controller;
 import javax.validation.Valid;
 
 import com.techelevator.dao.PlayerDao;
+import com.techelevator.dao.TournamentsDao;
 import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -31,12 +32,14 @@ public class AuthenticationController {
     private final AuthenticationManagerBuilder authenticationManagerBuilder;
     private UserDao userDao;
     private PlayerDao playerDao;
+    private TournamentsDao tournamentsDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
         this.playerDao = playerDao;
+        this.tournamentsDao = tournamentsDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -74,6 +77,15 @@ public class AuthenticationController {
         return player;
 
     }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/tournaments", method = RequestMethod.POST)
+    public Tournaments createTournament(@Valid @RequestBody Tournaments tournament) {
+        return tournamentsDao.createTournament(tournament);
+
+    }
+
+
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
     public List<User> listUsers() {
