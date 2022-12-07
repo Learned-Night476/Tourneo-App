@@ -94,6 +94,13 @@ public class AuthenticationController {
 
     }
 
+    @RequestMapping(path = "/players", method = RequestMethod.GET)
+    public List<Player> listPlayers() {
+        List<User> list = new ArrayList<>();
+        return playerDao.getAllPlayers();
+
+    }
+
 
 }
 
