@@ -33,8 +33,9 @@ data() {
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
-      tournamentType: 1,
-      tournamentName: ""
+      tournamentType: "1",
+      tournamentName: "",
+      winner: null
     }
   };
 },
@@ -44,10 +45,11 @@ methods: {
     const newTournament = {
         tournamentId: this.tournament.tournamentId,
         participants: this.tournament.participants,
-        adminUser: this.tournament.adminUser,
+        adminUser: 1,
         tournamentStatus: this.tournament.tournamentStatus,
         tournamentType: this.tournament.tournamentType,
-        tournamentName: this.tournament.tournamentType
+        tournamentName: this.tournament.tournamentName,
+        winner: 1
       };
 
       if(this.tournament.tournamentId === 0) {
