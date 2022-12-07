@@ -1,9 +1,13 @@
 package com.techelevator.dao;
 
+import com.techelevator.model.Player;
 import com.techelevator.model.Tournaments;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Component;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Component
 public class JdbcTournamentsDao implements TournamentsDao {
@@ -25,6 +29,22 @@ public class JdbcTournamentsDao implements TournamentsDao {
             return null;
         }
 
+    }
+
+    @Override
+    public List<Tournaments> getAllTournaments() {
+
+        List<Tournaments> tournaments = new ArrayList<>();
+
+        String sql = "SELECT * FROM tournaments";
+
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+
+        while (rs.next()) {
+            Tournaments tournament = mapRowToTournament(rs);
+            tournaments.add(tournament);
+        }
+        return tournaments;
     }
 
     @Override

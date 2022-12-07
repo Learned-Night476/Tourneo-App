@@ -85,6 +85,13 @@ public class AuthenticationController {
 
     }
 
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/tournaments", method = RequestMethod.GET)
+    public List<Tournaments> listTournaments() {
+        return tournamentsDao.getAllTournaments();
+
+    }
+
 
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
