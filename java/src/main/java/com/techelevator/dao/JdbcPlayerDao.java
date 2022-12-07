@@ -7,6 +7,8 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Component;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Component
@@ -29,6 +31,22 @@ public class JdbcPlayerDao implements PlayerDao {
         }
         return player;
 
+    }
+
+    @Override
+    public List<Player> getAllPlayers() {
+
+        List<Player> players = new ArrayList<>();
+
+        String sql = "select player_id, wins, losses, user_id, username from players";
+
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+
+        while (rs.next()) {
+            Player player = mapRowToPlayer(rs);
+            players.add(player);
+        }
+        return players;
     }
 
     private Player mapRowToPlayer(SqlRowSet rs) {
