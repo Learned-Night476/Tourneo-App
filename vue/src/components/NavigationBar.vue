@@ -6,7 +6,7 @@
                 <router-link v-bind:to="{ name: 'home' }">Home</router-link> 
             </div>
             <div>  
-                <a href="#"> Create Tournament </a>
+                <router-link v-bind:to="{ name: 'newTournament'}"> Create Tournament </router-link>
             </div>
         </div>
         <div>
