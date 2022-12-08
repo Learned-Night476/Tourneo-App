@@ -11,6 +11,10 @@
           <p>Total Match Losses</p>
 
       </div>
+      <!-- <div v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
+          <p>{{tournament.name}}</p> -->
+          <!-- <router-link v-bind:to="{name: 'viewTournament', params: {tournamentId: 5}}">{{tournament.name}}</router-link> -->
+      <!-- </div> -->
       </div>
 </div>
     
@@ -27,14 +31,20 @@ data() {
      player : {
          wins: '',
          losses: ''
-     }
+     },
+
+    //  tournaments: []
  };
 
 },
 created() {
      authService.getProfile(this.$store.state.user.id).then( response => {
          this.player = response.data;
-     })
+     });
+
+    //  authService.getTournamentByUserId(this.$store.state.user.id).then((response) => {
+    //      this.tournaments = response.data;
+    //  });
 }
 }
 
