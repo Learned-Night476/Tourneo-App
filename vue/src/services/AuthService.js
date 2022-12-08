@@ -26,4 +26,8 @@ export default {
     return axios.get(`/tournaments/${tournamentId}`)
   },
 
+  getTournamentByUserId(userId) {
+    return axios.get(`tournaments/user/${userId}`)
+  }
+
 }
