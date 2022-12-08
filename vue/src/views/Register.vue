@@ -34,12 +34,12 @@
       />
       <div class="all-avatars">
       <div class="avatar">
-        <button type="submit">
+        <button type="submit" class="avatarButtons">
           <img src="../capstone-images/sword2.svg" alt="button1" />
           </button>
       </div>
        <div class="avatar">
-        <button type="submit">
+        <button type="submit" class="avatarButtons">
           <img src="../capstone-images/sword2.svg" alt="button1" />
           </button>
       </div>
@@ -135,7 +135,7 @@ export default {
   font-size: 25px;
 }
 
-button {
+.avatarButtons {
   border: none;
   cursor: pointer;
   appearance: none;
