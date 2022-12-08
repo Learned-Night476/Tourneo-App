@@ -64,8 +64,11 @@ create TABLE tournament_match (
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	ALTER TABLE players ADD CONSTRAINT FK_username FOREIGN KEY (username) REFERENCES users(username);
-	ALTER TABLE tournament_match ADD CONSTRAINT FK_home FOREIGN KEY (home) REFERENCES users(user_id);
-	ALTER TABLE tournament_match ADD CONSTRAINT FK_away FOREIGN KEY (away) REFERENCES users(user_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_home FOREIGN KEY (home) REFERENCES players(player_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_away FOREIGN KEY (away) REFERENCES players(player_id);
 	ALTER TABLE tournament_match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 
 
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (0, 'Basic');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (1, 'Single Elimination');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (2, 'Double Elimination');
