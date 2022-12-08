@@ -43,5 +43,15 @@ html{
   font-family: Kanit, Helvetica, sans-serif;
   
 }
+.needAnAccount {
+  color:white;
+  text-decoration: none;
+}
+
+.needAnAccount:visited {
+  color:silver;
+  text-decoration: none;
+}
+
 
 </style>
