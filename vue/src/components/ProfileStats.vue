@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1 id="username">{{ player.username }}</h1>
+    <h1 id="displayuser">{{ player.username }}</h1>
       <div id="wins-and-losses">
       <div class="wins-in-profile" id="player-wins">
           <h2>{{ player.wins }} </h2>
@@ -52,7 +52,7 @@ created() {
 
 <style>
 
-#username {
+#displayuser {
     text-align: center;
 }
 

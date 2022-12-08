@@ -55,6 +55,9 @@ export default {
     text-decoration: none;
 }
 
+<<<<<<< HEAD
  
+=======
+>>>>>>> 94ad7ef5dae9b0a57f14a143e227d1e1ca9add08
 
 </style>

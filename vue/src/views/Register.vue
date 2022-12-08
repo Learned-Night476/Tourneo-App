@@ -9,7 +9,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="form-create"
         placeholder="Username"
         v-model="user.username"
         required
@@ -19,7 +19,7 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="form-create"
         placeholder="Password"
         v-model="user.password"
         required
@@ -27,7 +27,7 @@
       <input
         type="password"
         id="confirmPassword"
-        class="form-control"
+        class="form-create"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
@@ -122,7 +122,7 @@ export default {
   text-align: left;
 }
 
-.form-control {
+.form-create {
   width: 40%;
   justify-content: space-evenly;
   padding: 10px;

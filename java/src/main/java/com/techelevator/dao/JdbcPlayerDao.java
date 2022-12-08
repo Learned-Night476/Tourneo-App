@@ -49,6 +49,20 @@ public class JdbcPlayerDao implements PlayerDao {
         return players;
     }
 
+    @Override
+    public Player getPlayerByUsername(String username) {
+        String sql = "select * from players where username = ?";
+        Player player = new Player();
+
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+
+        if (rs.next()) {
+            player = mapRowToPlayer(rs);
+        }
+
+        return player;
+    }
+
     private Player mapRowToPlayer(SqlRowSet rs) {
 
 

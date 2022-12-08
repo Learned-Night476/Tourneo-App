@@ -85,6 +85,9 @@ export default {
   justify-content: space-evenly;
 
 }
+#username {
+  text-align: left;
+}
 
 
 </style>

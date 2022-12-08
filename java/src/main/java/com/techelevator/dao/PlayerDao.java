@@ -8,4 +8,6 @@ public interface PlayerDao {
     public Player getPlayer(int userId);
 
     public List<Player> getAllPlayers();
+
+    Player getPlayerByUsername(String username);
 }

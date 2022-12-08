@@ -2,9 +2,7 @@ package com.techelevator.controller;
 
 import javax.validation.Valid;
 
-import com.techelevator.dao.PlayerDao;
-import com.techelevator.dao.TournamentUsersDao;
-import com.techelevator.dao.TournamentsDao;
+import com.techelevator.dao.*;
 import com.techelevator.model.*;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -18,7 +16,6 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import com.techelevator.dao.UserDao;
 import com.techelevator.security.jwt.JWTFilter;
 import com.techelevator.security.jwt.TokenProvider;
 
@@ -35,14 +32,16 @@ public class AuthenticationController {
     private PlayerDao playerDao;
     private TournamentsDao tournamentsDao;
     private TournamentUsersDao tournamentUsersDao;
+    private TournamentMatchDao tournamentMatchDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao, TournamentMatchDao tournamentMatchDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
         this.playerDao = playerDao;
         this.tournamentsDao = tournamentsDao;
         this.tournamentUsersDao = tournamentUsersDao;
+        this.tournamentMatchDao = tournamentMatchDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -82,6 +81,14 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
+    @RequestMapping(path = "/players/{username}", method = RequestMethod.GET)
+    public Player getPlayerByUserName(@PathVariable String username) {
+        Player player = playerDao.getPlayerByUsername(username);
+        return player;
+
+    }
+
+    @PreAuthorize("permitAll")
     @RequestMapping(path = "/tournaments/{id}", method = RequestMethod.GET)
     public Tournaments getTournamentById(@PathVariable int id) {
         Tournaments tournament = tournamentsDao.getTournament(id);
@@ -107,6 +114,13 @@ public class AuthenticationController {
     @RequestMapping(value = "/tournaments/tournamentUsers", method = RequestMethod.POST)
     public void createTournamentUsers(int tournamentId, int playerId) {
         tournamentUsersDao.createTournamentUser(tournamentId, playerId);
+
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/tournament/createMatch", method = RequestMethod.POST)
+    public void createTournamentMatch(TournamentMatch tournamentMatch) {
+        tournamentMatchDao.createTournamentMatch(tournamentMatch);
 
     }
 
