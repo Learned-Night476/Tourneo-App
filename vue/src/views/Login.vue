@@ -31,7 +31,7 @@
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      <router-link class="needAnAccount" :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
   </div>
@@ -82,7 +82,7 @@ export default {
   padding: 15px;
   margin-top: 10px;
   text-align: center;
-  justify-content: space-between;
+  justify-content: space-evenly;
 
 }
 
