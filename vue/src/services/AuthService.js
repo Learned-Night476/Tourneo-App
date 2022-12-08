@@ -28,6 +28,18 @@ export default {
 
   getTournamentByUserId(userId) {
     return axios.get(`tournaments/user/${userId}`)
+  },
+
+  getAllPlayers() {
+    return axios.get('/players')
+  },
+
+  getPlayerByUsername(username) {
+    return axios.get(`/players/${username}`)
+  },
+
+  createMatch(match) {
+    return axios.post(`/tournament/createMatch`, match)
   }
 
 }

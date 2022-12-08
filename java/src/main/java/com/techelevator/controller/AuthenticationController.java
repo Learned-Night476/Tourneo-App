@@ -119,7 +119,7 @@ public class AuthenticationController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournament/createMatch", method = RequestMethod.POST)
-    public void createTournamentMatch(TournamentMatch tournamentMatch) {
+    public void createTournamentMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
         tournamentMatchDao.createTournamentMatch(tournamentMatch);
 
     }
