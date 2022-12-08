@@ -2,6 +2,7 @@
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
       <p style="margin: 3px;" id="createId" >Account Creation</p>
+      <h2 id="legendText">Become Legendary </h2>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -33,19 +34,21 @@
         required
       />
       <div class="all-avatars">
-      <div class="avatar">
-        <button type="submit" class="avatarButtons">
-          <img src="../capstone-images/sword2.svg" alt="button1" />
-          </button>
+      <label>
+         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
+        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
+      </label>
+         
+         
+      
+        <label>
+         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
+        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
+      </label>
       </div>
-       <div class="avatar">
-        <button type="submit" class="avatarButtons">
-          <img src="../capstone-images/sword2.svg" alt="button1" />
-          </button>
-      </div>
-      </div>
+    
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <button id="createButton" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
       </button>
     </form>
@@ -103,7 +106,19 @@ export default {
 </script>
 
 <style>
-
+#legendText {
+  animation: fadeInAnimation ease 6s;
+  animation-fill-mode: forwards;
+  color: red;
+  }
+  @keyframes fadeInAnimation {
+  0% {
+  opacity: 0;
+  }
+  100% {
+  opacity: 1;
+  }
+}
 
 .form-register {
   display: flex;
@@ -113,11 +128,7 @@ export default {
   text-align: center;
   justify-content: space-evenly;
   align-items: center;
-  border: solid 1px black
-  
-  
-
-}
+ }
 
 #username {
   text-align: left;
@@ -142,19 +153,53 @@ export default {
   background-color: inherit;
 }
 
-.all-avatars {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-  margin: 40px;
-}
-
-
 img {
   width: 70px;
   height: 70px;
 }
+
+#img1 {
+  width: 20vw;
+  height: 20vw;
+  padding: 2vw;
+  border: solid 1px orange;
+  border-radius: 25px;
+}
+
+input[type=radio] {
+  display: none;
+}
+
+#img1:hover {
+  opacity: 0.4;
+  cursor: pointer;
+}
+
+#img1:active {
+  opacity:0.4;
+  cursor: pointer;
+}
+
+input[type=radio]:checked, #img1 {
+  border: 20px solid orange;
+}
+
+label:focus-within {
+  outline: 1px solid orange;
+}
+
+#createButton {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 15px;
+}
+
+#createButton:hover {
+  background-color: rgba(140, 0, 255, 0.75);
+}
+
 
  /* .avatars:hover {
 background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
