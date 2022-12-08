@@ -45,7 +45,7 @@ header {
     background: rgb(57, 57, 57, 0.75);
     justify-content: space-between ;
     padding: 10px;
-    margin: -10px;
+    margin: -8px;
 }
 
 #left-half {
