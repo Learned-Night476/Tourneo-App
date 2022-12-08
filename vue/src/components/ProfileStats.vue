@@ -1,4 +1,6 @@
 <template>
+<div>
+    <h1 id="username">{{ player.username }}</h1>
       <div id="wins-and-losses">
       <div class="wins-in-profile" id="player-wins">
           <h2>{{ player.wins }} </h2>
@@ -10,6 +12,7 @@
 
       </div>
       </div>
+</div>
     
 </template>
 
@@ -39,6 +42,9 @@ created() {
 
 <style>
 
+#username {
+    text-align: center;
+}
 
 #wins-and-losses {
     display: flex;
@@ -51,6 +57,7 @@ div.wins-in-profile {
     width: 300px;
     text-align: center;
     margin-top: 20px;
+    border-radius: 4px;
 }
 
 
@@ -59,6 +66,7 @@ div.losses-in-profile {
     width: 300px;
     text-align: center;
     margin-top: 20px;
+    border-radius: 4px;
 }
 h2 {
     font-size: 50px;

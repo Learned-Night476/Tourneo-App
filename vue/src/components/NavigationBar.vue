@@ -3,17 +3,17 @@
     <header>
         <div id="left-half">
             <div id="home">
-                <router-link v-bind:to="{ name: 'home' }">Home</router-link> 
+                <router-link class="headHome" v-bind:to="{ name: 'home' }">Home</router-link> 
             </div>
             <div>  
-                <router-link v-bind:to="{ name: 'newTournament'}"> Create Tournament </router-link>
+                <router-link class='headCreateTournament' v-bind:to="{ name: 'newTournament'}"> Create Tournament </router-link>
             </div>
         </div>
         <div>
             <input type="text" class="resizedTextbox" v-model="search.username"/>
         </div>
             <div id="logout">
-                <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
+                <router-link class="headLogout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
         </div>
      </header>
 </div>  
@@ -42,23 +42,54 @@ export default {
 
 header {
     display: flex;
-    background: grey;
+    background: rgb(57, 57, 57, 0.75);
     justify-content: space-between ;
     padding: 10px;
+    margin: -10px;
 }
 
 #left-half {
+    padding-left: 10px;
+    padding-top: 10px;
     display: flex;
-    background:grey;
     
 }
 
-.resizedTextbox {width: 500px; height: 20px}
+.resizedTextbox {width: 500px; height: 30px}
 
 
  #logout {
-     background: grey;
+     
      padding: 10px;
  
  }
+ .headLogout {
+     color:white;
+     text-decoration:none;
+ }
+ .headLogout:visited {
+     color:silver;
+     text-decoration: none;
+ }
+ .headCreateTournament {
+     color:white;
+     padding-left: 20px;
+     text-decoration:none;
+ }
+
+ .headCreateTournament:visited {
+     color:silver;
+     text-decoration:none;
+ }
+
+ .headHome {
+     color:white;
+     text-decoration:none;
+ }
+
+ .headHome:visited {
+     color:silver;
+     text-decoration:none;
+ }
+
 </style>
