@@ -1,21 +1,18 @@
 <template>
-<!-- <div style="background-image: ../capstone-images/olivebranch.svg; background-size: 400px 200px;"> -->
 
   <div id="app">
     <div id="nav">
       <navigation-bar />
-      
+    
     </div>
     <router-view />
     <div class="graphic">
-      <img class="nothing"/>
+      <!-- <img class="bg" src='../capstone-images/olivebranch.svg'> -->
       <svg class="background-poster"></svg>
       </div>
       
   </div>
   
-  <!-- </div> -->
-
 </template>
 
 <script>
@@ -33,16 +30,18 @@ export default {
 <style>
 
 @import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,400;1,400&display=swap');
-body {
-  
-  background: linear-gradient(black, rgb(145, 68, 145));
+html{
+  background-image:
+  linear-gradient(black, rgb(145, 68, 145, 0.85)),
+  url("../capstone-images/olivebranch.svg");
+  background-repeat: no-repeat;
+  min-height: 100%;
+  background-attachment: fixed;
+  background-position: center;
+  height: auto;  
   color: white;
   font-family: Kanit, Helvetica, sans-serif;
   
-}
-#app {
-  background-image: url("../capstone-images/olivebranch.svg");
-  background-size:100% 100%;
 }
 
 </style>
