@@ -32,15 +32,16 @@
         v-model="user.confirmPassword"
         required
       />
-      <div>
-        <form action="">
-          <div class=img>
-          <div class="radio">
-            <img id="sword" src="C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/olivebranch.svg" />
-            <input type="radio" name="answer1" value="sword">
-          </div>
-          </div>
-        </form>
+      <div class="avatars">
+        <label>
+          <input type="radio" name="test" value="small" checked />
+          <img src='../capstone-images/sword2.svg' alt="Option 1" />
+        </label>
+
+        <label>
+          <input type="radio" name="test" value="big" />
+          <img src='../capstone-images/sword2.svg' alt="Option 2" />
+        </label>
       </div>
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
@@ -133,7 +134,39 @@ export default {
   font-size: 25px;
 }
 
-.img {
+ /* .avatars:hover {
+background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+
+}  */
+
+[type=radio] {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=radio] + img {
+  cursor: pointer;
+}
+
+[type=radio]:checked + img {
+  outline: 2px solid #f00;
+}
+/* .radio {
+   background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: gray;
+    text-align:left;
+    padding: 10px;
+    height: 200px;
+    font-size: x-large;
+    text-decoration: none;
+}   */
+/* .img {
   display: flex;
   align-items: end;
 }
@@ -152,7 +185,7 @@ input[type="radio"] {
   top: calc(50% - 4px);
   right: 0;
   margin: 0;
-}
+} */
 
 
 

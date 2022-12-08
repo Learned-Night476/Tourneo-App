@@ -33,7 +33,7 @@ export default {
 html{
   background-image:
   linear-gradient(black, rgb(145, 68, 145, 0.85)),
-  url("../capstone-images/olivebranch.svg");
+  url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/olivebranch.svg");
   background-repeat: no-repeat;
   min-height: 100%;
   background-attachment: fixed;
