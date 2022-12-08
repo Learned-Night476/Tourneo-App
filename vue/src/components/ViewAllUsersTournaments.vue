@@ -38,13 +38,13 @@ export default {
 }
 #linkToMyTournaments:hover {
     background: orange;
-    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/colosseum.svg");
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg");
     background-repeat: no-repeat;
     background-position: center;
     
 }
 #linkToMyTournaments {
-    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/colosseum.svg");
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg");
     background-repeat: no-repeat;
     background-position: center;
     text-align:left;
@@ -54,5 +54,7 @@ export default {
     color:white;
     text-decoration: none;
 }
+
+ 
 
 </style>
