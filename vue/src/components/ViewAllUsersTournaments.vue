@@ -53,6 +53,7 @@ export default {
     font-size: x-large;
     color:white;
     text-decoration: none;
+    border-radius: 4px;
 }
 
  

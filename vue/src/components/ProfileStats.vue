@@ -63,6 +63,7 @@ created() {
 }
 
 div.wins-in-profile {
+
     background: rgb(57, 57, 57);
     width: 300px;
     text-align: center;
@@ -70,7 +71,24 @@ div.wins-in-profile {
     border-radius: 4px;
 }
 
+div.wins-in-profile:hover {
+    background: black;
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/winnerstrophy.png");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    color:orange;
 
+}
+div.losses-in-profile:hover {
+    background: rgb(57, 57, 57);
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/loser.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    color:orange;
+
+}
 div.losses-in-profile {
     background: rgb(57, 57, 57);
     width: 300px;

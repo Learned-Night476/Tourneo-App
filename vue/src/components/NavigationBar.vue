@@ -42,10 +42,11 @@ export default {
 
 header {
     display: flex;
-    background: rgb(57, 57, 57, 0.75);
+    background-image: linear-gradient(rgb(57, 57, 57), rgb(57,57,57, 0.20) );
     justify-content: space-between ;
     padding: 10px;
     margin: -8px;
+    margin-bottom: 20px ;
 }
 
 #left-half {
@@ -91,5 +92,7 @@ header {
      color:silver;
      text-decoration:none;
  }
+
+ 
 
 </style>

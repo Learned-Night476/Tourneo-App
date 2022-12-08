@@ -34,6 +34,9 @@
       <router-link class="needAnAccount" :to="{ name: 'register' }">Need an account?</router-link>
       <button type="submit">Sign in</button>
     </form>
+    <div class="fade-in">
+   <h1 id="stepIn">Step Into The Arena</h1>
+</div>
   </div>
 </template>
 
@@ -88,6 +91,65 @@ export default {
 #username {
   text-align: left;
 }
+#stepIn {
+  color: rgba(255, 255, 255);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-shadow: -5px -5px black;
+  font-size: 60px;
+  
+}
 
+.fade-in {
+  animation: fadeIn ease 10s;
+  -webkit-animation: fadeIn ease 10s;
+  -moz-animation: fadeIn ease 10s;
+  -o-animation: fadeIn ease 10s;
+  -ms-animation: fadeIn ease 10s;
+}
+@keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
 
+@-moz-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-o-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+  }
+}
+
+@-ms-keyframes fadeIn {
+  0% {
+    opacity:0;
+  }
+  100% {
+    opacity:1;
+}
+}
 </style>
