@@ -118,9 +118,9 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
-    @RequestMapping(value = "/tournament/{id}/match", method = RequestMethod.POST)
-    public void createTournamentMatch(int tournamentId, int homePlayerId, int awayPlayerId, int round) {
-        tournamentMatchDao.createTournamentMatch(tournamentId, homePlayerId, awayPlayerId, round);
+    @RequestMapping(value = "/tournament/createMatch", method = RequestMethod.POST)
+    public void createTournamentMatch(TournamentMatch tournamentMatch) {
+        tournamentMatchDao.createTournamentMatch(tournamentMatch);
 
     }
 

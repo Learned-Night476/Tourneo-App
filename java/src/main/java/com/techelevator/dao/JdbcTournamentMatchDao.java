@@ -13,11 +13,11 @@ public class JdbcTournamentMatchDao implements TournamentMatchDao {
 
 
     @Override
-    public boolean createTournamentMatch(int tournamentId, int homePlayerId, int awayPlayerId, int round ) {
+    public boolean createTournamentMatch(TournamentMatch tournamentMatch) {
 
         String sql = "insert into tournament_match (home, away, round, tournament_id) values ( ?, ?, ?, ?); ";
 
-        Integer newUserId = jdbcTemplate.queryForObject(sql, Integer.class, homePlayerId, awayPlayerId, round, tournamentId);
+        Integer newUserId = jdbcTemplate.queryForObject(sql, Integer.class, tournamentMatch.getHomeId(), tournamentMatch.getAwayId(), tournamentMatch.getRound(), tournamentMatch.getTournamentId());
 
         return true;
 
