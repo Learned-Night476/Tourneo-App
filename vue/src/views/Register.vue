@@ -1,7 +1,7 @@
 <template>
   <div id="register" class="text-center">
     <form class="form-register" @submit.prevent="register">
-      <p style="margin: 3px;">Create Account</p>
+      <p style="margin: 3px;" id="createId" >Account Creation</p>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -32,6 +32,16 @@
         v-model="user.confirmPassword"
         required
       />
+      <div>
+        <form action="">
+          <div class=img>
+          <div class="radio">
+            <img id="sword" src="C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/olivebranch.svg" />
+            <input type="radio" name="answer1" value="sword">
+          </div>
+          </div>
+        </form>
+      </div>
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
       <button class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account
@@ -95,14 +105,57 @@ export default {
 
 .form-register {
   display: flex;
-  color:white;
-  height: 30px;
-  padding: 15px;
-  margin-top: 10px;
+  flex-direction: column;
+  color: white;
+  margin-top: 10%;
   text-align: center;
   justify-content: space-evenly;
+  align-items: center;
+  border: solid 1px black
+  
+  
 
 }
+
+#username {
+  text-align: left;
+}
+
+.form-control {
+  width: 40%;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 15px;
+}
+
+#createId {
+  color: orange;
+  font-size: 25px;
+}
+
+.img {
+  display: flex;
+  align-items: end;
+}
+
+img {
+  border: 1px solid black;
+}
+
+.radio {
+  position: relative;
+  height: 50px;
+}
+
+input[type="radio"] {
+  position: absolute;
+  top: calc(50% - 4px);
+  right: 0;
+  margin: 0;
+}
+
+
+
 
 
 </style>
