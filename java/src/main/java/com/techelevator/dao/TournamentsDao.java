@@ -11,5 +11,7 @@ public interface TournamentsDao {
 
      List<Tournaments> getAllTournaments();
 
+     List<Tournaments> getTournamentsByAdmin(int id);
+
 
 }

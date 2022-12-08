@@ -48,6 +48,22 @@ public class JdbcTournamentsDao implements TournamentsDao {
     }
 
     @Override
+    public List<Tournaments> getTournamentsByAdmin(int id) {
+        List<Tournaments> tournaments = new ArrayList<>();
+
+        String sql = "SELECT * FROM tournaments WHERE admin_user = ? ";
+
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
+
+        while (rs.next()) {
+            Tournaments tournament = mapRowToTournament(rs);
+            tournaments.add(tournament);
+        }
+
+        return tournaments;
+    }
+
+    @Override
     public boolean createTournament(Tournaments tournament) {
         String sql = "insert into tournaments (participants, winner, admin_user, tournament_status, tournament_type, tournament_name) values (?, ?, ?, ?, ?, ?); ";
 

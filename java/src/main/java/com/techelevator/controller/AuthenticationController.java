@@ -97,6 +97,13 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
+    @RequestMapping(value = "/tournaments/user/{id}", method = RequestMethod.GET)
+    public List<Tournaments> getMyTournaments(@PathVariable int id) {
+        return tournamentsDao.getTournamentsByAdmin(id);
+
+    }
+
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments/tournamentUsers", method = RequestMethod.POST)
     public void createTournamentUsers(int tournamentId, int playerId) {
         tournamentUsersDao.createTournamentUser(tournamentId, playerId);
