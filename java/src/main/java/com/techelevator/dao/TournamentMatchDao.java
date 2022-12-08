@@ -4,6 +4,6 @@ import com.techelevator.model.TournamentMatch;
 
 public interface TournamentMatchDao {
 
-    boolean createTournamentMatch(int tournamentId, int homePlayerId, int awayPlayerId, int round);
+    boolean createTournamentMatch(TournamentMatch tournamentMatch);
 
 }
