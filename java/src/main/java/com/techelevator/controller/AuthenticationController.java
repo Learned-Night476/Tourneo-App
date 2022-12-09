@@ -152,5 +152,12 @@ public class AuthenticationController {
         tournamentMatchDao.createTournamentMatch(tournamentMatch);
     }
 
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/playerId/{username}", method = RequestMethod.GET)
+    public int getPlayerIdByUsername(@PathVariable String username) {
+        return playerDao.getPlayerIdByUsername(username);
+
+    }
+
 }
 

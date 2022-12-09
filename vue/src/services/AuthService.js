@@ -40,6 +40,10 @@ export default {
 
   createMatch(match) {
     return axios.post('/matches', match)
+  },
+
+  getPlayerIdByUsername(username) {
+    return axios.get(`/playerId/${username}`)
   }
 
 }

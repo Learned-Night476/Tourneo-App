@@ -51,16 +51,24 @@ public class JdbcPlayerDao implements PlayerDao {
 
     @Override
     public Player getPlayerByUsername(String username) {
-        String sql = "select * from players where username = ?";
+        String sql = "select player_id, wins, losses, user_id, username from players where username= ?;";
         Player player = new Player();
 
-        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql);
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, username);
 
         if (rs.next()) {
             player = mapRowToPlayer(rs);
         }
 
         return player;
+    }
+
+    @Override
+    public int getPlayerIdByUsername(String username) {
+        String sql = "select player_id from players where username= ?";
+
+        int playerId = jdbcTemplate.queryForObject(sql, int.class, username);
+        return playerId;
     }
 
     private Player mapRowToPlayer(SqlRowSet rs) {

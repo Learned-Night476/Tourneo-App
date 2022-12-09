@@ -54,7 +54,8 @@ data() {
     currentPlayers: [],
     isThereDuplicates: false,
     usernameIncorrect: false,
-    didSubmitTournament: false,
+    didSubmitTournament: false
+ 
   };
 },
 
@@ -76,8 +77,10 @@ methods: {
         winner: 1
       };
 
-    
+
+        
         authService.createATournament(newTournament);
+        this.tournament = newTournament;
         this.show = true;
         this.didSubmitTournament = true;
         // this.$router.push('/');
@@ -108,32 +111,30 @@ methods: {
   },
 
   createMatches(){
-    // for (let i = 0; i < this.currentPlayers.length / 2; i++) {
-    //   let j = i + 1;
+    for (let i = 0; i < this.currentPlayers.length / 2; i++) {
+      let j = i + 1;
       
-    //   let homePlayer = authService.getPlayerByUsername(this.currentPlayers[i])
-    //   let awayPlayer = authService.getPlayerByUsername(this.currentPlayers[this.currentPlayers.length - j]);
+    
+     let homePlayer = 1;
+     let awayPlayer = 1;
+      authService.getPlayerIdByUsername(this.currentPlayers[i]).then((response) => {
+        homePlayer = response.data;
+      });
+       authService.getPlayerIdByUsername(this.currentPlayers[this.currentPlayers.length - j]).then((response) => {
+         awayPlayer = response.data;
+       });
 
-    //   let match = {
-    //     home: 1,
-    //     away: 2,
-    //     round: 1,
-    //     winner: 0,
-    //     tournamentId: this.tournament.tournamentId
-    //   };
-      
-
-    //   authService.createMatch(match);
-    // }
-    let match = {
-        matchId: 1,
-        homie: 1,
-        awayie: 2,
+      let match = {
         round: 1,
-        winner: 5,
-        tournamentId: 2
+        winner: 0,
+        tournamentId: 19,
+        playerId: homePlayer,
+        awayPlayerId : awayPlayer
       };
+      
+
       authService.createMatch(match);
+    }
   }
   
 }, computed: {
