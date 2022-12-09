@@ -202,11 +202,13 @@ methods: {
   align-items: center;
   
   
+  
 }
 
 
 
 .round1 {
+  padding-right: 100px;
 
   
 }
