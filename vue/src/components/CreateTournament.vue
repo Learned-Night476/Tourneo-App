@@ -126,11 +126,12 @@ methods: {
     //   authService.createMatch(match);
     // }
     let match = {
-        home: 1,
-        away: 2,
+        matchId: 1,
+        homie: 1,
+        awayie: 2,
         round: 1,
-        winner: 0,
-        tournamentId: this.tournament.tournamentId
+        winner: 5,
+        tournamentId: 2
       };
       authService.createMatch(match);
   }

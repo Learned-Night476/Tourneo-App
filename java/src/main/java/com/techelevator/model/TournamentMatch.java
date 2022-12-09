@@ -2,29 +2,29 @@ package com.techelevator.model;
 
 public class TournamentMatch {
     private int matchId;
-    private int home;
-    private int away;
+    private int playerId;
     private int round;
     private int winner;
     private int tournamentId;
+    private int awayPlayerId;
 
-    public TournamentMatch() {};
+    public TournamentMatch() {}
 
-    public TournamentMatch(int matchId, int home, int away, int round, int winner, int tournamentId) {
+    public TournamentMatch(int matchId, int round, int winner, int tournamentId, int playerId, int awayPlayerId) {
         this.matchId = matchId;
-        this.home = home;
-        this.away = away;
+        this.playerId = playerId;
         this.round = round;
         this.winner = winner;
         this.tournamentId = tournamentId;
+        this.awayPlayerId = awayPlayerId;
     }
 
-    public int getHomeId() {
-        return home;
+    public int getAwayPlayerId() {
+        return awayPlayerId;
     }
 
-    public void setHomeId(int home) {
-        this.home = home;
+    public void setAwayPlayerId(int awayPlayerId) {
+        this.awayPlayerId = awayPlayerId;
     }
 
     public int getMatchId() {
@@ -35,12 +35,12 @@ public class TournamentMatch {
         this.matchId = matchId;
     }
 
-    public int getAwayId() {
-        return away;
+    public int getPlayerId() {
+        return playerId;
     }
 
-    public void setAwayId(int away) {
-        this.away = away;
+    public void setPlayerId(int away) {
+        this.playerId = away;
     }
 
     public int getRound() {

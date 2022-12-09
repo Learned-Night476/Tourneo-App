@@ -49,11 +49,11 @@ create TABLE tournament_type (
 
 create TABLE tournament_match (
 	match_id SERIAL NOT NULL,
-	home int,
-	away int,
 	round int,
 	winner int,
 	tournament_id int NOT NULL,
+	player_id int,
+	away_player_id int,
 
 	CONSTRAINT PK_match_id PRIMARY KEY (match_id)
 );
@@ -64,8 +64,7 @@ create TABLE tournament_match (
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 	ALTER TABLE tournament_users ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	ALTER TABLE players ADD CONSTRAINT FK_username FOREIGN KEY (username) REFERENCES users(username);
-	ALTER TABLE tournament_match ADD CONSTRAINT FK_home FOREIGN KEY (home) REFERENCES players(player_id);
-	ALTER TABLE tournament_match ADD CONSTRAINT FK_away FOREIGN KEY (away) REFERENCES players(player_id);
+	ALTER TABLE tournament_match ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	ALTER TABLE tournament_match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 
 

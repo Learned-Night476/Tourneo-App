@@ -16,9 +16,9 @@ public class JdbcTournamentMatchDao implements TournamentMatchDao {
 
     @Override
     public void createTournamentMatch(TournamentMatch tournamentMatch) {
-        String sql = "insert into tournament_match (home, away, round, winner, tournament_id) values (?, ?, ?, ?, ?) returning match_id;";
-        Integer matchId = jdbcTemplate.queryForObject(sql, Integer.class, tournamentMatch.getHomeId(),
-                tournamentMatch.getAwayId(),tournamentMatch.getRound(), tournamentMatch.getWinner(), tournamentMatch.getTournamentId());
+        String sql = "insert into tournament_match (round, winner, tournament_id, player_id, away_player_id) values (?, ?, ?, ?, ?) returning match_id;";
+        Integer matchId = jdbcTemplate.queryForObject(sql, Integer.class,
+                tournamentMatch.getRound(), tournamentMatch.getWinner(), tournamentMatch.getTournamentId(), tournamentMatch.getPlayerId(), tournamentMatch.getAwayPlayerId());
 
 
         }
