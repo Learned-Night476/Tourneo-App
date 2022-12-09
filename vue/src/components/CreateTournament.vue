@@ -54,7 +54,7 @@ data() {
     currentPlayers: [],
     isThereDuplicates: false,
     usernameIncorrect: false,
-    didSubmitTournament: false
+    didSubmitTournament: false,
   };
 },
 
@@ -108,23 +108,31 @@ methods: {
   },
 
   createMatches(){
-    for (let i = 0; i < this.currentPlayers.length / 2; i++) {
-      // let j = i + 1;
+    // for (let i = 0; i < this.currentPlayers.length / 2; i++) {
+    //   let j = i + 1;
       
-      // let homePlayer = authService.getPlayerByUsername(this.currentPlayers[i])
-      // let awayPlayer = authService.getPlayerByUsername(this.currentPlayers[this.currentPlayers.length - j]);
+    //   let homePlayer = authService.getPlayerByUsername(this.currentPlayers[i])
+    //   let awayPlayer = authService.getPlayerByUsername(this.currentPlayers[this.currentPlayers.length - j]);
 
-      let match = {
+    //   let match = {
+    //     home: 1,
+    //     away: 2,
+    //     round: 1,
+    //     winner: 0,
+    //     tournamentId: this.tournament.tournamentId
+    //   };
+      
+
+    //   authService.createMatch(match);
+    // }
+    let match = {
         home: 1,
         away: 2,
         round: 1,
         winner: 0,
         tournamentId: this.tournament.tournamentId
       };
-      
-
       authService.createMatch(match);
-    }
   }
   
 }, computed: {
