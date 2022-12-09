@@ -96,25 +96,23 @@ const bracketApp = new Vue({
 
 </style> -->
 <template>
-  <div>
-    <div>
-      <div v-for="match in (tournament.participants / 2)" v-bind:key="match.id">
-        <div style="background-color: red; height: 80px; width: 200px; border-radius: 10px;">
-          <match/>
-        </div>  
+  <div id="hi">
+    <div class="allRounds">
+      <div class="round1">
+          <match v-for="match in (tournament.participants / 2)" v-bind:key="match.id"  />
+
       </div>
-            <!-- <div v-for="match in (tournament.participants / 2)" v-bind:key="match.id">
-        <div style="background-color: red; height: 80px; width: 200px; border-radius: 10px;">
-          <match/>
-        </div>  
+      <div class="round2" >
+          <match v-for="match in (tournament.participants / 4)" v-bind:key="match.id" style="background-color: gray;" />
       </div>
-            <div v-for="match in (tournament.participants / 2)" v-bind:key="match.id">
-        <div style="background-color: red; height: 80px; width: 200px; border-radius: 10px;">
-          <match/>
-        </div>  
-      </div> -->
-      <div v-for="match in matchesRound2" v-bind:key="match.id">
-          <match style="position: absolute; left: 250px;" :style="{top: (topPixelNumber + add100px()) + 'px'}"/>
+       <div class="round3"  >
+          <match  v-for="match in matchesRound3" v-bind:key="match.id" />
+      </div>
+      <div class="round4"  >
+          <match v-for="match in matchesRound4" v-bind:key="match.id" />
+      </div>
+      <div class="round5"  >
+          <match v-for="match in matchesRound5" v-bind:key="match.id" />
       </div>
     </div>
   </div>
@@ -130,7 +128,7 @@ data() {
   return{
     tournamentId : this.$route.params.tournamentId,
     tournament: {},
-    matchesRound2: [1, 2],
+    matchesRound2: [],
     matchesRound3: [],
     matchesRound4: [],
     matchesRound5: [],
@@ -155,11 +153,149 @@ methods: {
     else {
       return 100;
     }
+  },
+
+// We might not have to use this logic, but keep it just in case.
+   updateRound3()  {
+    if ((this.tournament.participants / 8) < 1) {
+      this.matchesRound3 = 0;
+    }
+    else {
+      this.matchesRound3 = this.tournament.participants / 8;
+    }
+    return this.matchesRound3;
+   },
+  
+
+
+   updateRound4() {
+    if ((this.tournament.participants / 16) < 1) {
+      this.matchesRound4 = 0;
+    }
+    else {
+      this.matchesRound4 = this.tournament.participants / 8;
+    }
+    return this.matchesRound4;
+   },
+
+   updateRound5() {
+    if ((this.tournament.participants / 32) < 1) {
+      this.matchesRound5 = 0;
+    }
+    else {
+      this.matchesRound5 = this.tournament.participants / 8;
+    }
+    return this.matchesRound5;
   }
 }
-}
+};
+
+
 </script>
 
 <style>
 
+.allRounds {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  
+}
+
+
+
+/* div.round1 {
+  display: flex;
+  flex-direction: column;
+  
+  
+
+}
+div.round2 {
+  display: flex;
+  flex-direction: column;
+ 
+
+}
+
+div.round3 {
+  display: flex;
+  flex-direction: column;
+  
+} */
+
+
+
+/* .container {
+  max-width: 1100px;
+  margin: 0 auto;
+  display:block;
+  /* display: flex;
+  flex-direction: column; */
+  /* } */
+/* 
+  .split {
+    display:block;
+    float:left;
+    flex-direction:row;
+    }
+
+  .round1 {
+    display: block;
+    float: right;
+    display: flex;
+  
+
+  } */ 
+
+
+
+ /* <header class="hero">
+    <div class="hero-wrap">
+     <p class="intro" id="intro">flexbox</p>
+     <h1 id="headline">Tournament</h1>
+     <p class="year"><i class="fa fa-star"></i> 2015 <i class="fa fa-star"></i></p>
+     <p>Ballin' Outta Control</p>
+   </div>
+  </header> */
+
+/* 
+  <section id="bracket">
+  <div class="container">
+  <div class="split split-one">
+    <div class="round round-one current">
+      <div class="round-details">Round 1<br/><span class="date">March 16</span></div>
+      <ul class="matchup">
+        <li class="team team-top">Duke<span class="score">76</span></li>
+        <li class="team team-bottom">Virginia<span class="score">82</span></li>
+      </ul>
+      <ul class="matchup">
+        <li class="team team-top">Wake Forest<span class="score">64</span></li>
+        <li class="team team-bottom">Clemson<span class="score">56</span></li>
+      </ul>
+      <ul class="matchup">
+        <li class="team team-top">North Carolina<span class="score">68</span></li>
+        <li class="team team-bottom">Florida State<span class="score">54</span></li>
+      </ul>
+      <ul class="matchup">
+        <li class="team team-top">NC State<span class="score">74</span></li>
+        <li class="team team-bottom">Maryland<span class="score">92</span></li>
+      </ul>     
+      <ul class="matchup">
+        <li class="team team-top">Georgia Tech<span class="score">78</span></li>
+        <li class="team team-bottom">Georgia<span class="score">80</span></li>
+      </ul> 
+      <ul class="matchup">
+        <li class="team team-top">Auburn<span class="score">64</span></li>
+        <li class="team team-bottom">Florida<span class="score">63</span></li>
+      </ul> 
+      <ul class="matchup">
+        <li class="team team-top">Kentucky<span class="score">70</span></li>
+        <li class="team team-bottom">Alabama<span class="score">59</span></li>
+      </ul>
+      <ul class="matchup">
+        <li class="team team-top">Vanderbilt<span class="score">64</span></li>
+        <li class="team team-bottom">Gonzaga<span class="score">68</span></li>
+      </ul>                   
+    </div>  <!-- END ROUND ONE --> */
 </style>
