@@ -44,6 +44,10 @@ export default {
 
   getPlayerIdByUsername(username) {
     return axios.get(`/playerId/${username}`)
+  },
+
+  createTournamentUser(playerId, tournamentId) {
+    return axios.post(`/${playerId}/${tournamentId}`)
   }
 
 }
