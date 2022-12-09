@@ -1,8 +1,8 @@
 <template>
   <div class="chad">
-      <p id="homePlayer">Home Player: </p>
+      <p id="homePlayer">Home Player</p>
       <span id="line"></span>
-      <p id="awayPlayer">Away Player :</p>
+      <p id="awayPlayer">Away Player</p>
   </div>
 </template>
 
@@ -19,16 +19,16 @@ props: ['match']
   display: flex;
   flex-direction: column;
   background-color: rgb(57, 57, 57);
-  margin: 10px;
-  height: 80px;
-  width: 150px;
+  margin: 20px;
+  height: 60px;
+  width: 200px;
   border-radius: 4px;
-  justify-content: space-evenly;
+  justify-content:space-evenly;
+  font-size: small;
 } 
 
 #homePlayer {
  
-  /* padding-bottom: -15px; */
   display: flex;
   flex-direction: column;
   margin: 10px;
@@ -44,6 +44,7 @@ props: ['match']
   display: flex;
   flex-direction: column;
   margin: 10px;
+  text-align: top;
   height: 80px;
   width: 140px;
   border-radius: 4px;
@@ -59,7 +60,7 @@ props: ['match']
 }
 
 .chad:hover {
-  background-color: rgba(218, 112, 214, 0.705);
+  background-color: rgba(57,57,57, 0.705);
 }
 
 

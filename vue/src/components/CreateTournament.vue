@@ -14,7 +14,7 @@
             <option value="32">32</option>
           </select> <br><br>
           <button :disabled="isDisabled" type="button" v-on:click="submitTournament" >Create Tournament</button>
-        <div>
+        <!-- <div>
         <label for="homeUsername">Add Player To Tournament</label> &nbsp;
           <input type="text" class="homePlayer" name="homeUsername" v-model="player" /> &nbsp;
           <button :disabled="isDisabled2"  type="button" v-on:click="addPlayer"  >Add Player</button>
@@ -25,7 +25,7 @@
         <div v-for="player in currentPlayers" v-bind:key="player.id">
           <p>Player : {{player}}</p>
         </div>
-        <button v-show="didSubmitTournament && isDisabled2" v-on:click="createMatches">Add Players To Tournament</button>
+        <button v-show="didSubmitTournament && isDisabled2" v-on:click="createMatches">Add Players To Tournament</button> -->
         <!-- <div v-for="player in players" v-bind:key="player.id">
           <p>{{player.playerId}}</p>
         </div> -->
