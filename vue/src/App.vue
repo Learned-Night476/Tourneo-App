@@ -54,4 +54,7 @@ html{
 }
 
 
+input[type=checkbox] {
+accent-color: orangered;
+}
 </style>

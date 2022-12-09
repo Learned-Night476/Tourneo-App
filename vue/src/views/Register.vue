@@ -45,12 +45,23 @@
          <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
         <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
       </label>
+      
+      <label>
+         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
+        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
+      </label>
+
+      <label>
+         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
+        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
+      </label>
       </div>
     
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
-      <router-link :to="{ name: 'termsOfService'}" target="_blank">
+      <router-link  id="termsText" :to="{ name: 'termsOfService'}" target="_blank"> 
+         <input id="checkbox" type="checkbox">
         Terms of Service And Privacy Policy
-      </router-link>
+     </router-link>
       <button id="createButton" class="btn btn-lg btn-primary btn-block" type="submit">
         Create Account <a target="_blank" href="/terms"></a>
       </button>
@@ -186,7 +197,7 @@ input[type=radio] {
 }
 
 input[type=radio]:checked, #img1 {
-  border: 20px solid orange;
+  border: 5px solid orange;
 }
 
 label:focus-within {
@@ -215,6 +226,19 @@ label:focus-within {
   color:white;
   font-size: 15px;
 }
+
+#termsText {
+  padding: 10px;
+}
+
+#termsText:hover {
+  color:orangered;
+}
+
+input[type=checkbox] {
+          accent-color: orangered;
+        }
+
  /* .avatars:hover {
 background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
     background-repeat: no-repeat;
