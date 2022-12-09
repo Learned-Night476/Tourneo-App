@@ -48,9 +48,13 @@
       </div>
     
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
+      <router-link :to="{ name: 'termsOfService'}" target="_blank">
+        Terms of Service And Privacy Policy
+      </router-link>
       <button id="createButton" class="btn btn-lg btn-primary btn-block" type="submit">
-        Create Account
+        Create Account <a target="_blank" href="/terms"></a>
       </button>
+      
     </form>
   </div>
 </template>
