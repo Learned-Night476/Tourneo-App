@@ -117,12 +117,6 @@ public class AuthenticationController {
 
     }
 
-//    @PreAuthorize("permitAll")
-//    @RequestMapping(value = "/tournament/createMatch", method = RequestMethod.POST)
-//    public void createTournamentMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
-//        tournamentMatchDao.createTournamentMatch(tournamentMatch);
-//
-//    }
 
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/tournaments", method = RequestMethod.GET)
@@ -137,7 +131,6 @@ public class AuthenticationController {
         return tournamentMatchDao.getTournamentMatchsByTournamentIdAndRound(tournamentId, round);
 
     }
-
 
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
@@ -164,6 +157,12 @@ public class AuthenticationController {
     public int getPlayerIdByUsername(@PathVariable String username) {
         return playerDao.getPlayerIdByUsername(username);
 
+    }
+
+    @PreAuthorize("permitALl")
+    @RequestMapping(value = "/{playerId}/{tournamentId}", method = RequestMethod.POST)
+    public void createTournamentUser(@PathVariable int playerId, @PathVariable int tournamentId) {
+        tournamentUsersDao.createTournamentUser(tournamentId, playerId);
     }
 
 }
