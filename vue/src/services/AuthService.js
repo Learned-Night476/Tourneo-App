@@ -39,7 +39,7 @@ export default {
   },
 
   createMatch(match) {
-    return axios.post(`/tournament/createMatch`, match)
+    return axios.post('/matches', match)
   }
 
 }

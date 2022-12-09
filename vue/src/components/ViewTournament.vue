@@ -98,19 +98,44 @@ const bracketApp = new Vue({
 <template>
   <div>
     <div>
-      <h1>{{tournament.participants}}</h1>
+      <div v-for="match in (tournament.participants / 2)" v-bind:key="match.id">
+        <div style="background-color: red; height: 80px; width: 200px; border-radius: 10px;">
+          <match/>
+        </div>  
+      </div>
+            <!-- <div v-for="match in (tournament.participants / 2)" v-bind:key="match.id">
+        <div style="background-color: red; height: 80px; width: 200px; border-radius: 10px;">
+          <match/>
+        </div>  
+      </div>
+            <div v-for="match in (tournament.participants / 2)" v-bind:key="match.id">
+        <div style="background-color: red; height: 80px; width: 200px; border-radius: 10px;">
+          <match/>
+        </div>  
+      </div> -->
+      <div v-for="match in matchesRound2" v-bind:key="match.id">
+          <match style="position: absolute; left: 250px;" :style="{top: (topPixelNumber + add100px()) + 'px'}"/>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import authService from "../services/AuthService"
+import Match from './Match.vue'
 export default {
+  components: { Match },
   name: "view-tournament",
 data() {
   return{
     tournamentId : this.$route.params.tournamentId,
-    tournament: {}
+    tournament: {},
+    matchesRound2: [1, 2],
+    matchesRound3: [],
+    matchesRound4: [],
+    matchesRound5: [],
+    topPixelNumber: 100,
+    firstTimeThrough : true
   }
 },
 
@@ -118,6 +143,19 @@ created() {
   authService.getTournamentById(this.tournamentId).then((response) =>{
     this.tournament = response.data;
   })
+},
+
+methods: {
+  add100px(){
+    if(this.firstTimeThrough){
+      this.firstTimeThrough = false;
+      return 0;
+    }
+
+    else {
+      return 100;
+    }
+  }
 }
 }
 </script>

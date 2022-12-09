@@ -117,12 +117,12 @@ public class AuthenticationController {
 
     }
 
-    @PreAuthorize("permitAll")
-    @RequestMapping(value = "/tournament/createMatch", method = RequestMethod.POST)
-    public void createTournamentMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
-        tournamentMatchDao.createTournamentMatch(tournamentMatch);
-
-    }
+//    @PreAuthorize("permitAll")
+//    @RequestMapping(value = "/tournament/createMatch", method = RequestMethod.POST)
+//    public void createTournamentMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
+//        tournamentMatchDao.createTournamentMatch(tournamentMatch);
+//
+//    }
 
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/tournaments", method = RequestMethod.GET)
@@ -147,6 +147,10 @@ public class AuthenticationController {
 
     }
 
+    @RequestMapping(path = "/matches", method = RequestMethod.POST)
+    public void createMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
+        tournamentMatchDao.createTournamentMatch(tournamentMatch);
+    }
 
 }
 
