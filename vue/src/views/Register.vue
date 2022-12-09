@@ -158,16 +158,17 @@ export default {
 }
 
 img {
-  width: 70px;
-  height: 70px;
+  width: 50px;
+  height: 50px;
+  
 }
 
 #img1 {
-  width: 20vw;
-  height: 20vw;
+  width: 10vw;
+  height: 10vw;
   padding: 2vw;
   border: solid 1px orange;
-  border-radius: 25px;
+  border-radius: 50%;
 }
 
 input[type=radio] {
@@ -197,14 +198,23 @@ label:focus-within {
   color: white;
   height: 40px;
   width: 200px;
-  border-radius: 15px;
+  border-radius: 4px;
+
 }
 
 #createButton:hover {
   background-color: rgba(140, 0, 255, 0.75);
 }
 
+.form-create {
+  background-color:rgba(128, 128, 128, 0.664);
+  color: orange;
+}
 
+::placeholder {
+  color:white;
+  font-size: 15px;
+}
  /* .avatars:hover {
 background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
     background-repeat: no-repeat;
