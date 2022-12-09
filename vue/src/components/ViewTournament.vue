@@ -103,7 +103,7 @@ const bracketApp = new Vue({
 
       </div>
       <div class="round2" >
-          <match v-for="match in (tournament.participants / 4)" v-bind:key="match.id" style="background-color: gray;" />
+          <match v-for="match in (tournament.participants / 4)" v-bind:key="match.id" />
       </div>
        <div class="round3"  >
           <match  v-for="match in matchesRound3" v-bind:key="match.id" />
@@ -196,33 +196,20 @@ methods: {
 <style>
 
 .allRounds {
+  padding-top: 10%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   
+  
 }
 
 
 
-/* div.round1 {
-  display: flex;
-  flex-direction: column;
-  
-  
+.round1 {
 
+  
 }
-div.round2 {
-  display: flex;
-  flex-direction: column;
- 
-
-}
-
-div.round3 {
-  display: flex;
-  flex-direction: column;
-  
-} */
 
 
 

@@ -96,7 +96,7 @@ export default {
   display: flex;
   align-items: center;
   justify-content: center;
-  text-shadow: -5px -5px black;
+  text-shadow: -5px -5px 5px black;
   font-size: 60px;
   
 }
