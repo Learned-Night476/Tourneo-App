@@ -159,7 +159,7 @@ public class AuthenticationController {
 
     }
 
-    @PreAuthorize("permitALl")
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/{playerId}/{tournamentId}", method = RequestMethod.POST)
     public void createTournamentUser(@PathVariable int playerId, @PathVariable int tournamentId) {
         tournamentUsersDao.createTournamentUser(tournamentId, playerId);

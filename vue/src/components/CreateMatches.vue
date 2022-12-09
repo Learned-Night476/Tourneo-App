@@ -98,6 +98,10 @@ methods: {
           playerId: this.player,
           awayPlayerId: this.player2
       }
+
+           authService.createTournamentUser(this.player, this.tournamentId)
+       authService.createTournamentUser(this.player2, this.tournamentId)
+
         this.matches.push(match)
        authService.createMatch(match);
        this.finishedCreatingMatches();
