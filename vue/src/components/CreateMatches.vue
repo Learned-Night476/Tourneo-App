@@ -16,8 +16,8 @@
                 <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player.playerId">{{player.username}}</option>
                 </select> &nbsp;
 
-            <button :disabled="isDisabled2"  type="button" v-on:click="createMatches"  >Add Match</button>
-            <button v-show="currentPlayers.length > 0" v-on:click="clearPlayers">Clear Players</button>
+            <button :disabled="isDisabled2 || isNotVerified"  type="button" v-on:click="createMatches"  >Add Match</button>
+            <button v-on:click="verifyMatches">Verify</button>
 
         </div>
         <h3>Players Added To Tournament</h3>
@@ -51,7 +51,8 @@ data() {
     isThereDuplicates: false,
     usernameIncorrect: false,
     matches: [],
-    didYouMakeAllTheMatches: true
+    didYouMakeAllTheMatches: true,
+    isNotVerified: true
  
   };
 },
@@ -68,23 +69,21 @@ created() {
 
 methods: {
 
-  addPlayer(){
-    if (this.players.filter(e => e.username === this.player).length > 0){
-      if(!this.currentPlayers.includes(this.player)) {
-        this.currentPlayers.push(this.player);
-        this.isThereDuplicates = false;
-        this.usernameIncorrect = false;
+  verifyMatches(){
+
+      if(this.player == this.player2) {
+          this.isThereDuplicates = true;
       }
-      else {this.isThereDuplicates = true;
-            this.usernameIncorrect = false;
+      
+   else if (this.matches.filter(e => e.playerId === this.player || e.playerId === this.player2 || e.awayPlayerId === this.player || e.awayPlayerId === this.player2).length > 0){
+        this.isThereDuplicates = true;    
       }
-    }
+
     else {
-      this.usernameIncorrect = true;
+  
       this.isThereDuplicates = false;
-    }
-    
-    this.player ="";
+      this.isNotVerified = false;
+    }   
   },
 
   clearPlayers(){
@@ -102,6 +101,7 @@ methods: {
         this.matches.push(match)
        authService.createMatch(match);
        this.finishedCreatingMatches();
+       this.isNotVerified = true;
     
   },
 
