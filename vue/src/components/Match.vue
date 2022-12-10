@@ -1,8 +1,8 @@
 <template>
   <div class="chad">
-      <p id="homePlayer">Home Player</p>
+      <p id="homePlayer">{{match ? match.playerUsername : 'Home Player'}}</p>
       <span id="line"></span>
-      <p id="awayPlayer">Away Player</p>
+      <p id="awayPlayer">{{match ? match.awayPlayerUsername : 'Away Player'}}</p>
   </div>
 </template>
 

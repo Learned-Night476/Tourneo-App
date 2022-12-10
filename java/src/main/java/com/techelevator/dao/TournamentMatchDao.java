@@ -8,6 +8,6 @@ public interface TournamentMatchDao {
 
     void createTournamentMatch(TournamentMatch tournamentMatch);
 
-    List<TournamentMatch> getTournamentMatchsByTournamentIdAndRound(int tournamentId, int round);
+    List<TournamentMatch> getTournamentMatchesByTournamentIdAndRound(int tournamentId, int round);
 
 }

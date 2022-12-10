@@ -1,120 +1,24 @@
-<!--<template>
-  <div class="match" :style="matchStyle" @mouseover="onMouseover">
-  <table>
-    <tr @mouseover="$store.commit('setTeam', home)" :class="home === $store.state.team ? 'chosen' : null" @mouseout="$store.commit('clearTeam')">
-      <td style="border-bottom:solid 1px black;">{{this.home}}</td>
-      <td class="score" style="border-bottom:solid 1px black;">{{this.homeScore}}</td>
-    </tr>
-    <tr @mouseover="$store.commit('setTeam', away)" :class="away === $store.state.team ? 'chosen' : null" @mouseout="$store.commit('clearTeam')">
-      <td>{{this.away}}</td>
-      <td class="score">{{this.awayScore}}</td>
-    </tr>
-  </table>
-</div>
-</template>
-
-<script>
-export default {
-
-},
-  computed: {
-    matchStyle() {
-      return {
-        left: `${this.xpos}px`,
-        top: `${this.ypos}px`,
-      };
-    },
-  },
-  props: [
-    'matchId'
-    'home',
-    'away',
-    'round',
-    'winner',
-    'tournamentId'
-  ],
-  methods: {
-    onMouseover() {
-      this.$store.commit('setMatchId', this.matchId);
-    }
-  }
-})
-
-const bracketApp = new Vue({
-  store,
-  data: () => ({
-    rawData,
-    width: 1000,
-    height: 500,
-    padding: 50,
-    matches: [],
-    root: {}, // root is exposed for global
-    matchWidth: 100,
-    matchHeight: 50,
-    tree: null, // tree is also exposed for global
-  }),
-  mounted() {
-    this.refresh();
-  },
-  methods: {
-    refresh() {
-      this.tree = d3.tree()
-        .size([this.height - this.matchHeight, this.width - (this.matchWidth * 2 + this.padding * 2)]);
-      this.root = this.tree(d3.hierarchy(this.rawData));
-      this.matches = this.root.descendants();
-      this.drawLinks();
-    },
-    drawLinks() {
-      const g = d3.select('svg > g');
-      const links = g.selectAll('path.link')
-        .data(this.root.descendants().slice(1));
-      const elbow = d3.line()
-        .curve(d3.curveStep);
-      links.enter()
-        .append('path', 'g')
-        .attr('class', 'link')
-        .attr('d', function (d) {
-          let targetY = d.x;
-          let sourceY = d.parent.x;
-          let targetX = d.y;
-          let sourceX = d.parent.y;
-          if (d.data.homeScore < d.data.awayScore) {
-            targetY = d.x + 25;
-          } else {
-            targetY = d.x - 25;
-          }
-          return elbow([[sourceX, sourceY], [targetX, targetY]])
-        })
-      
-    }
-  }
-}).$mount('#bracketApp');
-
-</script>
-
-<style>
-
-</style> -->
 <template>
   <div id="hi">
     <div class="allRounds">
       <div class="round1">
-          <match v-for="match in (tournament.participants / 2)" v-bind:key="match.id"  />
+          <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
 
       </div>
       <div class="round2" >
-          <match v-for="match in (tournament.participants / 4)" v-bind:key="match.id" />
+          <match v-for="n in (tournament.participants / 4)" v-bind:key="n.id" :match="matchesRound2[n-1]"/>
       </div>
        <div class="round3"  >
-          <match  v-for="match in matchesRound3" v-bind:key="match.id" />
+          <match  v-for="n in updateRound3()" v-bind:key="n.id" :match="matchesRound3[n-1]"/>
       </div>
       <div class="round4"  >
-          <match v-for="match in matchesRound4" v-bind:key="match.id" />
+          <match v-for="n in updateRound4()" v-bind:key="n.id" :match="matchesRound4[n-1]"/>
       </div>
       <div class="round5"  >
-          <match v-for="match in matchesRound5" v-bind:key="match.id" />
+          <match v-for="n in updateRound5()" v-bind:key="n.id" :match="matchesRound5[n-1]"/>
       </div>
     </div>
+    <router-link v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link>
   </div>
 </template>
 
@@ -128,6 +32,7 @@ data() {
   return{
     tournamentId : this.$route.params.tournamentId,
     tournament: {},
+    matchesRound1: [],
     matchesRound2: [],
     matchesRound3: [],
     matchesRound4: [],
@@ -140,7 +45,27 @@ data() {
 created() {
   authService.getTournamentById(this.tournamentId).then((response) =>{
     this.tournament = response.data;
-  })
+  });
+
+  authService.getMatchByTournamentIdAndRound(this.tournamentId, 1).then((response) => {
+    this.matchesRound1 = response.data;
+  });
+
+  authService.getMatchByTournamentIdAndRound(this.tournamentId, 2).then((response) => {
+    this.matchesRound2 = response.data;
+  });
+
+   authService.getMatchByTournamentIdAndRound(this.tournamentId, 3).then((response) => {
+    this.matchesRound3 = response.data;
+  });
+
+  authService.getMatchByTournamentIdAndRound(this.tournamentId, 4).then((response) => {
+    this.matchesRound4 = response.data;
+  });
+
+  authService.getMatchByTournamentIdAndRound(this.tournamentId, 5).then((response) => {
+    this.matchesRound5 = response.data;
+  });
 },
 
 methods: {
@@ -158,34 +83,31 @@ methods: {
 // We might not have to use this logic, but keep it just in case.
    updateRound3()  {
     if ((this.tournament.participants / 8) < 1) {
-      this.matchesRound3 = 0;
+      return 0;
     }
     else {
-      this.matchesRound3 = this.tournament.participants / 8;
+      return this.tournament.participants / 8;
     }
-    return this.matchesRound3;
    },
   
 
 
    updateRound4() {
     if ((this.tournament.participants / 16) < 1) {
-      this.matchesRound4 = 0;
+      return 0;
     }
     else {
-      this.matchesRound4 = this.tournament.participants / 8;
+      return this.tournament.participants / 16;
     }
-    return this.matchesRound4;
    },
 
    updateRound5() {
     if ((this.tournament.participants / 32) < 1) {
-      this.matchesRound5 = 0;
+      return 0;
     }
     else {
-      this.matchesRound5 = this.tournament.participants / 8;
+      return this.tournament.participants / 32;
     }
-    return this.matchesRound5;
   }
 }
 };

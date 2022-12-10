@@ -83,7 +83,7 @@ methods: {
         this.tournament = newTournament;
         this.show = true;
         this.didSubmitTournament = true;
-        // this.$router.push('/');
+       this.$router.push('/');
       
   },
 
