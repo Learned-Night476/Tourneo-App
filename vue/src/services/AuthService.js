@@ -52,6 +52,10 @@ export default {
 
   getMatchByTournamentIdAndRound(tournamentId, round) {
     return axios.get(`tournaments/${tournamentId}/${round}`)
+  },
+
+  getTournamentUsers(tournamentId) {
+    return axios.get(`tournamentUsers/${tournamentId}`)
   }
 
 }

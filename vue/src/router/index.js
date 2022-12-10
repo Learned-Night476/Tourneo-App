@@ -9,6 +9,7 @@ import CreateTournament from '../views/CreateTournament.vue'
 import viewTournament from '../views/ViewTournament.vue'
 import termsOfService from '../views/TermsOfService.vue'
 import CreateMatches from '../views/CreateMatches.vue'
+import Admin from '../views/Admin.vue'
 
 
 Vue.use(Router)
@@ -89,6 +90,14 @@ const router = new Router({
       path: '/tournaments/:tournamentId/createMatches',
       name: 'createMatches',
       component: CreateMatches,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: "/tournaments/:tournamentId/admin",
+      name: "admin",
+      component: Admin,
       meta: {
         requiresAuth: false
       }

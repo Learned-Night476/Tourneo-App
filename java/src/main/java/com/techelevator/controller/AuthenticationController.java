@@ -147,6 +147,13 @@ public class AuthenticationController {
 
     }
 
+    @RequestMapping(path = "tournamentUsers/{tournamentId}", method = RequestMethod.GET)
+    public List<TournamentUser> listTournamentUsers(@PathVariable int tournamentId) {
+        List<TournamentUser> list = new ArrayList<>();
+        return tournamentUsersDao.getTournamentUsers(tournamentId);
+
+    }
+
     @RequestMapping(path = "/matches", method = RequestMethod.POST)
     public void createMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
         tournamentMatchDao.createTournamentMatch(tournamentMatch);
