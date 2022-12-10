@@ -48,6 +48,10 @@ export default {
 
   createTournamentUser(playerId, tournamentId) {
     return axios.post(`/${playerId}/${tournamentId}`)
+  },
+
+  getMatchByTournamentIdAndRound(tournamentId, round) {
+    return axios.get(`tournaments/${tournamentId}/${round}`)
   }
 
 }

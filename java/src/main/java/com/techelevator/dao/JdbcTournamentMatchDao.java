@@ -29,9 +29,9 @@ public class JdbcTournamentMatchDao implements TournamentMatchDao {
         }
 
     @Override
-    public List<TournamentMatch> getTournamentMatchsByTournamentIdAndRound(int tournamentId, int round) {
+    public List<TournamentMatch> getTournamentMatchesByTournamentIdAndRound(int tournamentId, int round) {
         List<TournamentMatch> matches = new ArrayList<>();
-        String sql = "Select match_id, round, winner, tournament_id, player_id, away_player_id from tournament_match WHERE round = ? and tournament_id = ?";
+        String sql = "select match_id, round, winner, tournament_id, player_id, away_player_id, player_username, away_player_username from tournament_match where tournament_id = ? and round = ?;";
 
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, tournamentId, round);
@@ -54,6 +54,8 @@ public class JdbcTournamentMatchDao implements TournamentMatchDao {
         tournamentMatch.setRound(rs.getInt("round"));
         tournamentMatch.setWinner(rs.getInt("winner"));
         tournamentMatch.setTournamentId(rs.getInt("tournament_id"));
+        tournamentMatch.setPlayerUsername(rs.getString("player_username"));
+        tournamentMatch.setAwayPlayerUsername(rs.getString("away_player_username"));
 
         return tournamentMatch;
     }
