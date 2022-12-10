@@ -54,6 +54,8 @@ create TABLE tournament_match (
 	tournament_id int NOT NULL,
 	player_id int,
 	away_player_id int,
+	player_username varchar(50) NOT NULL,
+	away_player_username varchar(50) NOT NULL,
 
 	CONSTRAINT PK_match_id PRIMARY KEY (match_id)
 );
