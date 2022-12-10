@@ -4,6 +4,7 @@ public class TournamentUser {
 
     private int tournamentId;
     private int playerId;
+    private String username;
 
     public TournamentUser() {};
 
@@ -26,5 +27,13 @@ public class TournamentUser {
 
     public void setPlayerId(int playerId) {
         this.playerId = playerId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
