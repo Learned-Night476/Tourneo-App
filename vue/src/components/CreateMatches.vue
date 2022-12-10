@@ -8,12 +8,12 @@
         <div v-show="didYouMakeAllTheMatches">
             <label for="homeUsername">Home Player</label> &nbsp;
             <select type="text" class="homePlayer" name="homeUsername" v-model="player" >
-                <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player.playerId">{{player.username}}</option>
+                <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
 
             <label for="awayUsername">Away Player</label> &nbsp;
             <select type="text" class="awayPlayer" name="awayUsername" v-model="player2" >
-                <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player.playerId">{{player.username}}</option>
+                <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
 
             <button :disabled="isDisabled2 || isNotVerified"  type="button" v-on:click="createMatches"  >Add Match</button>
@@ -23,10 +23,10 @@
         <h3>Players Added To Tournament</h3>
 
         <div v-for="match in matches" v-bind:key="match.id">
-          <p>Matches : {{match.playerId}}</p>
+          <p>Matches : {{match.playerUsername}} vs {{match.awayPlayerUsername}}</p>
         </div>
-        <p>{{matches.length}}</p>
-        <p>{{tournament.participants / 2}}</p>
+        <p>Matches You Have: {{matches.length}}</p>
+        <p>Matched You Need: {{tournament.participants / 2}}</p>
         <!-- <button v-show="isDisabled2" v-on:click="createMatches">Add Players To Tournament</button> -->
         <!-- <div v-for="player in players" v-bind:key="player.id">
           <p>{{player.playerId}}</p>
@@ -71,11 +71,11 @@ methods: {
 
   verifyMatches(){
 
-      if(this.player == this.player2) {
+      if(this.player.playerId == this.player2.playerId) {
           this.isThereDuplicates = true;
       }
       
-   else if (this.matches.filter(e => e.playerId === this.player || e.playerId === this.player2 || e.awayPlayerId === this.player || e.awayPlayerId === this.player2).length > 0){
+   else if (this.matches.filter(e => e.playerId === this.player.playerId || e.playerId === this.player2.playerId || e.awayPlayerId === this.player.playerId || e.awayPlayerId === this.player2.playerId).length > 0){
         this.isThereDuplicates = true;    
       }
 
@@ -95,12 +95,14 @@ methods: {
           round: 1,
           winner: 0,
           tournamentId: this.tournamentId,
-          playerId: this.player,
-          awayPlayerId: this.player2
+          playerId: this.player.playerId,
+          awayPlayerId: this.player2.playerId,
+          playerUsername: this.player.username,
+          awayPlayerUsername: this.player2.username
       }
 
-           authService.createTournamentUser(this.player, this.tournamentId)
-       authService.createTournamentUser(this.player2, this.tournamentId)
+           authService.createTournamentUser(this.player.playerId, this.tournamentId)
+       authService.createTournamentUser(this.player2.playerId, this.tournamentId)
 
         this.matches.push(match)
        authService.createMatch(match);

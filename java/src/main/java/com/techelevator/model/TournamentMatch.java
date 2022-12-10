@@ -7,16 +7,36 @@ public class TournamentMatch {
     private int winner;
     private int tournamentId;
     private int awayPlayerId;
+    private String playerUsername;
+    private String awayPlayerUsername;
 
     public TournamentMatch() {}
 
-    public TournamentMatch(int matchId, int round, int winner, int tournamentId, int playerId, int awayPlayerId) {
+    public TournamentMatch(int matchId, int round, int winner, int tournamentId, int playerId, int awayPlayerId, String playerUsername, String awayPlayerUsername) {
         this.matchId = matchId;
         this.playerId = playerId;
         this.round = round;
         this.winner = winner;
         this.tournamentId = tournamentId;
         this.awayPlayerId = awayPlayerId;
+        this.playerUsername = playerUsername;
+        this.awayPlayerUsername = awayPlayerUsername;
+    }
+
+    public String getAwayPlayerUsername() {
+        return awayPlayerUsername;
+    }
+
+    public void setAwayPlayerUsername(String awayPlayerUsername) {
+        this.awayPlayerUsername = awayPlayerUsername;
+    }
+
+    public String getPlayerUsername() {
+        return playerUsername;
+    }
+
+    public void setPlayerUsername(String playerUsername) {
+        this.playerUsername = playerUsername;
     }
 
     public int getAwayPlayerId() {
