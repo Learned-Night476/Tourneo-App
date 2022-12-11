@@ -18,7 +18,7 @@
           <match v-for="n in updateRound5()" v-bind:key="n.id" :match="matchesRound5[n-1]"/>
       </div>
     </div>
-    <router-link v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link>
+    <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link>
   </div>
 </template>
 
@@ -134,6 +134,28 @@ methods: {
 
   
 }
+.round2 {
+  padding-right: 100px;
+
+  
+}
+
+.round3 {
+  padding-right: 100px;
+
+  
+}
+
+.round4 {
+  padding-right: 100px;
+
+  
+}
+#createMatches {
+  text-decoration: none;
+  text-align: center;
+}
+
 
 
 

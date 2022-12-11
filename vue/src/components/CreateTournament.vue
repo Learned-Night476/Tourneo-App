@@ -1,19 +1,19 @@
 <template>
-  <div>
+  <div class="newTourneyForm">
     <p v-show="isThereDuplicates">You Cannot Have A Player Be In The Tournament Twice</p>
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
-      <label for="tName">Name of the Tournament</label> &nbsp;
-      <input type="text" id="tName" name="tName" v-model="tournament.tournamentName" ><br><br>
-      <label for="participants">Number of players</label> &nbsp;
+      <label id="tournamentName" for="tName">Name Your Tournament</label> &nbsp;
+      <input class="createTournamentName" type="text" id="tName" name="tName" v-model="tournament.tournamentName" ><br><br>
+      <label  for="participants">Number of players</label> &nbsp;
       <!-- <input type="number" id="participants" name="participants"> -->
-      <select :disabled="currentPlayers.length > 0" id="participants" name="participants" v-model="tournament.participants">
+      <select  class="numberOfPlayers" :disabled="currentPlayers.length > 0" id="participants" name="participants" v-model="tournament.participants">
             <option value="4">4</option>
             <option value="8">8</option>
             <option value="16">16</option>
             <option value="32">32</option>
           </select> <br><br>
-          <button :disabled="isDisabled" type="button" v-on:click="submitTournament" >Create Tournament</button>
+          <button id="createTournamentButton" :disabled="isDisabled" type="button" v-on:click="submitTournament" >Create Tournament</button>
         <!-- <div>
         <label for="homeUsername">Add Player To Tournament</label> &nbsp;
           <input type="text" class="homePlayer" name="homeUsername" v-model="player" /> &nbsp;
@@ -161,5 +161,54 @@ methods: {
 </script>
 
 <style>
+.newTourneyForm {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-top: 10%;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  
+ }
+ .form-create {
+  width: 40%;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 15px;
+}
+
+#tournamentName {
+  color: orange;
+  font-size: 25px;
+}
+
+#createTournamentButton {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+
+}
+
+#createTournamentButton:hover {
+  background-color: rgba(140, 0, 255, 0.75);
+}
+#createTournamentButton:hover[disabled] {
+    background-color:  rgba(0, 0, 0, 0.15);
+    opacity:0.4;
+    cursor : not-allowed !important;
+}
+
+.createTournamentName {
+  width: 40%;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 15px;
+  background-color:rgba(128, 128, 128, 0.664);
+  color: orange;
+}
+
 
 </style>

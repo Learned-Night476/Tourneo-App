@@ -21,6 +21,7 @@
         v-model="user.username"
         required
         autofocus
+        
       />
       <label for="password" class="sr-only"></label>
       <input
@@ -32,7 +33,7 @@
         required
       />
       <router-link class="needAnAccount" :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit">Sign in</button>
+      <button id="signInButton" type="submit">Sign in</button>
     </form>
     <div class="fade-in">
    <h1 id="stepIn">Step Into The Arena</h1>
@@ -87,6 +88,24 @@ export default {
   text-align: center;
   justify-content: space-evenly;
 
+}
+
+#signInButton {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+
+}
+
+#signInButton:hover {
+  background-color: rgba(140, 0, 255, 0.75);
+}
+#signInButton:hover[disabled] {
+    background-color:  rgba(0, 0, 0, 0.15);
+    opacity:0.4;
+    cursor : not-allowed !important;
 }
 #username {
   text-align: left;
