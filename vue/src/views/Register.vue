@@ -222,7 +222,7 @@ label:focus-within {
   color: orange;
 }
 
-::placeholder {
+.form-create::placeholder {
   color:white;
   font-size: 15px;
 }
