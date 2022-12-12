@@ -1,5 +1,6 @@
 <template>
   <div>
+      <h2>Tournaments You Created</h2>
       <div class="usersTournaments" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
           <router-link id="linkToMyTournaments" v-bind:to="{name: 'viewTournament', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}}</router-link>
       </div>
