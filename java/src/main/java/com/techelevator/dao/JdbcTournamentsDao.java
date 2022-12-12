@@ -66,10 +66,15 @@ public class JdbcTournamentsDao implements TournamentsDao {
     }
 
     @Override
-    public List<Tournaments> getTournamentsByPlayerId(int id) {
+    public List<Tournaments> getTournamentsByUserId(int id) {
         List<Tournaments> tournaments = new ArrayList<>();
 
-        String sql = "SELECT tournaments.tournament_id, participants, winner, admin_user, tournament_status, tournament_type, tournament_name FROM tournaments JOIN tournament_users ON tournaments.tournament_id = tournament_users.tournament_id WHERE player_id = ? ";
+        String sql = "SELECT tournaments.tournament_id, participants, winner, admin_user, tournament_status, tournament_type, tournament_name " +
+                "FROM tournaments " +
+                "JOIN tournament_users ON tournaments.tournament_id = tournament_users.tournament_id " +
+                "join players on tournament_users.player_id = players.player_id " +
+                "join users on players.user_id = users.user_id " +
+                "WHERE users.user_id = ?; ";
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
 
