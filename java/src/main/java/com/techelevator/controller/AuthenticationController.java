@@ -35,8 +35,9 @@ public class AuthenticationController {
     private TournamentMatchDao tournamentMatchDao;
     private TournamentTypeDao tournamentTypeDao;
     private TournamentMessageDao tournamentMessageDao;
+    private WhisperDao whisperDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao, TournamentMatchDao tournamentMatchDao, TournamentTypeDao tournamentTypeDao, TournamentMessageDao tournamentMessageDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao, TournamentMatchDao tournamentMatchDao, TournamentTypeDao tournamentTypeDao, TournamentMessageDao tournamentMessageDao, WhisperDao whisperDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
@@ -46,6 +47,7 @@ public class AuthenticationController {
         this.tournamentMatchDao = tournamentMatchDao;
         this.tournamentTypeDao = tournamentTypeDao;
         this.tournamentMessageDao = tournamentMessageDao;
+        this.whisperDao = whisperDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -217,6 +219,18 @@ public class AuthenticationController {
     @RequestMapping(value = "/{playerId}/{tournamentId}", method = RequestMethod.POST)
     public void createTournamentUser(@PathVariable int playerId, @PathVariable int tournamentId) {
         tournamentUsersDao.createTournamentUser(tournamentId, playerId);
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/whispers/{playerId}", method = RequestMethod.POST)
+    public void createWhisper(@PathVariable int playerId, Whisper whisper) {
+        whisperDao.createWhisper(whisper);
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/whispers/{playerId}", method = RequestMethod.GET)
+    public List<Whisper> getWhispersByPlayerId(@PathVariable int playerId) {
+       return whisperDao.getWhispersByPlayerId(playerId);
     }
 
 
