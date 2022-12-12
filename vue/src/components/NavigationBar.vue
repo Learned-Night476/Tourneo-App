@@ -76,19 +76,21 @@ header {
      color:white;
      padding-left: 20px;
      text-decoration:none;
+     
  }
 
- .headCreateTournament:visited {
+ .headCreateTournament:hover {
      color:silver;
      text-decoration:none;
  }
+ 
 
  .headHome {
-     color:white;
+     color: white;
      text-decoration:none;
  }
 
- .headHome:visited {
+ .headHome:hover {
      color:silver;
      text-decoration:none;
  }

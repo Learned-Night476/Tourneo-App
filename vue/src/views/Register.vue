@@ -229,6 +229,7 @@ label:focus-within {
 
 #termsText {
   padding: 10px;
+  text-decoration: none;
 }
 
 #termsText:hover {
@@ -238,6 +239,8 @@ label:focus-within {
 input[type=checkbox] {
           accent-color: orangered;
         }
+
+
 
  /* .avatars:hover {
 background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
