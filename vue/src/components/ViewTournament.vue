@@ -1,6 +1,7 @@
 <template>
   <div>
-     <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link>
+     <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link><br>
+     <router-link v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" style="color: white;">View Messages For This Tournament</router-link>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />

@@ -1,6 +1,8 @@
 <template>
   <div>
-
+      <p>{{message.senderUsername}}</p>
+      <p>{{message.winner}}</p>
+      <p>{{message.matchDescription}}</p>
   </div>
 </template>
 
@@ -11,15 +13,14 @@ export default {
     name: "view-a-message",
     data() {
         return {
-        tournamentId: this.$route.params.tournamentId,
-        messages: [],
-        tournament: {}
+        messageId: this.$route.params.messageId,
+        message: {},
         };
     },
 
     created() {
-          authService.getMessagesByTournamentId(this.tournamentId).then((response) => {
-      this.messages = response.data;
+          authService.getMessageByMessageId(this.messageId).then((response) => {
+      this.message = response.data;
   });
     }
 }
