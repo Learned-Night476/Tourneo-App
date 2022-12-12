@@ -5,13 +5,13 @@
       <br>
       <label id="tournamentName" for="tName">Name Your Tournament</label> &nbsp;
       <input class="createTournamentName" type="text" id="tName" name="tName" v-model="tournament.tournamentName" ><br><br>
-      <label  for="participants">Number of players</label> &nbsp;
+      <label  for="participants">Number of Competitors</label> &nbsp;
       <!-- <input type="number" id="participants" name="participants"> -->
       <select  class="numberOfPlayers" :disabled="currentPlayers.length > 0" id="participants" name="participants" v-model="tournament.participants">
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-            <option value="32">32</option>
+            <option value="4">Four (IIII)</option>
+            <option value="8">Eight (XIII)</option>
+            <option value="16">Sixteen (XVI)</option>
+            <option value="32">Thirty-Two (XXXII)</option>
           </select> <br><br>
           <button id="createTournamentButton" :disabled="isDisabled" type="button" v-on:click="submitTournament" >Create Tournament</button>
         <!-- <div>
@@ -208,6 +208,15 @@ methods: {
   margin: 15px;
   background-color:rgba(128, 128, 128, 0.664);
   color: orange;
+}
+
+.numberOfPlayers {
+  background: rgba(128, 128, 128, 0.664);
+  color: white;
+  margin-bottom: 50px;
+  width: 200px;
+  height: 40px;
+  text-align:center;
 }
 
 

@@ -1,4 +1,4 @@
-<template>
+<template id=allOfIt>
   <div id="hi">
     <div class="allRounds">
       <div class="round1">
@@ -130,6 +130,7 @@ methods: {
 
 
 .round1 {
+  padding-left:100px;
   padding-right: 100px;
 
   
@@ -155,6 +156,11 @@ methods: {
   text-decoration: none;
   text-align: center;
 }
+/* html {
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+} */
 
 
 
