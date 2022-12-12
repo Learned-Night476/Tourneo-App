@@ -1,6 +1,4 @@
-
-
-DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, tournament_match;
+DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, tournament_match, tournament_messages;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -23,6 +21,16 @@ create TABLE tournaments (
 
 );
 
+CREATE TABLE tournament_messages (
+	tournament_message_id SERIAL NOT NULL,
+	admin_user int NOT NULL,
+	tournament_id int NOT NULL,
+	sender_username varchar(100) NOT NULL,
+	match_description varchar(500),
+	winner varchar(100),
+	CONSTRAINT PK_tournament_message PRIMARY KEY (tournament_message_id)
+);
+
 create TABLE players (
 	player_id SERIAL NOT NULL,
 	wins int NOT NULL,
@@ -36,13 +44,14 @@ create TABLE players (
 
 create TABLE tournament_users (
 	tournament_id int NOT NULL,
-	player_id int NOT NULL
+	player_id int NOT NULL,
+	isOut boolean NOT NULL
 
 );
 
 create TABLE tournament_type (
 	tournament_type_id int NOT NULL,
-	tournament_type_name varchar(20),
+	tournament_type_name varchar(100),
 
 	CONSTRAINT PK_tournament_type_id PRIMARY KEY (tournament_type_id)
 );
@@ -68,6 +77,8 @@ create TABLE tournament_match (
 	ALTER TABLE players ADD CONSTRAINT FK_username FOREIGN KEY (username) REFERENCES users(username);
 	ALTER TABLE tournament_match ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	ALTER TABLE tournament_match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
+	ALTER TABLE tournament_messages ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
+	
 
 
 INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (0, 'Basic');
