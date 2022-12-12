@@ -109,6 +109,13 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
+    @RequestMapping(path = "/messages/{id}", method = RequestMethod.GET)
+    public TournamentMessage getMessageById(@PathVariable int id) {
+        TournamentMessage tournamentMessage = tournamentMessageDao.getMessageByMessageId(id);
+        return tournamentMessage;
+    }
+
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments", method = RequestMethod.POST)
     public void createTournament(@Valid @RequestBody Tournaments tournament) {
         tournamentsDao.createTournament(tournament);

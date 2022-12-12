@@ -9,4 +9,6 @@ public interface TournamentMessageDao {
     void createTournamentMessage(TournamentMessage tournamentMessage);
 
     List<TournamentMessage> getTournamentMessagesByTournamentId(int id);
+
+    TournamentMessage getMessageByMessageId(int id);
 }
