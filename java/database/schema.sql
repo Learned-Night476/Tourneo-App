@@ -26,8 +26,9 @@ CREATE TABLE tournament_messages (
 	admin_user int NOT NULL,
 	tournament_id int NOT NULL,
 	sender_username varchar(100) NOT NULL,
-	match_description varchar(500),
+	match_description varchar(500) NOT NULL,
 	winner varchar(100),
+	unread boolean NOT NULL,
 	CONSTRAINT PK_tournament_message PRIMARY KEY (tournament_message_id)
 );
 

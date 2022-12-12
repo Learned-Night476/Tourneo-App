@@ -5,12 +5,22 @@ public class TournamentUser {
     private int tournamentId;
     private int playerId;
     private String username;
+    private boolean isOut;
 
     public TournamentUser() {};
 
-    public TournamentUser(int tournamentId, int playerId) {
+    public TournamentUser(int tournamentId, int playerId, boolean isOut) {
         this.tournamentId = tournamentId;
         this.playerId = playerId;
+        this.isOut = isOut;
+    }
+
+    public boolean isOut() {
+        return isOut;
+    }
+
+    public void setOut(boolean out) {
+        isOut = out;
     }
 
     public int getTournamentId() {
