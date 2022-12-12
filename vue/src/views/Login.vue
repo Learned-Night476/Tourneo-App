@@ -90,6 +90,16 @@ export default {
 
 }
 
+.needAnAccount {
+  color: white;
+
+}
+
+.needAnAccount:hover {
+  color: silver;
+  
+}
+
 #signInButton {
   background-color: rgba(0, 0, 0, 0.15);
   color: white;
