@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, tournament_match, tournament_messages;
+DROP TABLE IF EXISTS users, tournaments, players, tournament_users, tournament_type, tournament_match, tournament_messages, whispers;
 
 CREATE TABLE users (
 	user_id SERIAL,
@@ -70,6 +70,16 @@ create TABLE tournament_match (
 	CONSTRAINT PK_match_id PRIMARY KEY (match_id)
 );
 
+CREATE TABLE whispers (
+	whisper_id SERIAL NOT NULL,
+	player_id int,
+	to_player_id int,
+	whisper_message varchar(500),
+	isRead boolean,
+
+	CONSTRAINT PK_whisper_id PRIMARY KEY (whisper_id)
+);
+
 	ALTER TABLE tournaments ADD CONSTRAINT FK_admin_user FOREIGN KEY (admin_user) REFERENCES users(user_id);
 	ALTER TABLE tournaments ADD CONSTRAINT FK_tournament_type FOREIGN KEY (tournament_type) REFERENCES tournament_type(tournament_type_id);
 	ALTER TABLE players ADD CONSTRAINT FK_user_id FOREIGN KEY (user_id) REFERENCES users(user_id);
@@ -79,6 +89,7 @@ create TABLE tournament_match (
 	ALTER TABLE tournament_match ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	ALTER TABLE tournament_match ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
 	ALTER TABLE tournament_messages ADD CONSTRAINT FK_tournament_id FOREIGN KEY (tournament_id) REFERENCES tournaments(tournament_id);
+	ALTER TABLE whispers ADD CONSTRAINT FK_player_id FOREIGN KEY (player_id) REFERENCES players(player_id);
 	
 
 
