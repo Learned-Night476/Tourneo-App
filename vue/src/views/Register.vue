@@ -33,8 +33,14 @@
         v-model="user.confirmPassword"
         required
       />
-      <div class="all-avatars">
-      <label>
+      <!-- <div class="all-avatars"> -->
+       <div>
+         <avatar class="avatarColor" :fullname="user.username" :size="96" >
+          
+           /</avatar>
+     </div>
+      <!-- <label>
+        image="https://placekitten.com/200/200" this works
          <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
         <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
       </label>
@@ -54,12 +60,12 @@
       <label>
          <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
         <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
-      </label>
-      </div>
+      </label> -->
+      <!-- </div> -->
     
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
       <router-link  id="termsText" :to="{ name: 'termsOfService'}" target="_blank"> 
-         <input id="checkbox" type="checkbox">
+         <input id="checkbox" type="checkbox" required>
         Terms of Service And Privacy Policy
      </router-link>
       <button id="createButton" class="btn btn-lg btn-primary btn-block" type="submit">
@@ -72,8 +78,12 @@
 
 <script>
 import authService from '../services/AuthService';
+import Avatar from 'vue-avatar-component';
 
 export default {
+  components: { Avatar },
+
+  
   name: 'register',
   data() {
     return {
@@ -121,6 +131,11 @@ export default {
 </script>
 
 <style>
+
+.avatarColor {
+ color: orange;
+    
+}
 #legendText {
   animation: fadeInAnimation ease 6s;
   animation-fill-mode: forwards;
