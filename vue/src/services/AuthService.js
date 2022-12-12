@@ -56,6 +56,14 @@ export default {
 
   getTournamentUsers(tournamentId) {
     return axios.get(`tournamentUsers/${tournamentId}`)
+  },
+
+  sendMessage(message) {
+    return axios.post('/messages', message)
+  },
+
+  getMessagesByTournamentId(tournamentId) {
+    return axios.get(`/tournaments/${tournamentId}/messages`)
   }
 
 }

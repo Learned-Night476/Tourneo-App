@@ -158,7 +158,7 @@ public class AuthenticationController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/messages", method = RequestMethod.POST)
-    public void createMessage(TournamentMessage tournamentMessage) {
+    public void createMessage(@RequestBody TournamentMessage tournamentMessage) {
         tournamentMessageDao.createTournamentMessage(tournamentMessage);
 
     }
