@@ -33,8 +33,10 @@ public class AuthenticationController {
     private TournamentsDao tournamentsDao;
     private TournamentUsersDao tournamentUsersDao;
     private TournamentMatchDao tournamentMatchDao;
+    private TournamentTypeDao tournamentTypeDao;
+    private TournamentMessageDao tournamentMessageDao;
 
-    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao, TournamentMatchDao tournamentMatchDao) {
+    public AuthenticationController(TokenProvider tokenProvider, AuthenticationManagerBuilder authenticationManagerBuilder, UserDao userDao, PlayerDao playerDao, TournamentsDao tournamentsDao, TournamentUsersDao tournamentUsersDao, TournamentMatchDao tournamentMatchDao, TournamentTypeDao tournamentTypeDao, TournamentMessageDao tournamentMessageDao) {
         this.tokenProvider = tokenProvider;
         this.authenticationManagerBuilder = authenticationManagerBuilder;
         this.userDao = userDao;
@@ -42,6 +44,8 @@ public class AuthenticationController {
         this.tournamentsDao = tournamentsDao;
         this.tournamentUsersDao = tournamentUsersDao;
         this.tournamentMatchDao = tournamentMatchDao;
+        this.tournamentTypeDao = tournamentTypeDao;
+        this.tournamentMessageDao = tournamentMessageDao;
     }
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
@@ -97,6 +101,14 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
+    @RequestMapping(path = "tournamentType/tournaments/{id}", method = RequestMethod.GET)
+    public TournamentType getTournamentType(@PathVariable int id) {
+        TournamentType tournament = tournamentTypeDao.getTournamentTypeDao(id);
+        return tournament;
+
+    }
+
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments", method = RequestMethod.POST)
     public void createTournament(@Valid @RequestBody Tournaments tournament) {
         tournamentsDao.createTournament(tournament);
@@ -131,6 +143,21 @@ public class AuthenticationController {
         return tournamentMatchDao.getTournamentMatchesByTournamentIdAndRound(tournamentId, round);
 
     }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/tournaments/{tournamentId}/messages", method = RequestMethod.GET)
+    public List<TournamentMessage> getTournamentMessages(@PathVariable int tournamentId) {
+        return tournamentMessageDao.getTournamentMessagesByTournamentId(tournamentId);
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/messages", method = RequestMethod.POST)
+    public void createMessage(TournamentMessage tournamentMessage) {
+        tournamentMessageDao.createTournamentMessage(tournamentMessage);
+
+    }
+
+
 
 
     @RequestMapping(path = "/users", method = RequestMethod.GET)
@@ -171,6 +198,8 @@ public class AuthenticationController {
     public void createTournamentUser(@PathVariable int playerId, @PathVariable int tournamentId) {
         tournamentUsersDao.createTournamentUser(tournamentId, playerId);
     }
+
+
 
 }
 

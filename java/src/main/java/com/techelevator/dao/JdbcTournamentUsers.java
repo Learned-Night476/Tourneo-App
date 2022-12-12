@@ -22,7 +22,7 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
     @Override
     public boolean createTournamentUser(int tournamentId, int playerId) {
 
-        String sql = "INSERT INTO tournament_users (tournament_id, player_id) values (?, ?); ";
+        String sql = "INSERT INTO tournament_users (tournament_id, player_id, isOut) values (?, ?, false); ";
 
         jdbcTemplate.update(sql, tournamentId, playerId);
 
@@ -34,7 +34,7 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
     public List<TournamentUser> getTournamentUsers(int tournamentId) {
 
         List<TournamentUser> tournamentUsers = new ArrayList<>();
-        String sql = "select players.player_id, tournament_id, username FROM players join tournament_users on players.player_id = tournament_users.player_id WHERE tournament_id = ?";
+        String sql = "select players.player_id, tournament_id, isOut, username FROM players join tournament_users on players.player_id = tournament_users.player_id WHERE tournament_id = ?";
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, tournamentId);
 
         while (rs.next()) {
@@ -50,6 +50,7 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
         TournamentUser tournamentUser = new TournamentUser();
         tournamentUser.setTournamentId(rs.getInt("tournament_id"));
         tournamentUser.setPlayerId(rs.getInt("player_id"));
+        tournamentUser.setOut(rs.getBoolean("isOut"));
 
         return tournamentUser;
 
@@ -60,6 +61,7 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
         TournamentUser tournamentUser = new TournamentUser();
         tournamentUser.setTournamentId(rs.getInt("tournament_id"));
         tournamentUser.setPlayerId(rs.getInt("player_id"));
+        tournamentUser.setOut(rs.getBoolean("isOut"));
         tournamentUser.setUsername(rs.getString("username"));
 
         return tournamentUser;
