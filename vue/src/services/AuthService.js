@@ -64,6 +64,10 @@ export default {
 
   getMessagesByTournamentId(tournamentId) {
     return axios.get(`/tournaments/${tournamentId}/messages`)
+  },
+
+  getMessageByMessageId(messageId) {
+    return axios.get(`/messages/${messageId}`)
   }
 
 }
