@@ -8,7 +8,7 @@
       <label  for="participants">Number of Competitors</label> &nbsp;
       <!-- <input type="number" id="participants" name="participants"> -->
       <select  class="numberOfPlayers" :disabled="currentPlayers.length > 0" id="participants" name="participants" v-model="tournament.participants">
-            <option value="4">Four (IIII)</option>
+            <option value="4">Four (IV)</option>
             <option value="8">Eight (XIII)</option>
             <option value="16">Sixteen (XVI)</option>
             <option value="32">Thirty-Two (XXXII)</option>
@@ -216,7 +216,7 @@ methods: {
   margin-bottom: 50px;
   width: 200px;
   height: 40px;
-  text-align:center;
+  text-align: center;
 }
 
 

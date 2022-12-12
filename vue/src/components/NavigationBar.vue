@@ -68,7 +68,7 @@ header {
      color:white;
      text-decoration:none;
  }
- .headLogout:visited {
+ .headLogout:hover {
      color:silver;
      text-decoration: none;
  }
