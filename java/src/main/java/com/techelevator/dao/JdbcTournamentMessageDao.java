@@ -43,6 +43,19 @@ public class JdbcTournamentMessageDao implements TournamentMessageDao {
 
     }
 
+    @Override
+    public TournamentMessage getMessageByMessageId(int id) {
+        String sql = "select tournament_message_id, admin_user, tournament_id, sender_username, match_description, winner, unread from tournament_messages WHERE tournament_message_id = ?";
+
+
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if (results.next()) {
+            return mapRowToTournamentMessage(results);
+        } else {
+            return null;
+        }
+    }
+
     private TournamentMessage mapRowToTournamentMessage(SqlRowSet rs) {
         TournamentMessage tournamentMessage = new TournamentMessage();
 
