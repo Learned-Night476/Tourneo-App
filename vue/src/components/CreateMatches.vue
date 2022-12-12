@@ -1,9 +1,10 @@
 <template>
-  <div>
+  <div class="newMatchForm">
     <p v-show="isThereDuplicates">You Cannot Have A Player Be In The Tournament Twice</p>
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
-      <p>{{tournament.participants}}</p>
+      <h1 id="tourneyNameInMatch">{{tournament.tournamentName}}</h1>
+      <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
 
         <div v-show="didYouMakeAllTheMatches">
             <label for="homeUsername">Home Player</label> &nbsp;
@@ -16,11 +17,12 @@
                 <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
 
-            <button :disabled="isDisabled2 || isNotVerified"  type="button" v-on:click="createMatches"  >Add Match</button>
-            <button v-on:click="verifyMatches">Verify</button>
+           
+            <button id="verify" v-on:click="verifyMatches">Verify</button>
 
         </div>
-        <h3>Players Added To Tournament</h3>
+         <button id="addMatch" :disabled="isDisabled2 || isNotVerified"  type="button" v-on:click="createMatches"  >Add Match</button>
+        <h3>Competitors Added</h3>
 
         <div v-for="match in matches" v-bind:key="match.id">
           <p>Matches : {{match.playerUsername}} vs {{match.awayPlayerUsername}}</p>
@@ -44,6 +46,7 @@ data() {
     players: [],
     tournamentId : this.$route.params.tournamentId,
     tournament: {},
+    tournamentName: "",
     show: false,
     player: "",
     player2: "",
@@ -111,7 +114,21 @@ methods: {
     
   },
 
+  displayParticipantsRoman() {
+      if(this.tournament.participants == 4) {
+        return "IV";
+      }
+      if(this.tournament.participants == 8) {
+        return "VIII";
+      }
+      if(this.tournament.participants == 16) {
+        return "XVI";
+      }
+      if(this.tournament.participants == 32) {
+        return "XXXII";
+      }
 
+  },
 
 finishedCreatingMatches() {
     if(this.matches.length === this.tournament.participants / 2) {
@@ -138,5 +155,89 @@ finishedCreatingMatches() {
 </script>
 
 <style>
+#displayRoman {
+  display: flex;
+  font-size: 60px;
+  text-shadow: -5px -5px 5px black;
+}
+
+.newMatchForm {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin-top: 10%;
+  text-align: center;
+  justify-content: space-evenly;
+  align-items: center;
+  
+ }
+ .form-create {
+  width: 40%;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 15px;
+}
+
+#tourneyNameInMatch {
+  color: orange;
+  font-size: 25px;
+}
+
+#addMatch {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+
+}
+
+#addMatch:hover {
+  background-color: rgba(140, 0, 255, 0.75);
+}
+#addMatch:hover[disabled] {
+    background-color:  rgba(0, 0, 0, 0.15);
+    border-color: none;
+    opacity:0.4;
+    
+}
+#verify{
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+}
+#verify:hover {
+  background-color: rgba(140, 0, 255, 0.75);
+}
+.createTournamentName {
+  width: 40%;
+  justify-content: space-evenly;
+  padding: 10px;
+  margin: 15px;
+  background-color:rgba(128, 128, 128, 0.664);
+  color: orange;
+}
+
+.homePlayer {
+  background: rgba(128, 128, 128, 0.664);
+  color: white;
+  margin-bottom: 50px;
+  width: 200px;
+  height: 40px;
+  text-align:center;
+}
+.awayPlayer {
+  background: rgba(128, 128, 128, 0.664);
+  color: white;
+  margin-bottom: 50px;
+  width: 200px;
+  height: 40px;
+  text-align:center;
+}
+
+
+
 
 </style>
