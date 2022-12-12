@@ -1,5 +1,5 @@
 <template>
-  <div class="terms">
+  <div>
       <terms-of-service />
   </div>
 </template>
