@@ -29,6 +29,13 @@ public class JdbcTournamentMatchDao implements TournamentMatchDao {
         }
 
     @Override
+    public void updateTournamentMatch(int winner) {
+        String sql = "update tournament_match SET winner = ? WHERE tournament_match_id = ? ";
+
+        jdbcTemplate.update(sql, winner);
+    }
+
+    @Override
     public List<TournamentMatch> getTournamentMatchesByTournamentIdAndRound(int tournamentId, int round) {
         List<TournamentMatch> matches = new ArrayList<>();
         String sql = "select match_id, round, winner, tournament_id, player_id, away_player_id, player_username, away_player_username from tournament_match where tournament_id = ? and round = ?;";
@@ -44,6 +51,8 @@ public class JdbcTournamentMatchDao implements TournamentMatchDao {
         return matches;
 
     }
+
+
 
     private TournamentMatch mapRowToTournament(SqlRowSet rs) {
         TournamentMatch tournamentMatch = new TournamentMatch();

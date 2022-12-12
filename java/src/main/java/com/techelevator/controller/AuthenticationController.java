@@ -129,6 +129,12 @@ public class AuthenticationController {
 
     }
 
+    @PreAuthorize("permitAll")
+    @RequestMapping(value = "/tournaments/{tournamentId}/matches", method = RequestMethod.PUT)
+    public void updateTournamentMatchWinner(@PathVariable int tournamentId, int winner) {
+        tournamentMatchDao.updateTournamentMatch(winner);
+    }
+
 
     @PreAuthorize("permitAll")
     @RequestMapping(path = "/tournaments", method = RequestMethod.GET)

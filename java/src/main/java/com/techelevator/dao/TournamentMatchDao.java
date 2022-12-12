@@ -10,4 +10,6 @@ public interface TournamentMatchDao {
 
     List<TournamentMatch> getTournamentMatchesByTournamentIdAndRound(int tournamentId, int round);
 
+    void updateTournamentMatch(int winner);
+
 }
