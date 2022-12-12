@@ -6,19 +6,20 @@ public class TournamentMessage {
     private int adminUser;
     private int tournamentId;
     private String senderUsername;
-    private String tournamentDescription;
+    private String matchDescription;
     private String winner;
     private boolean unread;
 
     public TournamentMessage() {};
 
-    public TournamentMessage(int tournamentMessageId, int adminUser, int tournamentId, String senderUsername, String tournamentDescription, String winner) {
+    public TournamentMessage(int tournamentMessageId, int adminUser, int tournamentId, String senderUsername, String tournamentDescription, String winner, boolean unread) {
         this.tournamentMessageId = tournamentMessageId;
         this.adminUser = adminUser;
         this.tournamentId = tournamentId;
         this.senderUsername = senderUsername;
-        this.tournamentDescription = tournamentDescription;
+        this.matchDescription = tournamentDescription;
         this.winner = winner;
+        this.unread = unread;
     }
 
     public boolean isUnread() {
@@ -61,12 +62,12 @@ public class TournamentMessage {
         this.senderUsername = senderUsername;
     }
 
-    public String getTournamentDescription() {
-        return tournamentDescription;
+    public String getMatchDescription() {
+        return matchDescription;
     }
 
-    public void setTournamentDescription(String tournamentDescription) {
-        this.tournamentDescription = tournamentDescription;
+    public void setMatchDescription(String tournamentDescription) {
+        this.matchDescription = tournamentDescription;
     }
 
     public String getWinner() {

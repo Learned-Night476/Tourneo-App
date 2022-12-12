@@ -22,7 +22,7 @@ public class JdbcTournamentMessageDao implements TournamentMessageDao {
     public void createTournamentMessage(TournamentMessage tournamentMessage) {
         String sql = "INSERT INTO tournament_messages (admin_user, tournament_id, sender_username, match_description, winner, unread) values (?, ?, ?, ?, ?, ?)";
 
-        jdbcTemplate.update(sql, tournamentMessage.getAdminUser(), tournamentMessage.getTournamentId(), tournamentMessage.getSenderUsername(), tournamentMessage.getTournamentDescription(), tournamentMessage.getWinner(), tournamentMessage.isUnread());
+        jdbcTemplate.update(sql, tournamentMessage.getAdminUser(), tournamentMessage.getTournamentId(), tournamentMessage.getSenderUsername(), tournamentMessage.getMatchDescription(), tournamentMessage.getWinner(), tournamentMessage.isUnread());
 
     }
 
@@ -48,7 +48,7 @@ public class JdbcTournamentMessageDao implements TournamentMessageDao {
 
         tournamentMessage.setAdminUser(rs.getInt("admin_user"));
         tournamentMessage.setSenderUsername(rs.getString("sender_username"));
-        tournamentMessage.setTournamentDescription(rs.getString("match_description"));
+        tournamentMessage.setMatchDescription(rs.getString("match_description"));
         tournamentMessage.setTournamentMessageId(rs.getInt("tournament_message_id"));
         tournamentMessage.setTournamentId(rs.getInt("tournament_id"));
         tournamentMessage.setUnread(rs.getBoolean("unread"));
