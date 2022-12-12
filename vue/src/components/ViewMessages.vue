@@ -1,6 +1,9 @@
 <template>
   <div>
+    <div v-for="message in messages" v-bind:key="message.id">
+      <router-link style="color: white;" v-bind:to="{name: 'viewAMessage', params: {tournamentId: tournament.tournamentId, messageId: message.tournamentMessageId}}"> From: {{message.senderUsername}}</router-link>
 
+    </div>
   </div>
 </template>
 
@@ -10,12 +13,12 @@ import authService from '../services/AuthService'
 export default {
 name: 'view-messages',
 
-date() {
+data() {
     return {
         tournamentId: this.$route.params.tournamentId,
         messages: [],
         tournament: {}
-    }
+    };
 },
 
 created() {
@@ -26,7 +29,7 @@ created() {
   authService.getMessagesByTournamentId(this.tournamentId).then((response) => {
       this.messages = response.data;
   });
-},
+}
 }
 </script>
 
