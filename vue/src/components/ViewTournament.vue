@@ -1,7 +1,7 @@
 <template>
   <div>
-     <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link><br>
-     <router-link v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" style="color: white;">View Messages For This Tournament</router-link>
+     <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}">Add Matches To The Tournament</router-link><br>
+     <router-link id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >View Messages For This Tournament</router-link>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
@@ -123,8 +123,8 @@ methods: {
   padding-top: 10%;
   display: flex;
   align-items: center;
-  margin-top:auto;
-  margin-bottom:auto;
+  
+  margin: auto;
 
   
   
@@ -156,9 +156,25 @@ methods: {
 
   
 }
-#createMatches {
+#viewMessagesFromViewTourney {
+  margin: 20px;
+  color:white;
   text-decoration: none;
-  text-align: center;
+  
+}
+
+#viewMessagesFromViewTourney:hover {
+  color:silver;
+}
+#createMatches:hover {
+  color:silver;
+}
+
+#createMatches {
+  margin: 20px;
+  color:white;
+  text-decoration: none;
+  
 }
 /* html {
     background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg");

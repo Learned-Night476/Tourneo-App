@@ -1,6 +1,6 @@
 <template>
 <div>
-    <h1 id="displayuser">{{ player.username }}</h1>
+    <h1 id="displayUser">{{ player.username }}</h1>
       <div id="wins-and-losses">
       <div class="wins-in-profile" id="player-wins">
           <h2>{{ player.wins }} </h2>
@@ -52,8 +52,9 @@ created() {
 
 <style>
 
-#displayuser {
+#displayUser {
     text-align: center;
+    font-size: 50px;
 }
 
 #wins-and-losses {
