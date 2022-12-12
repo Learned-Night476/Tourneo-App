@@ -1,5 +1,6 @@
-<template id=allOfIt>
-  <div id="hi">
+<template>
+  <div>
+     <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
@@ -18,7 +19,7 @@
           <match v-for="n in updateRound5()" v-bind:key="n.id" :match="matchesRound5[n-1]"/>
       </div>
     </div>
-    <router-link id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}" style="color: white;">Add Matches To The Tournament</router-link>
+   
   </div>
 </template>
 
@@ -120,8 +121,10 @@ methods: {
 .allRounds {
   padding-top: 10%;
   display: flex;
-  justify-content: center;
   align-items: center;
+  margin-top:auto;
+  margin-bottom:auto;
+
   
   
   

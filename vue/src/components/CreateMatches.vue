@@ -171,13 +171,7 @@ finishedCreatingMatches() {
   align-items: center;
   
  }
- .form-create {
-  width: 40%;
-  justify-content: space-evenly;
-  padding: 10px;
-  margin: 15px;
-}
-
+ 
 #tourneyNameInMatch {
   color: orange;
   font-size: 25px;
