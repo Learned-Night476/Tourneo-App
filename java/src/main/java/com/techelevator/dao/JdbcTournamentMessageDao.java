@@ -30,7 +30,7 @@ public class JdbcTournamentMessageDao implements TournamentMessageDao {
     public List<TournamentMessage> getTournamentMessagesByTournamentId(int id) {
         List<TournamentMessage> tournamentMessages = new ArrayList<>();
 
-        String sql = "Select * FROM tournament_messages WHERE tournament_id = ?";
+        String sql = "select tournament_message_id, admin_user, tournament_id, sender_username, match_description, winner, unread from tournament_messages WHERE tournament_id = ?";
 
         SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, id);
 

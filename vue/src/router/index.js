@@ -11,6 +11,8 @@ import termsOfService from '../views/TermsOfService.vue'
 import CreateMatches from '../views/CreateMatches.vue'
 import Admin from '../views/Admin.vue'
 import SendMessage from '../views/SendMessage.vue'
+import ViewMessages from '../views/ViewMessages.vue'
+import ViewAMessage from '../views/ViewAMessage.vue'
 
 
 Vue.use(Router)
@@ -108,6 +110,24 @@ const router = new Router({
       path: "/tournaments/:tournamentId/sendMessage",
       name: "sendMessage",
       component: SendMessage,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: "/tournaments/:tournamentId/messages",
+      name: "viewMessages",
+      component: ViewMessages,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: '/tournaments/:tournamentId/:messageId',
+      name: "viewAMessage",
+      component: ViewAMessage,
       meta: {
         requiresAuth: false
       }
