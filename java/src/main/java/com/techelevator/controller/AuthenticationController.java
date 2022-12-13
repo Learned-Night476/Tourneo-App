@@ -131,12 +131,12 @@ public class AuthenticationController {
 
     }
 
-    @PreAuthorize("permitAll")
-    @RequestMapping(value = "/tournaments/user/{userId}/", method = RequestMethod.GET)
-    public List<Tournaments> getPlayerTournaments(@PathVariable int userId) {
-        return tournamentsDao.getTournamentsByUserId(userId);
-
-    }
+//    @PreAuthorize("permitAll")
+//    @RequestMapping(path = "/tournaments/users/{userId}/", method = RequestMethod.GET)
+//    public List<Tournaments> getPlayerTournaments(@PathVariable int userId) {
+//        return tournamentsDao.getTournamentsByUserId(userId);
+//
+//    }
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments/tournamentUsers", method = RequestMethod.POST)
@@ -222,8 +222,8 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
-    @RequestMapping(value = "/whispers/{playerId}", method = RequestMethod.POST)
-    public void createWhisper(@PathVariable int playerId, Whisper whisper) {
+    @RequestMapping(value = "/whispers", method = RequestMethod.POST)
+    public void createWhisper( Whisper whisper) {
         whisperDao.createWhisper(whisper);
     }
 
@@ -236,6 +236,12 @@ public class AuthenticationController {
     @RequestMapping(value = "/players/tournament/{tournamentId}", method = RequestMethod.GET)
     public List<Player> getPlayersByTournamentId(@PathVariable int tournamentId) {
         return playerDao.getPlayersByTournamentId(tournamentId);
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping (path = "/tournaments/participated/{userId}", method = RequestMethod.GET )
+    public List<Tournaments> getTournamentsParticipated(@PathVariable int userId) {
+        return tournamentsDao.getTournamentsByUserId(userId);
     }
 
 

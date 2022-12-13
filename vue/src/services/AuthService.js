@@ -70,8 +70,8 @@ export default {
     return axios.get(`/messages/${messageId}`)
   },
 
-  getTournamentsByUserId(userId) {
-    return axios.get(`/tournaments/user/${userId}`)
+  getTournamentsParticipated(userId) {
+    return axios.get(`/tournaments/participated/${userId}`)
   },
 
   getPlayersByTournamentId(tournamentId) {
