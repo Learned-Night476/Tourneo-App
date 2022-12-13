@@ -1,6 +1,6 @@
 <template>
 <div class="nav">
-    <header>
+    <header class="navBarHeader">
         <div id="left-half">
             <div id="home">
                 <router-link class="headHome" v-bind:to="{ name: 'home' }">Home</router-link> 
@@ -13,8 +13,8 @@
             <input type="text" class="resizedTextbox" v-model="search.username"/>
         </div>
             <div id="logout">
-                <router-link class="headLogout" v-bind:to="{ name: 'conversations', params: {playerId: player.playerId} }">Whispers</router-link>&nbsp;
-                <router-link class="headLogout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
+                <router-link id="whispersInNav" class="headLogout" v-bind:to="{ name: 'conversations', params: {playerId: player.playerId} }">Whispers</router-link>&nbsp;
+                <router-link  class="headLogout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
         </div>
      </header>
 </div>  
@@ -45,7 +45,7 @@ export default {
 
 <style>
 
-header {
+.navBarHeader {
     display: flex;
     background-image: linear-gradient(rgb(57, 57, 57), rgb(57,57,57, 0.20) );
     justify-content: space-between ;
@@ -66,8 +66,12 @@ header {
 
  #logout {
      
-     padding: 10px;
+     padding: 20px;
  
+ }
+
+ #whispersInNav{
+     padding-right: 10px;
  }
  .headLogout {
      color:white;
