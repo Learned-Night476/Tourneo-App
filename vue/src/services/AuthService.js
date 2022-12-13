@@ -88,6 +88,14 @@ export default {
 
   givePlayerAWin(playerId, wins){
     return axios.put(`/players/${playerId}/${wins}`)
+  },
+
+  getPlayerByPlayerId(playerId){
+    return axios.get(`/players/player/${playerId}`)
+  },
+
+  givePlayerALoss(playerId, losses){
+    return axios.put(`/players/${playerId}/${losses}`)
   }
 
 }

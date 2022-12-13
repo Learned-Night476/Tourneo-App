@@ -17,6 +17,7 @@ import CreateNewRounds from '../views/CreateNewRounds.vue'
 import TournamentNonAdminView from '../views/TournamentNonAdminView.vue'
 import Whisper from '../views/Whisper.vue'
 import Conversation from  '../views/Conversation.vue'
+import GivePlayerWins from '../views/GivePlayerWins.vue'
 
 Vue.use(Router)
 
@@ -168,6 +169,16 @@ const router = new Router({
       meta: {
         requiresAuth: false
       }
+    },
+
+    {
+      path: '/tournaments/:tournamentId/admin/:playerId',
+      name: "givePlayerWins",
+      component: GivePlayerWins,
+      meta: {
+        requiresAuth: false
+      }
+
     }
   ]
 })
