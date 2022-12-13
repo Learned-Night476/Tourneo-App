@@ -3,6 +3,7 @@
       <p>From: {{message.senderUsername}}<br>
                 {{message.winner}}  {{message.matchDescription}} <br>
         </p>
+        <button type="button">Give Player A Win</button>
   </div>
 </template>
 
@@ -22,6 +23,12 @@ export default {
           authService.getMessageByMessageId(this.messageId).then((response) => {
       this.message = response.data;
   });
+    },
+
+    methods: {
+        givePlayerAWin() {
+            authService.givePlayerAWin(1, this.message.playerId);
+        }
     }
 }
 </script>
