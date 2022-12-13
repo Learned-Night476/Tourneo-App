@@ -14,4 +14,6 @@ public interface PlayerDao {
     int getPlayerIdByUsername(String username);
 
     List <Player> getPlayersByTournamentId(int tournamentId);
+
+    Integer updatePlayersWinsById(int wins, int playerId);
 }

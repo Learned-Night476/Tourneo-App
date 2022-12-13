@@ -46,6 +46,7 @@ methods: {
         }
 
         authService.sendMessage(newMessage);
+        this.$router.push({name: 'nonAdminView', params: {tournamentId: this.tournamentId}});
     }
 },
 

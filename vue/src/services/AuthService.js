@@ -84,6 +84,10 @@ export default {
 
   getWhisperByPlayerId(playerId) {
     return axios.get(`/whispers/${playerId}`)
+  },
+
+  givePlayerAWin(wins, playerId){
+    return axios.put(`/players/${playerId}`, wins)
   }
 
 }
