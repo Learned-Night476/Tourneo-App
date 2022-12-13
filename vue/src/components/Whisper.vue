@@ -1,20 +1,25 @@
 <template>
   <div>
+      <header>This is your conversation with {{ player2.username }} <router-link  v-bind:to="{name: 'conversations', params: {playerId: player.playerId}}"> Go back </router-link></header>
       <div v-for="whisper in realWhispers" v-bind:key="whisper.whisperId">
-          <h1>{{whisper.playerId}} {{whisper.whisperMessage}} {{whisper.toPlayerId}} {{player2.username}}</h1>
+          <h1 v-if="whisper.playerId === player.playerId">{{ player.username }} {{whisper.whisperMessage}} </h1>
+          <h1 v-else>{{ player2.username }} {{whisper.whisperMessage}} {{ whisper.isRead }}</h1>
       </div>
-      {{player.playerId}}
+      <send-whisper />
   </div>
 </template>
 
 <script>
 import AuthService from '../services/AuthService';
+import SendWhisper from './SendWhisper.vue';
 export default {
+  components: { SendWhisper },
 name: 'whispers',
     data(){
         return {
             whispers: [],
             realWhispers: [],
+            playa: {},
             player: {
                 playerId: ''
             },
@@ -49,6 +54,11 @@ name: 'whispers',
                 }
             }
         },
+        convertPlayerId(playerId) {
+             AuthService.getPlayerByPlayerId(playerId).then(response => {
+                this.playa = response.data;
+            })
+        }
 
     }
 }
