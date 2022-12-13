@@ -86,8 +86,8 @@ export default {
     return axios.get(`/whispers/${playerId}`)
   },
 
-  givePlayerAWin(wins, playerId){
-    return axios.put(`/players/${playerId}`, wins)
+  givePlayerAWin(playerId, wins){
+    return axios.put(`/players/${playerId}/${wins}`)
   }
 
 }
