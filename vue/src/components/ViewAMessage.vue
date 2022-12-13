@@ -1,8 +1,8 @@
 <template>
-  <div>
-      <p>{{message.senderUsername}}</p>
-      <p>{{message.winner}}</p>
-      <p>{{message.matchDescription}}</p>
+  <div class="msgDisplay">
+      <p>From: {{message.senderUsername}}<br>
+                {{message.winner}}  {{message.matchDescription}} <br>
+        </p>
   </div>
 </template>
 
@@ -27,6 +27,22 @@ export default {
 </script>
 
 <style>
-
-
+.msgDisplay {
+    display: flex;
+    background: rgb(57, 57, 57);
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/winnerstrophy.png");
+    border: 1px solid black;
+    background-repeat: no-repeat;
+    background-position:center;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    width: 520px;
+    height: 520px;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+}
 </style>
