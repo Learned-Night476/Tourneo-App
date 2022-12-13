@@ -29,7 +29,7 @@
         </div>
         <p>Matches You Have: {{matches.length}}</p>
         <p>Matched You Need: {{tournament.participants / 2}}</p><br>
-        <router-link id="backToTournament" v-show="!didYouMakeAllTheMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
+        <router-link id="toTourneyFromMatches" v-show="!didYouMakeAllTheMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
         <!-- <button v-show="isDisabled2" v-on:click="createMatches">Add Players To Tournament</button> -->
         <!-- <div v-for="player in players" v-bind:key="player.id">
           <p>{{player.playerId}}</p>
@@ -231,12 +231,12 @@ finishedCreatingMatches() {
   height: 40px;
   text-align:center;
 }
-#backToTournament {
+#toTourneyFromMatches {
   color: orange;
   text-decoration: none;
 }
 
-#backToTournament:hover {
+#toTourneyFromMatches:hover {
   color:silver;
 }
 

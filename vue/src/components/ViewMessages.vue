@@ -1,10 +1,10 @@
 <template>
   <div>
     <div v-for="message in messages" v-bind:key="message.id">
-      <router-link id="fromWhom" style="color: white;" v-bind:to="{name: 'viewAMessage', params: {tournamentId: tournament.tournamentId, messageId: message.tournamentMessageId}}"> From: {{message.senderUsername}}</router-link>
+      <router-link id="fromWhom" v-bind:to="{name: 'viewAMessage', params: {tournamentId: tournament.tournamentId, messageId: message.tournamentMessageId}}"> From: {{message.senderUsername}}</router-link>
 
     </div>
-    <router-link style="color: white;" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
+    <router-link class="backToTourneyFromMessages" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
   </div>
 </template>
 
@@ -35,7 +35,20 @@ created() {
 </script>
 
 <style>
+.backToTourneyFromMessages{
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+}
+.backToTourneyFromMessages:hover{
+  color: silver;
+  text-decoration: none;
+  
+}
+
 #fromWhom {
+  color: white;
+  text-decoration: none;
   display: flex;
   width: 100%;
   height: 100%;
