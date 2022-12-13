@@ -1,6 +1,6 @@
 <template>
   <div>
-      <router-link v-bind:to="{name: 'sendMessage', params: {tournamentId: this.tournamentId}}">Send The Admin Your Match Score</router-link>
+      <router-link id="sendAdmin" v-bind:to="{name: 'sendMessage', params: {tournamentId: this.tournamentId}}">Send The Admin Your Match Score</router-link>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
@@ -122,14 +122,20 @@ methods: {
   padding-top: 10%;
   display: flex;
   align-items: center;
-  
   margin: auto;
-
-  
-  
-  
 }
 
+#sendAdmin {
+  color: white;
+  text-decoration: none;
+
+}
+
+#sendAdmin:hover {
+  color: silver;
+  text-decoration: none;
+
+}
 
 
 .round1 {

@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="matchMessage">
       <label for="winner">Who Was The Winner Of Your Match?</label> &nbsp;
-      <input type="text" name="winner" v-model="winner"/><br><br>
+      <input class="msgInput" type="text" name="winner" v-model="winner"/><br><br>
       <label for="matchDescription">What Was The Score And What Happened?</label> &nbsp;
-      <input type="text" name="matchDescription" v-model="matchDescription" /><br><br>
-      <button :disabled="isDisabled" type="button" v-on:click="sendMessage">Send Message</button>
+      <input class="msgInput" type="text" name="matchDescription" v-model="matchDescription" /><br><br>
+      <button id="msgButton" :disabled="isDisabled" type="button" v-on:click="sendMessage">Send Message</button>
       <!-- <p>{{tournament.adminUser}}</p>
       <p>{{senderUsername}}</p> -->
   </div>
@@ -66,4 +66,44 @@ computed: {
 
 <style>
 
+.matchMessage {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    height: 528px;
+    width: 800px;
+    text-align: center;
+}
+
+.msgInput {
+    width: 50%;
+    align-self: center;
+    background-color:rgba(128, 128, 128, 0.664);
+    color: orange;
+    height: ;
+}
+
+.msgInput::placeholder {
+  color:white;
+  font-size: 15px;
+
+}
+
+#msgButton {
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+  border: 1px solid black;
+  align-self: center;
+}
+
+#msgButton:hover {
+    background-color: rgba(140, 0, 255, .75);
+    
+}
 </style>
