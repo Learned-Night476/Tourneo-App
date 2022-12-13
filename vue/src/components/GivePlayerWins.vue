@@ -1,10 +1,10 @@
 <template>
-  <div>
+  <div class="playerWins">
       <h1>{{player.username}}</h1>
       <p>{{player.username}} has {{player.wins}} wins</p>
       <p>{{player.username}} has {{player.losses}} losses</p>
-      <button type="button" v-on:click="givePlayerAWin">Give Player A Win</button> &nbsp;
-      <button :disabled="!addedALoss" type="button" v-on:click="givePlayerALoss">Give Player A Loss</button>
+      <button class="msgButton" type="button" v-on:click="givePlayerAWin">Give Player A Win</button> &nbsp;
+      <button class="msgButton" :disabled="!addedALoss" type="button" v-on:click="givePlayerALoss">Give Player A Loss</button>
   </div>
 </template>
 
@@ -46,5 +46,16 @@ computed: {
 </script>
 
 <style>
-
+.playerWins {
+    background-color: rgb(57, 57, 57);
+    display: flex;
+    justify-content: center;
+    justify-content: center;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+    height: 528px;
+    width: 800px;
+    text-align: center;
+}
 </style>
