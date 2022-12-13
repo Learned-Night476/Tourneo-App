@@ -5,8 +5,18 @@
       <br>
       <label id="tournamentName" for="tName">Name Your Tournament</label> &nbsp;
       <input class="createTournamentName" type="text" id="tName" name="tName" v-model="tournament.tournamentName" ><br><br>
+     
+     <label for="tourneyType">Type of Tournament</label> &nbsp;
+      <select class="tourneyType" id="tourneyType" :disabled="currentPlayers.length > 0" v-model="tournament.tournamentType">
+        <option value="other">Other</option>
+        <option value="sports">Sports</option>
+        <option value="videoGames">Video Games</option>
+        <option value="leagueOfLegends">League of Legends </option>
+        <option value="cards">Cards</option>
+      </select>
+     
       <label  for="participants">Number of Competitors</label> &nbsp;
-      <!-- <input type="number" id="participants" name="participants"> -->
+     <!-- <input type="number" id="participants" name="participants"> -->
       <select  class="numberOfPlayers" :disabled="currentPlayers.length > 0" id="participants" name="participants" v-model="tournament.participants">
             <option value="4">Four (IV)</option>
             <option value="8">Eight (XIII)</option>

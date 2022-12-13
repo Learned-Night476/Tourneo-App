@@ -53,6 +53,7 @@ create TABLE tournament_users (
 create TABLE tournament_type (
 	tournament_type_id int NOT NULL,
 	tournament_type_name varchar(100),
+	tournament_avatar varchar(500),
 
 	CONSTRAINT PK_tournament_type_id PRIMARY KEY (tournament_type_id)
 );
@@ -93,6 +94,8 @@ CREATE TABLE whispers (
 	
 
 
-INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (0, 'Basic');
-INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (1, 'Single Elimination');
-INSERT INTO tournament_type (tournament_type_id, tournament_type_name) VALUES (2, 'Double Elimination');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name, tournament_avatar) VALUES (0, 'Other', 'C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name, tournament_avatar) VALUES (1, 'Sports', 'C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/soccerBall.svg');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name, tournament_avatar) VALUES (2, 'Video Games', 'C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/joystick-png.svg');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name, tournament_avatar) VALUES (3, 'League of Legends', 'C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/LOL.svg');
+INSERT INTO tournament_type (tournament_type_id, tournament_type_name, tournament_avatar) VALUES (4, 'Cards', 'C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/playingCards.svg');
