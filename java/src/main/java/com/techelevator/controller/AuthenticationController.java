@@ -233,6 +233,11 @@ public class AuthenticationController {
        return whisperDao.getWhispersByPlayerId(playerId);
     }
 
+    @RequestMapping(value = "/players/tournament/{tournamentId}", method = RequestMethod.GET)
+    public List<Player> getPlayersByTournamentId(@PathVariable int tournamentId) {
+        return playerDao.getPlayersByTournamentId(tournamentId);
+    }
+
 
 
 }
