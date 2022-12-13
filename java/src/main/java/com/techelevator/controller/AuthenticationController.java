@@ -223,7 +223,7 @@ public class AuthenticationController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/whispers", method = RequestMethod.POST)
-    public void createWhisper( Whisper whisper) {
+    public void createWhisper(@Valid @RequestBody Whisper whisper) {
         whisperDao.createWhisper(whisper);
     }
 

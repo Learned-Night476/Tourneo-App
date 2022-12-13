@@ -72,8 +72,8 @@ create TABLE tournament_match (
 
 CREATE TABLE whispers (
 	whisper_id SERIAL NOT NULL,
-	player_id int,
 	to_player_id int,
+	player_id int,
 	whisper_message varchar(500),
 	isRead boolean,
 

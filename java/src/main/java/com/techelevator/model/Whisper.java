@@ -9,9 +9,9 @@ public class Whisper {
 
     public Whisper() {};
 
-    public Whisper(int whisperId, int fromPlayerId, int toPlayerId, String whisperMessage, boolean isRead) {
+    public Whisper(int whisperId, int playerId, int toPlayerId, String whisperMessage, boolean isRead) {
         this.whisperId = whisperId;
-        this.playerId = fromPlayerId;
+        this.playerId = playerId;
         this.toPlayerId = toPlayerId;
         this.whisperMessage = whisperMessage;
         this.isRead = isRead;
@@ -29,8 +29,8 @@ public class Whisper {
         return playerId;
     }
 
-    public void setPlayerId(int fromPlayerId) {
-        this.playerId = fromPlayerId;
+    public void setPlayerId(int playerId) {
+        this.playerId = playerId;
     }
 
     public int getToPlayerId() {
@@ -53,7 +53,7 @@ public class Whisper {
         return isRead;
     }
 
-    public void setRead(boolean read) {
-        isRead = read;
+    public void setRead(boolean isRead) {
+        this.isRead = isRead;
     }
 }

@@ -22,9 +22,9 @@ public class JdbcWhisperDao implements WhisperDao {
 
     @Override
     public void createWhisper(Whisper whisper) {
-        String sql = "INSERT INTO whispers (player_id, to_player_id, whisper_message, isRead) values (?, ?, ?, ?)";
+        String sql = "INSERT INTO whispers (to_player_id, player_id, whisper_message, isRead) values (?, ?, ?, ?)";
 
-        jdbcTemplate.update(sql, whisper.getPlayerId(), whisper.getToPlayerId(), whisper.getWhisperMessage(), whisper.isRead());
+        Integer id = jdbcTemplate.queryForObject(sql, Integer.class, whisper.getToPlayerId(), whisper.getPlayerId(), whisper.getWhisperMessage(), whisper.isRead());
 
 
 
@@ -53,7 +53,7 @@ public class JdbcWhisperDao implements WhisperDao {
         whisper.setWhisperId(rs.getInt("whisper_id"));
         whisper.setPlayerId(rs.getInt("player_id"));
         whisper.setToPlayerId(rs.getInt("to_player_id"));
-        whisper.setRead(rs.getBoolean("isRead"));
+        whisper.setRead(rs.getBoolean("isread"));
         whisper.setWhisperMessage(rs.getString("whisper_message"));
 
         return whisper;
