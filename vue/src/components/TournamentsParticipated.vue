@@ -1,8 +1,8 @@
 <template>
   <div>
       <h2>Tournaments You Are In</h2>
-      <div class="usersTournaments" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
-          <router-link id="linkToMyTournaments" v-bind:to="{name: 'nonAdminView', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}}</router-link>
+      <div class="tournamentsIn" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
+          <router-link id="linkToTournamentsIn" v-bind:to="{name: 'nonAdminView', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}}</router-link>
 
       </div>
   </div>
@@ -84,5 +84,36 @@ export default {
   color:white;
   text-decoration: none;
   
+}
+
+.tournamentsIn {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    background: rgb(57, 57, 57);
+    height: 200px;
+    margin-top: 10px;
+    border-radius: 4px;
+    
+
+}
+#linkToTournamentsIn:hover {
+    background: orangered;
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    
+}
+#linkToTournamentsIn {
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/colosseum.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align:left;
+    padding: 10px;
+    height: 200px;
+    font-size: x-large;
+    color:white;
+    text-decoration: none;
+    border-radius: 4px;
 }
 </style>
