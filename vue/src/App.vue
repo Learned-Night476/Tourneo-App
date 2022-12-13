@@ -48,7 +48,7 @@ html{
   text-decoration: none;
 }
 
-.needAnAccount:visited {
+.needAnAccount:hover {
   color:silver;
   text-decoration: none;
 }
