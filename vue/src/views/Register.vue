@@ -4,7 +4,7 @@
       <p style="margin: 3px;" id="createId" >Account Creation</p>
       <h2 id="legendText">Become Legendary </h2>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
+      Username is already taken
       </div>
       <label for="username" class="sr-only"></label>
       <input
