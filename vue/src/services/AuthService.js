@@ -80,6 +80,10 @@ export default {
 
   getTournamentTypeById(id){
     return axios.get(`tournamentType/tournaments/${id}`)
+  },
+
+  getWhisperByPlayerId(playerId) {
+    return axios.get(`/whispers/${playerId}`)
   }
 
 }
