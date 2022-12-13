@@ -3,6 +3,7 @@
       <p>From: {{message.senderUsername}}<br>
                 {{message.winner}}  {{message.matchDescription}} <br>
         </p>
+         <router-link style="color: white;" v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >Go Back To Messages</router-link><br>
   </div>
 </template>
 
@@ -13,6 +14,7 @@ export default {
     name: "view-a-message",
     data() {
         return {
+            tournamentId: this.$route.params.tournamentId,
         messageId: this.$route.params.messageId,
         message: {},
         };
