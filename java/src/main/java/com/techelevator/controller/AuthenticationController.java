@@ -250,7 +250,7 @@ public class AuthenticationController {
         return playerDao.updatePlayersWinsById(wins, playerId);
     }
 
-    @RequestMapping(path = "players/{playerId}/{losses}", method = RequestMethod.PUT)
+    @RequestMapping(path = "players/playerLosses/{playerId}/{losses}", method = RequestMethod.PUT)
     public Integer updatePlayersLossesById(@PathVariable int playerId, @PathVariable int losses){
         return playerDao.updatePlayersLossesById(losses, playerId);
     }
