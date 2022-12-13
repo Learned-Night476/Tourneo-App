@@ -130,7 +130,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 .avatarColor {
  color: orange;
@@ -235,11 +235,12 @@ label:focus-within {
 .form-create {
   background-color:rgba(128, 128, 128, 0.664);
   color: orange;
+  font-size: large;
 }
 
 .form-create::placeholder {
   color:white;
-  font-size: 15px;
+  font-size: large;
 }
 
 #termsText {

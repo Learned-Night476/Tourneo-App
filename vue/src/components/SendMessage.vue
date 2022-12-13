@@ -76,6 +76,13 @@ computed: {
     height: 528px;
     width: 800px;
     text-align: center;
+    background: rgba(57, 57, 57);
+    background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/loser.svg");
+    background-repeat: no-repeat; 
+    align-items: center;
+    border-radius: 5px;
+    margin-top: 50px;
+
 }
 
 .msgInput {
@@ -83,13 +90,8 @@ computed: {
     align-self: center;
     background-color:rgba(128, 128, 128, 0.664);
     color: orange;
-    height: ;
-}
-
-.msgInput::placeholder {
-  color:white;
-  font-size: 15px;
-
+    height: 20px;
+    font-size: large;
 }
 
 #msgButton {

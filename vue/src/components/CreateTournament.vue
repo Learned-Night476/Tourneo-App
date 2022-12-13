@@ -171,6 +171,15 @@ methods: {
 </script>
 
 <style>
+
+.tourneyType {
+   background: rgba(128, 128, 128, 0.664);
+  color: white;
+  margin-bottom: 50px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+}
 .newTourneyForm {
   display: flex;
   flex-direction: column;
