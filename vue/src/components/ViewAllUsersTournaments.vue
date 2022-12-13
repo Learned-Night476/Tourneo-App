@@ -12,7 +12,8 @@ import authService from '../services/AuthService'
 export default {
     name: 'view-all-users-tournaments',
     data(){ return {
-        tournaments: []
+        tournaments: [],
+        tournamentType: {}
     }
     }, 
     created() {
