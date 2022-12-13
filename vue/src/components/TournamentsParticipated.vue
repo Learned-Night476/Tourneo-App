@@ -15,13 +15,12 @@ export default {
 
     data() {
         return {
-            randomString: "Hi",
             tournaments: []
         };
     },
 
     created() {
-        authService.getTournamentsByUserId(this.$store.state.user.id).then((response) => {
+        authService.getTournamentsParticipated(this.$store.state.user.id).then((response) => {
             this.tournaments = response.data;
         });
     }
