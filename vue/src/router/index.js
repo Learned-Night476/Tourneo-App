@@ -14,6 +14,7 @@ import SendMessage from '../views/SendMessage.vue'
 import ViewMessages from '../views/ViewMessages.vue'
 import ViewAMessage from '../views/ViewAMessage.vue'
 import CreateNewRounds from '../views/CreateNewRounds.vue'
+import TournamentNonAdminView from '../views/TournamentNonAdminView.vue'
 
 
 Vue.use(Router)
@@ -138,6 +139,15 @@ const router = new Router({
       path: '/tournaments/:tournamentId/matches/:roundNumber',
       name: 'createNewRounds',
       component: CreateNewRounds,
+      meta: {
+        requiresAuth: false
+      }
+    },
+
+    {
+      path: '/tournaments/:tournamentId/nonAdmin',
+      name: 'nonAdminView',
+      component: TournamentNonAdminView,
       meta: {
         requiresAuth: false
       }
