@@ -1,7 +1,7 @@
 <template>
   <div>
-      <div v-for="whisper in conversations" v-bind:key="whisper.whisperId">
-          <h1>{{whisper.playerId}} {{whisper.whisperMessage}} {{whisper.toPlayerId}}</h1>
+      <div v-for="whisper in realWhispers" v-bind:key="whisper.whisperId">
+          <h1>{{whisper.playerId}} {{whisper.whisperMessage}} {{whisper.toPlayerId}} {{player2.username}}</h1>
       </div>
       {{player.playerId}}
   </div>
@@ -14,11 +14,12 @@ name: 'whispers',
     data(){
         return {
             whispers: [],
-            conversations: [],
-            people: [],
+            realWhispers: [],
             player: {
                 playerId: ''
-            }
+            },
+            player2: {}
+            
         };
     }, 
     created() {
@@ -29,6 +30,10 @@ name: 'whispers',
             this.whispers = response.data;
             this.createConversations();
         });
+
+        AuthService.getProfile(this.$route.params.playerId).then (response => {
+            this.player2 = response.data;
+        })
          
      });
 
@@ -37,12 +42,11 @@ name: 'whispers',
     methods: {
         createConversations() {
             for (let i = 0; i < this.whispers.length; i++) {
-                if (this.whispers[i].toPlayerId === this.player.playerId || this.whispers[i].playerId === this.player.playerId) {
-                    
-                    
-                    this.conversations.unshift(this.whispers[i])
+                if (this.whispers[i].playerId != this.$route.params.playerId && this.whispers[i].toPlayerId != this.$route.params.playerId) {
+                    continue;
+                } else {
+                    this.realWhispers.unshift(this.whispers[i]);
                 }
-
             }
         },
 

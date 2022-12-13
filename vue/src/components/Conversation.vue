@@ -1,7 +1,7 @@
 <template>
 <div>
   <div v-for="player in people" v-bind:key="player.playerId">
-      <h1>{{player.playerId}} </h1>
+      <router-link  v-bind:to="{name: 'whispers', params: {playerId: player}}"> {{player}}</router-link>
   </div>
 </div>
 </template>
@@ -16,6 +16,8 @@ name: 'conversation',
             conversations: [],
             people: [],
             player: {
+                playerId: '',
+                username: ''
             }
         };
     },
@@ -39,13 +41,12 @@ name: 'conversation',
                 let loop = true;
                 if (this.whispers[i].playerId != this.player.playerId) {
                     for (let j = 0; j < this.people.length; j++) {
-                        if (this.people[j] === this.whispers[i]) {
+                        if (this.people[j] === this.whispers[i].playerId) {
                             loop = false
-                            break;
                         }
                     }
                     if (loop) {
-                    this.people.unshift(AuthService.getProfile(this.whispers[i].playerId));
+                    this.people.unshift(this.whispers[i].playerId);
                     }
                 }
             }

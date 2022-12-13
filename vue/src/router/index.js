@@ -15,7 +15,7 @@ import ViewMessages from '../views/ViewMessages.vue'
 import ViewAMessage from '../views/ViewAMessage.vue'
 import CreateNewRounds from '../views/CreateNewRounds.vue'
 import TournamentNonAdminView from '../views/TournamentNonAdminView.vue'
-// import Whisper from '../views/Whisper.vue'
+import Whisper from '../views/Whisper.vue'
 import Conversation from  '../views/Conversation.vue'
 
 Vue.use(Router)
@@ -157,6 +157,14 @@ const router = new Router({
       path: '/:playerId/conversations',
       name: 'conversations',
       component: Conversation,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/:playerId/whispers/:playerId',
+      name: 'whispers',
+      component: Whisper,
       meta: {
         requiresAuth: false
       }
