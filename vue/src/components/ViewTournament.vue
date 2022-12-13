@@ -180,8 +180,6 @@ methods: {
   text-decoration: none;
   
 }
-<<<<<<< vue/src/components/ViewTournament.vue
-=======
 #addNewRounds {
   margin: 20px;
   color:white;
