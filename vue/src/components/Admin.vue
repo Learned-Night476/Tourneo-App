@@ -2,7 +2,7 @@
   <div>
     <h1> {{ this.tournament.tournamentName }} </h1>
     <div v-for="player in players" v-bind:key="player.playerId">
-       {{player.playerId}} {{player.username}} <button> Edit Player </button>
+       {{player.playerId}} {{player.username}} <button type="button">Give Player A Loss</button> &nbsp;  <button type="button">Give Player A Win</button>
      </div>
   </div>
 </template>

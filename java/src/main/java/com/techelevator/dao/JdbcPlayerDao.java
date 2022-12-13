@@ -88,6 +88,14 @@ public class JdbcPlayerDao implements PlayerDao {
         return players;
     }
 
+    @Override
+    public Integer updatePlayersWinsById(int wins, int playerId) {
+        String sql = "update players set wins = ? where player_id = ?;";
+        Integer placeHolder = jdbcTemplate.queryForObject(sql, Integer.class, wins, playerId);
+
+        return placeHolder;
+    }
+
     private Player mapRowToPlayer(SqlRowSet rs) {
 
 

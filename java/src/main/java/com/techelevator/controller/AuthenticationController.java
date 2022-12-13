@@ -245,6 +245,12 @@ public class AuthenticationController {
     }
 
 
+    @RequestMapping(path = "players/{playerId}", method = RequestMethod.PUT)
+    public Integer updatePlayersWinsById(@PathVariable int playerId, int wins){
+        return playerDao.updatePlayersWinsById(wins, playerId);
+    }
+
+
 
 }
 
