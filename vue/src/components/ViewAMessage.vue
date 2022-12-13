@@ -1,13 +1,14 @@
 <template>
 <div>
+      <div>
+       <router-link id="backFromAMessage" v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >Go Back To Messages</router-link>
+  </div>
   <div class="msgDisplay">
       <p>From: {{message.senderUsername}}<br>
                 {{message.winner}}  {{message.matchDescription}} <br>
         </p>
   </div>
-  <div>
-       <router-link id="backFromAMessage" v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >Go Back To Messages</router-link>
-  </div>
+
   </div>
 </template>
 
@@ -54,8 +55,8 @@ export default {
     margin-right: auto;
     justify-content: center;
     text-align: center;
-    width: 520px;
-    height: 520px;
+    width: 50%;
+    height: 500px;
     font-size: 20px;
     color: white;
     border-radius: 5px;
