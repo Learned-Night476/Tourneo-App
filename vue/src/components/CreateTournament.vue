@@ -8,11 +8,11 @@
      
      <label for="tourneyType">Type of Tournament</label> &nbsp;
       <select class="tourneyType" id="tourneyType" :disabled="currentPlayers.length > 0" v-model="tournament.tournamentType">
-        <option value="other">Other</option>
-        <option value="sports">Sports</option>
-        <option value="videoGames">Video Games</option>
-        <option value="leagueOfLegends">League of Legends </option>
-        <option value="cards">Cards</option>
+        <option value="0">Other</option>
+        <option value="1">Sports</option>
+        <option value="2">Video Games</option>
+        <option value="3">League of Legends </option>
+        <option value="4">Cards</option>
       </select>
      
       <label  for="participants">Number of Competitors</label> &nbsp;
@@ -55,7 +55,7 @@ data() {
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
-      tournamentType: "0",
+      tournamentType: "",
       tournamentName: "",
       winner: null
     },
