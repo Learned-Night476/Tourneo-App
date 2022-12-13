@@ -2,8 +2,10 @@
   <div>
     <h1> {{ this.tournament.tournamentName }} </h1>
     <div v-for="player in players" v-bind:key="player.playerId">
-       {{player.playerId}} {{player.username}} <button type="button">Give Player A Loss</button> &nbsp;  <button type="button">Give Player A Win</button>
-     </div>
+    <router-link style="color: white;" v-bind:to="{name: 'givePlayerWins', params: {tournamentId: tournament.tournamentId, playerId: player.playerId}}" >
+       {{player.playerId}} {{player.username}}
+    </router-link>
+    </div>
   </div>
 </template>
 
@@ -13,6 +15,7 @@ export default {
     name: 'admin',
     data(){
         return {
+          tournamentId: this.$route.params.tournamentId,
             tournament: {},
             tournamentUsers : [],
             players : []
