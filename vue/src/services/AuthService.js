@@ -95,7 +95,7 @@ export default {
   },
 
   givePlayerALoss(playerId, losses){
-    return axios.put(`/players/${playerId}/${losses}`)
+    return axios.put(`/players/playerLosses/${playerId}/${losses}`)
   }
 
 }

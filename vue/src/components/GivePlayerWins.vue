@@ -4,7 +4,7 @@
       <p>{{player.username}} has {{player.wins}} wins</p>
       <p>{{player.username}} has {{player.losses}} losses</p>
       <button type="button" v-on:click="givePlayerAWin">Give Player A Win</button> &nbsp;
-      <button type="button" v-on:click="givePlayerALoss">Give Player A Loss</button>
+      <button :disabled="!addedALoss" type="button" v-on:click="givePlayerALoss">Give Player A Loss</button>
   </div>
 </template>
 
@@ -34,6 +34,12 @@ methods: {
 
     givePlayerALoss() {
         authService.givePlayerALoss(this.player.playerId, this.player.losses + 1);
+    }
+},
+
+computed: {
+    addedALoss(){
+        return true;
     }
 }
 }
