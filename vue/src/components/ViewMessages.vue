@@ -1,10 +1,13 @@
 <template>
   <div>
+    <div>
+       <router-link class="backToTourneyFromMessages" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
+    </div>
     <div v-for="message in messages" v-bind:key="message.id">
       <router-link id="fromWhom" v-bind:to="{name: 'viewAMessage', params: {tournamentId: tournament.tournamentId, messageId: message.tournamentMessageId}}"> From: {{message.senderUsername}}</router-link>
 
     </div>
-    <router-link class="backToTourneyFromMessages" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
+   
   </div>
 </template>
 
