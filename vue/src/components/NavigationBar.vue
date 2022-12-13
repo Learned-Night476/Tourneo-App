@@ -13,6 +13,7 @@
             <input type="text" class="resizedTextbox" v-model="search.username"/>
         </div>
             <div id="logout">
+                <router-link class="headLogout" v-bind:to="{ name: 'conversations', params: {playerId: player.playerId} }">Whispers</router-link>&nbsp;
                 <router-link class="headLogout" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link> 
         </div>
      </header>
@@ -20,20 +21,24 @@
 </template>
 
 <script>
+import AuthService from '../services/AuthService'
 export default {
  name: "navigation-bar",
  data() {
      return {
          search: {
              username: ''
-         }
+         },
+         player: {}
      }
  },
  computed: {
      
  },
  created() {
-     
+     AuthService.getProfile(this.$store.state.user.id).then( response => {
+         this.player = response.data;
+     })
  }
 }
 </script>

@@ -163,7 +163,7 @@ const router = new Router({
       }
     },
     {
-      path: '/:playerId/whispers/:playerId',
+      path: '/whispers/:playerId',
       name: 'whispers',
       component: Whisper,
       meta: {
