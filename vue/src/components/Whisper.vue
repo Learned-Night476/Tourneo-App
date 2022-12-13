@@ -1,11 +1,13 @@
 <template>
-  <div>
-      <header>This is your conversation with {{ player2.username }} <router-link  v-bind:to="{name: 'conversations', params: {playerId: player.playerId}}"> Go back </router-link></header>
+  <div class="whisperWindow">
+      <header id="whisperHeader">This is your conversation with {{ player2.username }}
+          <router-link id="backToConversations"  v-bind:to="{name: 'conversations', params: {playerId: player.playerId}}"> Go back </router-link>
+          </header>
       <div v-for="whisper in realWhispers" v-bind:key="whisper.whisperId">
-          <h1 v-if="whisper.playerId === player.playerId">{{ player.username }} {{whisper.whisperMessage}} </h1>
-          <h1 v-else>{{ player2.username }} {{whisper.whisperMessage}} {{ whisper.isRead }}</h1>
+          <p class= "whisperSender" v-if="whisper.playerId === player.playerId">{{ player.username }}: {{whisper.whisperMessage}} </p>
+          <p class= "whisperReceiver" v-else>{{ player2.username }}:  {{whisper.whisperMessage}} {{ whisper.isRead }}</p>
       </div>
-      <send-whisper />
+      <send-whisper/>
   </div>
 </template>
 
@@ -65,5 +67,47 @@ name: 'whispers',
 </script>
 
 <style>
+#backToConversations{
+    color:white;
+    text-decoration: none;
+    
+}
+#whisperHeader{
+    padding-left: 20px;
+    padding-right: 20px;
+    display: flex;
+    padding-top:20px;
+    padding-bottom: 20px;
+    background-color:black;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 4;
+
+
+}
+.whisperWindow{
+    display: flex;
+    flex-direction: column;
+    background: rgb(57, 57, 57);
+    background-repeat: no-repeat;
+    background-position:center;
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: start;
+    width: 600px;
+    height: auto;
+    font-size: 15px;
+    color: white;
+    border-radius: 4px;
+}
+.whisperSender{
+    margin: 20px;
+    color:orange;
+}
+.whisperReceiver{
+    margin: 20px;
+}
 
 </style>

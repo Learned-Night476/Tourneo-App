@@ -1,7 +1,7 @@
 <template>
   <div>
-      <input type="text" v-model="whisper.whisperMessage" >
-      <button type="button" v-on:click="submitWhisper" >Send whisper</button>
+      <input id="whisperInput" type="text" v-model="whisper.whisperMessage" ><br>
+      <button id="sendWhisperButton" type="button" v-on:click="submitWhisper" >Whisper</button>
   </div>
 </template>
 
@@ -33,5 +33,24 @@ export default {
 </script>
 
 <style>
+#sendWhisperButton{
+        margin: 10px;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 30px;
+  width: 200px;
+  border-radius: 4px;
 
+}
+
+#whisperInput{
+    display: inline;
+    width: 98.8%;
+    height:50px;
+    text-align: start;
+}
+
+#sendWhisperButton:hover {
+  background-color: rgba(140, 0, 255, 0.75);
+}
 </style>
