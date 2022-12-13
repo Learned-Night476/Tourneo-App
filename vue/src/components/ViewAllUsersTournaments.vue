@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Tournaments You Created</h2>
+      <h2 class="tourneyLinkHeader">Tournaments You Created</h2>
       <div class="usersTournaments" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
           <router-link id="linkToMyTournaments" v-bind:to="{name: 'viewTournament', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}}</router-link>
       </div>
@@ -57,7 +57,10 @@ export default {
     text-decoration: none;
     border-radius: 4px;
 }
-
+.tourneyLinkHeader {
+    padding-left: 10px;
+    font-size: 20px;
+}
  
 
 </style>

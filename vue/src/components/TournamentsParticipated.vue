@@ -1,6 +1,6 @@
 <template>
   <div>
-      <h2>Tournaments You Are In</h2>
+      <h2 class="tourneyLinkHeader">Tournaments You Are In</h2>
       <div class="tournamentsIn" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
           <router-link id="linkToTournamentsIn" v-bind:to="{name: 'nonAdminView', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}}</router-link>
 
@@ -115,5 +115,9 @@ export default {
     color:white;
     text-decoration: none;
     border-radius: 4px;
+}
+.tourneyLinkHeader {
+    padding-left: 10px;
+    font-size: 20px;
 }
 </style>
