@@ -1,9 +1,13 @@
 <template>
+<div>
   <div class="msgDisplay">
       <p>From: {{message.senderUsername}}<br>
                 {{message.winner}}  {{message.matchDescription}} <br>
         </p>
-         <router-link style="color: white;" v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >Go Back To Messages</router-link><br>
+  </div>
+  <div>
+       <router-link id="backFromAMessage" v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >Go Back To Messages</router-link>
+  </div>
   </div>
 </template>
 
@@ -29,6 +33,15 @@ export default {
 </script>
 
 <style>
+#backFromAMessage{
+    text-decoration:none;
+    color: white;
+    margin-left: 20px;
+
+}
+#backFromAMessage:hover{
+    color:silver;
+}
 .msgDisplay {
     display: flex;
     background: rgb(57, 57, 57);

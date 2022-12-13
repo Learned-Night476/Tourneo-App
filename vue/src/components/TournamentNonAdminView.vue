@@ -128,6 +128,7 @@ methods: {
 #sendAdmin {
   color: white;
   text-decoration: none;
+  margin-left: 20px;
 
 }
 
