@@ -1,7 +1,7 @@
 <template>
 <div>
-  <div v-for="player in people" v-bind:key="player.playerId">
-      <router-link  v-bind:to="{name: 'whispers', params: {playerId: player}}"> {{player}}</router-link>
+  <div v-for="playa in players" v-bind:key="playa.playerId">
+      <router-link  v-bind:to="{name: 'whispers', params: {playerId: playa.playerId}}"> {{playa.username}} </router-link>
   </div>
 </div>
 </template>
@@ -15,10 +15,11 @@ name: 'conversation',
             whispers: [],
             conversations: [],
             people: [],
+            players: [],
             player: {
                 playerId: '',
                 username: ''
-            }
+            },
         };
     },
     created() {
@@ -28,6 +29,14 @@ name: 'conversation',
          AuthService.getWhisperByPlayerId(this.player.playerId).then( response => {
             this.whispers = response.data;
             this.addToPeople();
+
+            for (let i = 0; i < this.people.length; i++) {
+                
+                AuthService.getPlayerByPlayerId(this.people[i]).then( response => {
+                   this.players.unshift(response.data);
+                })
+                
+            }
         });
          
      });

@@ -96,6 +96,10 @@ export default {
 
   givePlayerALoss(playerId, losses){
     return axios.put(`/players/playerLosses/${playerId}/${losses}`)
+  },
+
+  sendWhisper(whisper) {
+    return axios.post(`/whispers`, whisper)
   }
 
 }
