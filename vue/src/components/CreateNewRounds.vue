@@ -28,7 +28,8 @@
           <p>Matches : {{match.playerUsername}} vs {{match.awayPlayerUsername}}</p>
         </div>
         <p>Matches You Have: {{matches.length}}</p>
-        <p>Matched You Need: {{tournament.participants / 2}}</p><br>
+        <p>Matched You Need: {{matchesYouNeed()}}</p>
+        <p>For Round: {{matchRound}}</p><br>
         <router-link v-show="!didYouMakeAllTheMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
         <!-- <button v-show="isDisabled2" v-on:click="createMatches">Add Players To Tournament</button> -->
         <!-- <div v-for="player in players" v-bind:key="player.id">
@@ -41,7 +42,7 @@
 import authService from '../services/AuthService'
 
 export default {
-  name: "create-matches",
+  name: "create-new-rounds",
 data() {
   return {
     players: [],
@@ -56,13 +57,14 @@ data() {
     usernameIncorrect: false,
     matches: [],
     didYouMakeAllTheMatches: true,
-    isNotVerified: true
+    isNotVerified: true,
+    matchRound: this.$route.params.roundNumber
  
   };
 },
 
 created() {
-  authService.getAllPlayers().then((response) => {
+  authService.getPlayersByTournamentId(this.tournamentId).then((response) => {
     this.players = response.data;
   });
 
@@ -96,7 +98,7 @@ methods: {
 
   createMatches(){
       let match = {
-          round: 1,
+          round: this.$route.params.roundNumber,
           winner: 0,
           tournamentId: this.tournamentId,
           playerId: this.player.playerId,
@@ -105,8 +107,6 @@ methods: {
           awayPlayerUsername: this.player2.username
       }
 
-           authService.createTournamentUser(this.player.playerId, this.tournamentId)
-       authService.createTournamentUser(this.player2.playerId, this.tournamentId)
 
         this.matches.push(match)
        authService.createMatch(match);
@@ -132,13 +132,64 @@ methods: {
   },
 
 finishedCreatingMatches() {
-    if(this.matches.length === this.tournament.participants / 2) {
+  if(this.matchRound === "2") {
+    if(this.matches.length === this.tournament.participants / 4) {
         this.didYouMakeAllTheMatches = false;
     }
 
     else {
         this.didYouMakeAllTheMatches = true;
     }
+  }
+
+  else if(this.matchRound === "3") {
+    if(this.matches.length === this.tournament.participants / 8) {
+        this.didYouMakeAllTheMatches = false;
+    }
+
+    else {
+        this.didYouMakeAllTheMatches = true;
+    }
+  }
+
+  else if(this.matchRound === "4") {
+    if(this.matches.length === this.tournament.participants / 16) {
+        this.didYouMakeAllTheMatches = false;
+    }
+
+    else {
+        this.didYouMakeAllTheMatches = true;
+    }
+  }
+
+  else if(this.matchRound === "5") {
+    if(this.matches.length === this.tournament.participants / 32) {
+        this.didYouMakeAllTheMatches = false;
+    }
+
+    else {
+        this.didYouMakeAllTheMatches = true;
+    }
+  }
+    
+},
+
+matchesYouNeed() {
+  if(this.matchRound === "2") {
+    return this.tournament.participants / 4;
+  }
+  else if(this.matchRound === "3") {
+    return this.tournament.participants / 8;
+    }
+
+  else if(this.matchRound === "4") {
+    return this.tournament.participants / 16;
+    }
+
+  else if(this.matchRound === "5") {
+    return this.tournament.participants / 32;
+  }
+    
 }
   
 }, computed: {

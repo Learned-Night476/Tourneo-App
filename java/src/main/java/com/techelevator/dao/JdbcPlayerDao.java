@@ -71,6 +71,23 @@ public class JdbcPlayerDao implements PlayerDao {
         return playerId;
     }
 
+    @Override
+    public List<Player> getPlayersByTournamentId(int tournamentId) {
+        List<Player> players = new ArrayList<>();
+
+        String sql = "select players.player_id, wins, losses, user_id, username from players " +
+                "join tournament_users on players.player_id = tournament_users.player_id " +
+                "where tournament_id = ?;";
+
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, tournamentId);
+
+        while (rs.next()) {
+            Player player = mapRowToPlayer(rs);
+            players.add(player);
+        }
+        return players;
+    }
+
     private Player mapRowToPlayer(SqlRowSet rs) {
 
 
