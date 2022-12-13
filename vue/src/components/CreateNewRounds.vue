@@ -28,7 +28,7 @@
           <p>Matches : {{match.playerUsername}} vs {{match.awayPlayerUsername}}</p>
         </div>
         <p>Matches You Have: {{matches.length}}</p>
-        <p>Matched You Need: {{matchesYouNeed()}}</p>
+        <p>Matched You Need: {{ matchesYouNeed() }}</p>
         <p>For Round: {{matchRound}}</p><br>
         <router-link v-show="!didYouMakeAllTheMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
         <!-- <button v-show="isDisabled2" v-on:click="createMatches">Add Players To Tournament</button> -->
@@ -71,6 +71,8 @@ created() {
    authService.getTournamentById(this.tournamentId).then((response) =>{
     this.tournament = response.data;
   });
+
+ 
 },
 
 methods: {
@@ -132,7 +134,7 @@ methods: {
   },
 
 finishedCreatingMatches() {
-  if(this.matchRound === "2") {
+  if(this.matchRound == "2") {
     if(this.matches.length === this.tournament.participants / 4) {
         this.didYouMakeAllTheMatches = false;
     }
@@ -142,7 +144,7 @@ finishedCreatingMatches() {
     }
   }
 
-  else if(this.matchRound === "3") {
+  else if(this.matchRound == "3") {
     if(this.matches.length === this.tournament.participants / 8) {
         this.didYouMakeAllTheMatches = false;
     }
@@ -152,7 +154,7 @@ finishedCreatingMatches() {
     }
   }
 
-  else if(this.matchRound === "4") {
+  else if(this.matchRound == "4") {
     if(this.matches.length === this.tournament.participants / 16) {
         this.didYouMakeAllTheMatches = false;
     }
@@ -162,7 +164,7 @@ finishedCreatingMatches() {
     }
   }
 
-  else if(this.matchRound === "5") {
+  else if(this.matchRound == "5") {
     if(this.matches.length === this.tournament.participants / 32) {
         this.didYouMakeAllTheMatches = false;
     }
@@ -175,18 +177,18 @@ finishedCreatingMatches() {
 },
 
 matchesYouNeed() {
-  if(this.matchRound === "2") {
+  if(this.matchRound == "2") {
     return this.tournament.participants / 4;
   }
-  else if(this.matchRound === "3") {
+  else if(this.matchRound == "3") {
     return this.tournament.participants / 8;
     }
 
-  else if(this.matchRound === "4") {
+  else if(this.matchRound == "4") {
     return this.tournament.participants / 16;
     }
 
-  else if(this.matchRound === "5") {
+  else if(this.matchRound == "5") {
     return this.tournament.participants / 32;
   }
     
