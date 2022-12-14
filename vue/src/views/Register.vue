@@ -253,8 +253,13 @@ label:focus-within {
 }
 
 input[type=checkbox] {
-          accent-color: orangered;
+  accent-color: orangered;
+  margin-left: 20px;    
         }
+
+#checkbox {
+  margin-right: 15px;
+}
 
 
 

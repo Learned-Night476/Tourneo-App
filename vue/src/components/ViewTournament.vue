@@ -3,12 +3,12 @@
     <div class="test">
     
     <router-link  v-show="matchesRound1.length === 0" id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}">Add Matches To The Tournament</router-link><br>
-     <router-link  id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" > <button class="msgButton">View Messages For This Tournament</button></router-link><br>
+     <router-link  id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" > <button class="viewMsgBtn">Tournament Messages</button></router-link><br>
      <router-link id=addNewRounds v-show="matchesRound1.length !== 0 && matchesRound2.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 2}}"><button class="msgButton">Add Round 2 Matches</button></router-link>
-     <router-link id=addNewRounds v-show="tournament.participants > 4 && matchesRound2.length !== 0 && matchesRound3.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 3}}">Add Round 3 Matches</router-link>
-     <router-link id=addNewRounds v-show="tournament.participants > 8 && matchesRound3.length !== 0 && matchesRound4.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 4}}">Add Round 4 Matches</router-link>
-     <router-link id=addNewRounds v-show="tournament.participants > 16 && matchesRound4.length !== 0 && matchesRound5.length === 0"  v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 5}}">Add Round 5 Matches</router-link>
-    <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}"> <button class="givePlayers">Give Players In Your Tournament Wins And Losses</button></router-link>
+     <router-link id=addNewRounds v-show="tournament.participants > 4 && matchesRound2.length !== 0 && matchesRound3.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 3}}" ><button class="msgButton">Add Round 3 Matches</button></router-link>
+     <router-link id=addNewRounds v-show="tournament.participants > 8 && matchesRound3.length !== 0 && matchesRound4.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 4}}"><button class="msgButton">Add Round 4 Matches</button></router-link>
+     <router-link id=addNewRounds v-show="tournament.participants > 16 && matchesRound4.length !== 0 && matchesRound5.length === 0"  v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 5}}"><button class="msgButton">Add Round 5 Matches</button></router-link>
+    <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}"> <button class="givePlayers">Update Match Result</button></router-link>
  
     </div>
     <h1>{{tournament.winner}}</h1>
@@ -153,6 +153,8 @@ methods: {
   margin-right: auto;
   justify-content: center;
   align-items: center;
+  margin-top: auto;
+  margin-bottom: auto;
 
   
 }
@@ -164,29 +166,36 @@ methods: {
   margin-bottom: bottom;
 }
 
-.msgButton {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  align-items: center;
+.viewMsgBtn {
   text-decoration: none;
-  font-family: Kanit;
-  align-content: center;
-}
-
-.givePlayers {
-  text-decoration: none;
-  background-color: rgba(0, 0, 0, 0.15);
-  color: white;
+  background-color: orange;
+  color: black;
   height: 40px;
   width: 200px;
   border-radius: 4px;
   margin: 20px;
+  font-family: Kanit;
+}
+
+.viewMsgBtn:hover {
+  background-color: rgb(255, 182, 46);
+}
+
+.givePlayers {
+  text-decoration: none;
+  background-color: orange;
+  color: black;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+  margin: 20px;
+  font-family: Kanit;
 }
 
 .givePlayers:hover {
-   background-color: rgba(140, 0, 255, 0.75);
+   background-color: rgb(255, 182, 46);
 }
+
 
 
 .round1 {
