@@ -1,19 +1,21 @@
 <template>
   <div class="newTourneyForm">
+    <!-- <div class="backToHome">
+      <router-link :to="{ name: 'home' }"><button class="backButton">Back to Profile</button></router-link>
+    </div> -->
     <p v-show="isThereDuplicates">You Cannot Have A Player Be In The Tournament Twice</p>
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
-      <p>{{tournament.tournamentType}}</p>
       <label id="tournamentName" for="tName">Name Your Tournament</label> &nbsp;
       <input class="createTournamentName" type="text" id="tName" name="tName" v-model="tournament.tournamentName" ><br><br>
      
      <label for="tourneyType">Type of Tournament</label> &nbsp;
       <select class="tourneyType" id="tourneyType" :disabled="currentPlayers.length > 0" v-model="tournament.tournamentType">
-        <option value=0>Other</option>
-        <option value=1>Sports</option>
-        <option value=2>Video Games</option>
-        <option value=3>League of Legends </option>
-        <option value=4>Cards</option>
+        <option value="0">Other</option>
+        <option value="1">Sports</option>
+        <option value="2">Video Games</option>
+        <option value="3">League of Legends </option>
+        <option value="4">Cards</option>
       </select>
      
       <label  for="participants">Number of Competitors</label> &nbsp;
@@ -25,6 +27,7 @@
             <option value="32">Thirty-Two (XXXII)</option>
           </select> <br><br>
           <button id="createTournamentButton" :disabled="isDisabled" type="button" v-on:click="submitTournament" >Create Tournament</button>
+           <router-link :to="{ name: 'home' }"><button class="backButton">Back to Profile</button></router-link>
         <!-- <div>
         <label for="homeUsername">Add Player To Tournament</label> &nbsp;
           <input type="text" class="homePlayer" name="homeUsername" v-model="player" /> &nbsp;
@@ -56,9 +59,9 @@ data() {
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
-      tournamentType: '',
+      tournamentType: "",
       tournamentName: "",
-      winner: 'null'
+      winner: "N/A"
     },
     show: false,
     player: "",
@@ -173,8 +176,30 @@ methods: {
 
 <style>
 
+.backToHome {
+  display: flex;
+  margin-right: 85%;
+
+}
+.backButton {
+  background-color:rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  align-self: center;
+  text-decoration: none;
+
+  
+}
+
+.backButton:hover {
+background-color: rgba(140, 0, 255, .75);
+}
+
 .tourneyType {
-   background: rgba(128, 128, 128, 0.664);
+  background: rgba(128, 128, 128, 0.664);
   color: white;
   margin-bottom: 50px;
   width: 200px;
@@ -185,7 +210,7 @@ methods: {
   display: flex;
   flex-direction: column;
   color: white;
-  margin-top: 10%;
+  margin-top: 5%;
   text-align: center;
   justify-content: space-evenly;
   align-items: center;
@@ -209,7 +234,7 @@ methods: {
   height: 40px;
   width: 200px;
   border-radius: 4px;
-
+  margin-bottom: 10px;
 }
 
 #createTournamentButton:hover {
@@ -233,7 +258,6 @@ methods: {
 .numberOfPlayers {
   background: rgba(128, 128, 128, 0.664);
   color: white;
-  margin-bottom: 50px;
   width: 200px;
   height: 40px;
   text-align: center;

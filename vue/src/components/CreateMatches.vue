@@ -181,6 +181,7 @@ finishedCreatingMatches() {
   display: flex;
   font-size: 60px;
   text-shadow: -5px -5px 5px black;
+  font-family:'Times New Roman', Times, serif;
 }
 
 .newMatchForm {

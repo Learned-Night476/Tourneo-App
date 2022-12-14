@@ -213,13 +213,14 @@ matchesYouNeed() {
   display: flex;
   font-size: 60px;
   text-shadow: -5px -5px 5px black;
+  margin: 20px;
 }
 
 .newMatchForm {
   display: flex;
   flex-direction: column;
   color: white;
-  margin-top: 10%;
+  margin-top: 20px;
   text-align: center;
   justify-content: space-evenly;
   align-items: center;

@@ -52,22 +52,22 @@ export default {
     padding: 10px;
     margin: -8px;
     margin-bottom: 20px ;
+    align-items: center;
+    min-width: 100%;
 }
 
 #left-half {
-    padding-left: 10px;
-    padding-top: 10px;
+    padding-left: 20px;
     display: flex;
     
 }
 
-.resizedTextbox {width: 500px; height: 30px}
+.resizedTextbox {width: auto; min-width:300px; height: 30px}
 
 
  #logout {
      
-     padding: 20px;
- 
+     padding-right: 20px;
  }
 
  #whispersInNav{
@@ -87,13 +87,10 @@ export default {
      text-decoration:none;
      
  }
-
  .headCreateTournament:hover {
      color:silver;
      text-decoration:none;
  }
- 
-
  .headHome {
      color: white;
      text-decoration:none;

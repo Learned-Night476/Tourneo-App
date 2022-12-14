@@ -1,8 +1,8 @@
 <template>
   <div>
-      <h2 class="tourneyLinkHeader">Tournaments You Created</h2>
+      <h2 class="tourneyLinkHeader" id="tourCreated">Tournaments You Created</h2>
       <div class="usersTournaments" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
-          <router-link id="linkToMyTournaments" v-bind:to="{name: 'viewTournament', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}} <p> Status: {{tournament.tournamentStatus}}</p></router-link>
+          <router-link id="linkToMyTournaments" v-bind:to="{name: 'viewTournament', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}} <p> Status: {{tournament.tournamentStatus}}</p><p> Winner: {{tournament.winner}}</p></router-link>
       </div>
   </div>
 </template>
@@ -58,8 +58,17 @@ export default {
     border-radius: 4px;
 }
 .tourneyLinkHeader {
-    padding-left: 10px;
-    font-size: 20px;
+    display: flex;
+    background-color: rgb(57, 57, 57);
+    font-size: 25px;
+    margin-bottom: 25;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-radius: 4px;
+}
+
+#tourCreated {
+    color: orange;
 }
  
 

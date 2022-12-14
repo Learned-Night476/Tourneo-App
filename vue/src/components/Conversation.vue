@@ -1,9 +1,12 @@
 <template>
+<div>
+<router-link id="backToProfileFromConvo" :to="{ name: 'home' }">Back to Profile</router-link>
 <div id="allOfConversations">
     <header id="yourConversations">Your Conversations</header>
   <div v-for="playa in players" v-bind:key="playa.playerId">
       <router-link id="linkToConversation"  v-bind:to="{name: 'whispers', params: {playerId: playa.playerId}}"> {{playa.username}} </router-link>
   </div>
+</div>
 </div>
 </template>
 
@@ -66,6 +69,18 @@ name: 'conversation',
 </script>
 
 <style>
+
+#backToProfileFromConvo {
+  color: white;
+  text-decoration: none;
+  margin-left: 20px;
+
+}
+
+#backToProfileFromConvo:hover {
+  color: silver;
+  text-decoration: none;
+}
 #allOfConversations{
     display: flex;
     flex-direction: column;
