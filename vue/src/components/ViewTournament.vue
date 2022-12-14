@@ -29,9 +29,9 @@
           <match v-for="n in updateRound5()" v-bind:key="n.id" :match="matchesRound5[n-1]"/>
       </div>
     </div>
-    <button type="button">Declare A Winner</button> &nbsp;
-    <label for="winner">Winner Username</label> &nbsp;
-    <input name="winner" type="text" v-model="winner"/><br>
+    <button v-show="isTournamentCompleted" type="button" v-on:click="addWinner">Declare A Winner</button> &nbsp;
+    <label v-show="isTournamentCompleted" for="winner">Winner Username</label> &nbsp;
+    <input v-show="isTournamentCompleted" name="winner" type="text" v-model="winner"/><br>
     <button type="button" v-on:click="markTournamentAsCompleted">Mark Tournament As Completed</button>
    
   </div>
@@ -54,7 +54,8 @@ data() {
     matchesRound5: [],
     topPixelNumber: 100,
     firstTimeThrough : true,
-    winner: ""
+    winner: "",
+    isTournamentCompleted: false
   }
 },
 
@@ -128,11 +129,13 @@ methods: {
 
   markTournamentAsCompleted() {
     authService.markTournamentCompleted(this.tournamentId);
-    this.$router.push('/');
+    this.isTournamentCompleted = true;
+    // this.$router.push('/');
   },
 
   addWinner() {
-    // authService.setTournamentWinner
+      authService.setTournamentWinner(this.tournamentId, this.winner);
+      this.$router.push('/');
   }
 }
 };
