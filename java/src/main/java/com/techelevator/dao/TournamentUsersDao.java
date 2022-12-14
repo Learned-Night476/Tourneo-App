@@ -10,4 +10,8 @@ public interface TournamentUsersDao {
 
     List<TournamentUser> getTournamentUsers(int tournamentId);
 
+    List<TournamentUser> getActiveTournamentUsers(int tournamentId);
+
+    TournamentUser tournamentUser(int playerId, int tournamentId);
+
 }

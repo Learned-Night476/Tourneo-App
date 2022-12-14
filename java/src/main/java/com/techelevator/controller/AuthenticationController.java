@@ -118,6 +118,20 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
+    @RequestMapping(path = "/tournamentMessage/{tournamentId}/{playerId}", method = RequestMethod.GET)
+    public TournamentMatch getMatch(@PathVariable int tournamentId, @PathVariable int playerId) {
+        TournamentMatch tournamentMatch = tournamentMatchDao.getMatch(tournamentId, playerId);
+        return tournamentMatch;
+    }
+
+    @PreAuthorize("permitAll")
+    @RequestMapping(path = "/{tournamentId}/tournamentUsers/{playerId}", method = RequestMethod.GET)
+    public TournamentUser getTournamentUser(@PathVariable int tournamentId, @PathVariable int playerId) {
+        return  tournamentUsersDao.tournamentUser(playerId, tournamentId);
+
+    }
+
+    @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments", method = RequestMethod.POST)
     public void createTournament(@Valid @RequestBody Tournaments tournament) {
         tournamentsDao.createTournament(tournament);
@@ -146,9 +160,9 @@ public class AuthenticationController {
     }
 
     @PreAuthorize("permitAll")
-    @RequestMapping(value = "/tournaments/{tournamentId}/matches", method = RequestMethod.PUT)
-    public void updateTournamentMatchWinner(@PathVariable int tournamentId, int winner) {
-        tournamentMatchDao.updateTournamentMatch(winner);
+    @RequestMapping(value = "/tournaments/{tournamentId}/matches/{winner}", method = RequestMethod.PUT)
+    public void updateTournamentMatchWinner(@PathVariable int tournamentId, @PathVariable int winner) {
+        tournamentMatchDao.updateTournamentMatch(winner, tournamentId);
     }
 
 
@@ -202,6 +216,16 @@ public class AuthenticationController {
         return tournamentUsersDao.getTournamentUsers(tournamentId);
 
     }
+
+
+    @RequestMapping(path = "tournamentUsers/active/{tournamentId}", method = RequestMethod.GET)
+    public List<TournamentUser> listActiveTournamentUsers(@PathVariable int tournamentId) {
+        List<TournamentUser> list = new ArrayList<>();
+        return tournamentUsersDao.getActiveTournamentUsers(tournamentId);
+
+    }
+
+
 
     @RequestMapping(path = "/matches", method = RequestMethod.POST)
     public void createMatch(@Valid @RequestBody TournamentMatch tournamentMatch) {
