@@ -1,12 +1,16 @@
 <template>
   <div>
-     <router-link v-show="matchesRound1.length === 0" id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}">Add Matches To The Tournament</router-link><br>
-     <router-link id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" >View Messages For This Tournament</router-link><br>
-     <router-link id=addNewRounds v-show="matchesRound1.length !== 0 && matchesRound2.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 2}}">Add Round 2 Matches</router-link>
+    <div class="test">
+    
+    <router-link  v-show="matchesRound1.length === 0" id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}">Add Matches To The Tournament</router-link><br>
+     <router-link  id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" > <button class="msgButton">View Messages For This Tournament</button></router-link><br>
+     <router-link id=addNewRounds v-show="matchesRound1.length !== 0 && matchesRound2.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 2}}"><button class="msgButton">Add Round 2 Matches</button></router-link>
      <router-link id=addNewRounds v-show="tournament.participants > 4 && matchesRound2.length !== 0 && matchesRound3.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 3}}">Add Round 3 Matches</router-link>
      <router-link id=addNewRounds v-show="tournament.participants > 8 && matchesRound3.length !== 0 && matchesRound4.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 4}}">Add Round 4 Matches</router-link>
      <router-link id=addNewRounds v-show="tournament.participants > 16 && matchesRound4.length !== 0 && matchesRound5.length === 0"  v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 5}}">Add Round 5 Matches</router-link>
-     <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}" style="color: white;">Give Players In Your Tournament Wins And Losses</router-link>
+    <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}"> <button class="givePlayers">Give Players In Your Tournament Wins And Losses</button></router-link>
+ 
+    </div>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
@@ -136,20 +140,46 @@ methods: {
 
 </script>
 
-<style>
+<style scoped>
 
+.test {
+  display: flex;
+  flex-direction: row;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+  align-items: center;
+
+  
+}
 .allRounds {
   padding-top: 10%;
   display: flex;
   align-items: center;
-  
   margin: auto;
-
-  
-  
-  
 }
 
+.msgButton {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  align-items: center;
+  text-decoration: none;
+}
+
+.givePlayers {
+  text-decoration: none;
+  background-color: rgba(0, 0, 0, 0.15);
+  color: white;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+  margin: 20px;
+}
+
+.givePlayers:hover {
+   background-color: rgba(140, 0, 255, 0.75);
+}
 
 
 .round1 {
