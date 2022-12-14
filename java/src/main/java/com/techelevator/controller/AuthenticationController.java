@@ -140,8 +140,8 @@ public class AuthenticationController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/tournaments/tournamentUsers", method = RequestMethod.POST)
-    public void createTournamentUsers(int tournamentId, int playerId) {
-        tournamentUsersDao.createTournamentUser(tournamentId, playerId);
+    public void createTournamentUsers(int tournamentId, int playerId, int seed) {
+        tournamentUsersDao.createTournamentUser(tournamentId, playerId, seed);
 
     }
 
@@ -217,8 +217,8 @@ public class AuthenticationController {
 
     @PreAuthorize("permitAll")
     @RequestMapping(value = "/{playerId}/{tournamentId}", method = RequestMethod.POST)
-    public void createTournamentUser(@PathVariable int playerId, @PathVariable int tournamentId) {
-        tournamentUsersDao.createTournamentUser(tournamentId, playerId);
+    public void createTournamentUser(@PathVariable int playerId, @PathVariable int tournamentId, int seed) {
+        tournamentUsersDao.createTournamentUser(tournamentId, playerId, seed);
     }
 
     @PreAuthorize("permitAll")
@@ -265,6 +265,11 @@ public class AuthenticationController {
     @RequestMapping(path = "tournamentStatus/{tournamentId}", method = RequestMethod.PUT)
     public Integer markTournamentCompleted(@PathVariable int tournamentId){
         return tournamentsDao.markTournamentCompleted(tournamentId);
+    }
+
+    @RequestMapping(path = "tournamentWinner/{tournamentId}/{username}", method = RequestMethod.PUT)
+    public Integer setTournamentWinner(@PathVariable int tournamentId, @PathVariable String username){
+        return tournamentsDao.setTournamentWinner(username, tournamentId);
     }
 
 

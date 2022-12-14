@@ -104,6 +104,10 @@ export default {
 
   markTournamentCompleted(tournamentId){
     return axios.put(`/tournamentStatus/${tournamentId}`)
+  },
+
+  setTournamentWinner(tournamentId, username) {
+    return axios.put(`/tournamentWinner/${tournamentId}/${username}`)
   }
 
 }

@@ -90,7 +90,7 @@ public class JdbcTournamentsDao implements TournamentsDao {
     public boolean createTournament(Tournaments tournament) {
         String sql = "insert into tournaments (participants, winner, admin_user, tournament_status, tournament_type, tournament_name) values (?, ?, ?, ?, ?, ?); ";
 
-        Integer newUserId = jdbcTemplate.queryForObject(sql, Integer.class, tournament.getParticipants(), tournament.getWinner(), tournament.getAdminUser(), tournament.getTournamentStatus(), tournament.getTournamentTypeId(), tournament.getTournamentName());
+        Integer newUserId = jdbcTemplate.queryForObject(sql, Integer.class, tournament.getParticipants(), tournament.getWinner(), tournament.getAdminUser(), tournament.getTournamentStatus(), tournament.getTournamentType(), tournament.getTournamentName());
 
         return true;
 
@@ -104,6 +104,14 @@ public class JdbcTournamentsDao implements TournamentsDao {
         return placeHolder;
     }
 
+    @Override
+    public Integer setTournamentWinner(String username, int tournamentId) {
+        String sql = "update tournaments set winner = ? where tournament_id = ?";
+        Integer placeHolder = jdbcTemplate.queryForObject(sql, Integer.class, username, tournamentId);
+
+        return placeHolder;
+    }
+
 
     private Tournaments mapRowToTournament(SqlRowSet rs) {
         Tournaments tournament = new Tournaments();
@@ -112,8 +120,8 @@ public class JdbcTournamentsDao implements TournamentsDao {
         tournament.setTournamentName(rs.getString("tournament_name"));
         tournament.setTournamentId(rs.getInt("tournament_id"));
         tournament.setTournamentStatus(rs.getString("tournament_status"));
-        tournament.setWinner(rs.getInt("winner"));
-        tournament.setTournamentTypeId(rs.getInt("tournament_type"));
+        tournament.setWinner(rs.getString("winner"));
+        tournament.setTournamentType(rs.getInt("tournament_type"));
 
         return tournament;
 
