@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface TournamentUsersDao {
 
-    boolean createTournamentUser(int tournamentId, int playerId, int seed);
+    boolean createTournamentUser(TournamentUser tournamentUser);
 
     List<TournamentUser> getTournamentUsers(int tournamentId);
 

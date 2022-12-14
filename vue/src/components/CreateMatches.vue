@@ -56,7 +56,8 @@ data() {
     usernameIncorrect: false,
     matches: [],
     didYouMakeAllTheMatches: true,
-    isNotVerified: true
+    isNotVerified: true,
+    num: 1
  
   };
 },
@@ -105,8 +106,23 @@ methods: {
           awayPlayerUsername: this.player2.username
       }
 
-           authService.createTournamentUser(this.player.playerId, this.tournamentId)
-       authService.createTournamentUser(this.player2.playerId, this.tournamentId)
+      let tournamentUser = {
+        tournamentId: this.tournamentId,
+        playerId: this.player.playerId,
+        seed: this.num
+      }
+      this.num += 1;
+
+           authService.createTournamentUser(this.player.playerId, this.tournamentId, tournamentUser)
+
+        tournamentUser = {
+        tournamentId: this.tournamentId,
+        playerId: this.player2.playerId,
+        seed: this.num
+      }
+       authService.createTournamentUser(this.player2.playerId, this.tournamentId, tournamentUser)
+             this.num += 1;
+
 
         this.matches.push(match)
        authService.createMatch(match);

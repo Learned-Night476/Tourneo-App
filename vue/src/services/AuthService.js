@@ -46,8 +46,8 @@ export default {
     return axios.get(`/playerId/${username}`)
   },
 
-  createTournamentUser(playerId, tournamentId) {
-    return axios.post(`/${playerId}/${tournamentId}`)
+  createTournamentUser(playerId, tournamentId, tournamentUser) {
+    return axios.post(`/${playerId}/${tournamentId}`, tournamentUser)
   },
 
   getMatchByTournamentIdAndRound(tournamentId, round) {
@@ -104,10 +104,6 @@ export default {
 
   markTournamentCompleted(tournamentId){
     return axios.put(`/tournamentStatus/${tournamentId}`)
-  },
-
-  setTournamentWinner(tournamentId, username) {
-    return axios.put(`/tournamentWinner/${tournamentId}/${username}`)
   }
 
 }
