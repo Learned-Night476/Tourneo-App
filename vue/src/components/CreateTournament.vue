@@ -9,11 +9,11 @@
      
      <label for="tourneyType">Type of Tournament</label> &nbsp;
       <select class="tourneyType" id="tourneyType" :disabled="currentPlayers.length > 0" v-model="tournament.tournamentType">
-        <option value="0">Other</option>
-        <option value="1">Sports</option>
-        <option value="2">Video Games</option>
-        <option value="3">League of Legends </option>
-        <option value="4">Cards</option>
+        <option value=0>Other</option>
+        <option value=1>Sports</option>
+        <option value=2>Video Games</option>
+        <option value=3>League of Legends </option>
+        <option value=4>Cards</option>
       </select>
      
       <label  for="participants">Number of Competitors</label> &nbsp;
@@ -83,7 +83,7 @@ methods: {
         participants: this.tournament.participants,
         adminUser: this.tournament.adminUser,
         tournamentStatus: this.tournament.tournamentStatus,
-        tournamentType: parseInt(this.tournament.tournamentType, 10),
+        tournamentType: this.tournament.tournamentType,
         tournamentName: this.tournament.tournamentName,
         winner: 0
       };
