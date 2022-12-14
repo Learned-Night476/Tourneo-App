@@ -53,6 +53,7 @@ export default {
     margin: -8px;
     margin-bottom: 20px ;
     align-items: center;
+    min-width: 100%;
 }
 
 #left-half {

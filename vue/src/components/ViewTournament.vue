@@ -2,13 +2,14 @@
   <div>
     <div class="test">
     
-    <router-link  v-show="matchesRound1.length === 0" id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}">Add Matches To The Tournament</router-link><br>
-     <router-link  id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" > <button class="viewMsgBtn">Tournament Messages</button></router-link><br>
-     <router-link id=addNewRounds v-show="matchesRound1.length !== 0 && matchesRound2.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 2}}"><button class="msgButton">Add Round 2 Matches</button></router-link>
-     <router-link id=addNewRounds v-show="tournament.participants > 4 && matchesRound2.length !== 0 && matchesRound3.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 3}}" ><button class="msgButton">Add Round 3 Matches</button></router-link>
-     <router-link id=addNewRounds v-show="tournament.participants > 8 && matchesRound3.length !== 0 && matchesRound4.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 4}}"><button class="msgButton">Add Round 4 Matches</button></router-link>
-     <router-link id=addNewRounds v-show="tournament.participants > 16 && matchesRound4.length !== 0 && matchesRound5.length === 0"  v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 5}}"><button class="msgButton">Add Round 5 Matches</button></router-link>
-    <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}"> <button class="givePlayers">Update Match Result</button></router-link>
+    <router-link  v-show="matchesRound1.length === 0" id=createMatches v-bind:to="{name: 'createMatches', params: {tournamentId: this.tournamentId}}"><button class="roundButtons">Add Matches</button></router-link><br>
+     <router-link  id=viewMessagesFromViewTourney v-bind:to="{name: 'viewMessages', params: {tournamentId: this.tournamentId}}" > <button class="roundButtons">Tournament Messages</button></router-link><br>
+     <router-link id=addNewRounds v-show="matchesRound1.length !== 0 && matchesRound2.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 2}}"><button class="roundButtons">Add Round 2 Matches</button></router-link>
+     <router-link id=addNewRounds v-show="tournament.participants > 4 && matchesRound2.length !== 0 && matchesRound3.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 3}}" ><button class="roundButtons">Add Round 3 Matches</button></router-link>
+     <router-link id=addNewRounds v-show="tournament.participants > 8 && matchesRound3.length !== 0 && matchesRound4.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 4}}"><button class="roundButtons">Add Round 4 Matches</button></router-link>
+     <router-link id=addNewRounds v-show="tournament.participants > 16 && matchesRound4.length !== 0 && matchesRound5.length === 0"  v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 5}}"><button class="roundButtons">Add Round 5 Matches</button></router-link>
+    <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}"> <button id="updateMatchInVT" class="roundButtons">Update Match Result</button></router-link>
+    <button class="roundButtons" id="updateMatchInVT" type="button" v-on:click="markTournamentAsCompleted">End Tournament</button>
  
     </div>
     <h1>{{tournament.winner}}</h1>
@@ -33,7 +34,7 @@
     <button v-show="isTournamentCompleted" type="button" v-on:click="addWinner">Declare A Winner</button> &nbsp;
     <label v-show="isTournamentCompleted" for="winner">Winner Username</label> &nbsp;
     <input v-show="isTournamentCompleted" name="winner" type="text" v-model="winner"/><br>
-    <button type="button" v-on:click="markTournamentAsCompleted">Mark Tournament As Completed</button>
+    
    
   </div>
 </template>
@@ -145,7 +146,9 @@ methods: {
 </script>
 
 <style scoped>
-
+#updateMatchInVT{
+  margin: 20px
+}
 .test {
   display: flex;
   flex-direction: row;
@@ -165,35 +168,22 @@ methods: {
   margin: auto;
   margin-bottom: bottom;
 }
-
-.viewMsgBtn {
+.roundButtons {
   text-decoration: none;
   background-color: orange;
   color: black;
   height: 40px;
   width: 200px;
   border-radius: 4px;
-  margin: 20px;
   font-family: Kanit;
 }
-
-.viewMsgBtn:hover {
+.roundButtons:hover {
   background-color: rgb(255, 182, 46);
 }
 
-.givePlayers {
-  text-decoration: none;
-  background-color: orange;
-  color: black;
-  height: 40px;
-  width: 200px;
-  border-radius: 4px;
-  margin: 20px;
-  font-family: Kanit;
-}
 
-.givePlayers:hover {
-   background-color: rgb(255, 182, 46);
+.viewMsgBtn:hover {
+  background-color: rgb(255, 182, 46);
 }
 
 
