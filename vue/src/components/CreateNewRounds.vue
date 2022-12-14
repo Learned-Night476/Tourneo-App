@@ -4,7 +4,7 @@
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
       <h1 id="tourneyNameInMatch">{{tournament.tournamentName}}</h1>
-      <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
+      <p id="displayRoman" >{{ displayParticipantsRoman() }}</p>
 
         <div v-show="didYouMakeAllTheMatches">
             <label for="homeUsername">Home Player</label> &nbsp;
@@ -214,6 +214,7 @@ matchesYouNeed() {
   font-size: 60px;
   text-shadow: -5px -5px 5px black;
   margin: 20px;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 .newMatchForm {
