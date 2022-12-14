@@ -112,7 +112,7 @@ public class JdbcTournamentsDao implements TournamentsDao {
         tournament.setTournamentName(rs.getString("tournament_name"));
         tournament.setTournamentId(rs.getInt("tournament_id"));
         tournament.setTournamentStatus(rs.getString("tournament_status"));
-        tournament.setWinner(rs.getInt("winner"));
+        tournament.setWinner(rs.getString("winner"));
         tournament.setTournamentTypeId(rs.getInt("tournament_type"));
 
         return tournament;

@@ -4,13 +4,13 @@ public class Tournaments {
 
     private int tournamentId;
     private int participants;
-    private int winner;
+    private String winner;
     private int adminUser;
     private String tournamentStatus;
     private int tournamentTypeId;
     private String tournamentName;
 
-    public Tournaments(int tournamentId, int participants, int winner, int adminUser, String tournamentStatus, int tournamentTypeId, String tournamentName) {
+    public Tournaments(int tournamentId, int participants, String winner, int adminUser, String tournamentStatus, int tournamentTypeId, String tournamentName) {
         this.tournamentId = tournamentId;
         this.participants = participants;
         this.winner = winner;
@@ -38,11 +38,11 @@ public class Tournaments {
         this.participants = participants;
     }
 
-    public int getWinner() {
+    public String getWinner() {
         return winner;
     }
 
-    public void setWinner(int winner) {
+    public void setWinner(String winner) {
         this.winner = winner;
     }
 
