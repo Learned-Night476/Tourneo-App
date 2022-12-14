@@ -6,6 +6,7 @@
      <router-link id=addNewRounds v-show="tournament.participants > 4 && matchesRound2.length !== 0 && matchesRound3.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 3}}">Add Round 3 Matches</router-link>
      <router-link id=addNewRounds v-show="tournament.participants > 8 && matchesRound3.length !== 0 && matchesRound4.length === 0" v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 4}}">Add Round 4 Matches</router-link>
      <router-link id=addNewRounds v-show="tournament.participants > 16 && matchesRound4.length !== 0 && matchesRound5.length === 0"  v-bind:to="{name: 'createNewRounds', params: {tournamentId: this.tournamentId, roundNumber: 5}}">Add Round 5 Matches</router-link>
+     <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}" style="color: white;">Give Players In Your Tournament Wins And Losses</router-link>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
