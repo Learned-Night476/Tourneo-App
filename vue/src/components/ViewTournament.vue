@@ -125,6 +125,10 @@ methods: {
   markTournamentAsCompleted() {
     authService.markTournamentCompleted(this.tournamentId);
     this.$router.push('/');
+  },
+
+  addWinner() {
+    // authService.setTournamentWinner
   }
 }
 };
