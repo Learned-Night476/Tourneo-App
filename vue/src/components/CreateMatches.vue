@@ -4,7 +4,7 @@
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
       <h1 id="tourneyNameInMatch">{{tournament.tournamentName}}</h1>
-      <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
+      <p id="displayRoman" >{{ displayParticipantsRoman() }}</p>
 
 
         <div >
