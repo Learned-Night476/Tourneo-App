@@ -61,7 +61,7 @@ data() {
       tournamentStatus: "Ongoing",
       tournamentType: "",
       tournamentName: "",
-      winner: null
+      winner: "N/A"
     },
     show: false,
     player: "",
@@ -88,7 +88,7 @@ methods: {
         tournamentStatus: this.tournament.tournamentStatus,
         tournamentType: this.tournament.tournamentType,
         tournamentName: this.tournament.tournamentName,
-        winner: 1
+        winner: this.tournament.winner
       };
 
 

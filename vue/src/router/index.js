@@ -81,7 +81,7 @@ const router = new Router({
       name: "viewTournament",
       component: viewTournament,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -98,7 +98,7 @@ const router = new Router({
       name: 'createMatches',
       component: CreateMatches,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -106,7 +106,7 @@ const router = new Router({
       name: "admin",
       component: Admin,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
@@ -115,7 +115,7 @@ const router = new Router({
       name: "sendMessage",
       component: SendMessage,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
@@ -124,7 +124,7 @@ const router = new Router({
       name: "viewMessages",
       component: ViewMessages,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
@@ -133,7 +133,7 @@ const router = new Router({
       name: "viewAMessage",
       component: ViewAMessage,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
@@ -142,7 +142,7 @@ const router = new Router({
       name: 'createNewRounds',
       component: CreateNewRounds,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
@@ -159,7 +159,7 @@ const router = new Router({
       name: 'conversations',
       component: Conversation,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
     {
@@ -167,7 +167,7 @@ const router = new Router({
       name: 'whispers',
       component: Whisper,
       meta: {
-        requiresAuth: false
+        requiresAuth: true
       }
     },
 
