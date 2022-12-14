@@ -1,7 +1,7 @@
 <template>
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
-      <p class="h3 mb-3 font-weight-normal" style="margin: 3px;">Please Sign In</p>
+      <p >Please Sign In</p>
       <div
         class="alert alert-danger"
         role="alert"
@@ -87,6 +87,7 @@ export default {
   margin-top: 10px;
   text-align: center;
   justify-content: space-evenly;
+  align-items: center;
 
 }
 
@@ -136,6 +137,9 @@ export default {
   -moz-animation: fadeIn ease 10s;
   -o-animation: fadeIn ease 10s;
   -ms-animation: fadeIn ease 10s;
+}
+.form-control{
+  height: 20px;
 }
 @keyframes fadeIn {
   0% {
