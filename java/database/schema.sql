@@ -11,7 +11,7 @@ CREATE TABLE users (
 create TABLE tournaments (
 	tournament_id SERIAL NOT NULL,
 	participants int NOT NULL,
-	winner int,
+	winner varchar(50),
 	admin_user int NOT NULL,
 	tournament_status varchar(30) NOT NULL,
 	tournament_type int NOT NULL,
@@ -46,7 +46,8 @@ create TABLE players (
 create TABLE tournament_users (
 	tournament_id int NOT NULL,
 	player_id int NOT NULL,
-	isOut boolean NOT NULL
+	isOut boolean NOT NULL,
+	seed int
 
 );
 
@@ -65,8 +66,8 @@ create TABLE tournament_match (
 	tournament_id int NOT NULL,
 	player_id int,
 	away_player_id int,
-	player_username varchar(50) NOT NULL,
-	away_player_username varchar(50) NOT NULL,
+	player_username varchar(50),
+	away_player_username varchar(50),
 
 	CONSTRAINT PK_match_id PRIMARY KEY (match_id)
 );
