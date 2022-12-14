@@ -56,9 +56,9 @@ data() {
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
-      tournamentType: "",
+      tournamentType: 1,
       tournamentName: "",
-      winner: null
+      winner: 'null'
     },
     show: false,
     player: "",
@@ -85,7 +85,7 @@ methods: {
         tournamentStatus: this.tournament.tournamentStatus,
         tournamentType: this.tournament.tournamentType,
         tournamentName: this.tournament.tournamentName,
-        winner: 0
+        winner: this.tournament.winner
       };
 
 
