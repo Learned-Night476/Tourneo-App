@@ -1,7 +1,8 @@
 <template>
-<div>
+<div id="allOfConversations">
+    <header id="yourConversations">Your Conversations</header>
   <div v-for="playa in players" v-bind:key="playa.playerId">
-      <router-link  v-bind:to="{name: 'whispers', params: {playerId: playa.playerId}}"> {{playa.username}} </router-link>
+      <router-link id="linkToConversation"  v-bind:to="{name: 'whispers', params: {playerId: playa.playerId}}"> {{playa.username}} </router-link>
   </div>
 </div>
 </template>
@@ -65,5 +66,42 @@ name: 'conversation',
 </script>
 
 <style>
+#allOfConversations{
+    display: flex;
+    flex-direction: column;
+    background: rgb(57, 57, 57);
+    margin-top: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 60%;
+    min-height: 250px;
+    height: auto;
+    font-size: 15px;
+    color: white;
+    border-radius: 4px;
 
+
+}
+#linkToConversation{
+    margin-left: 20px;
+    font-size: 20px;
+    color: white;
+    text-align: left;
+    text-decoration: none;
+   
+}
+#linkToConversation:hover{
+    color:silver;
+}
+#yourConversations{
+    font-size: 30px;;
+    color:black;
+    display: flex;
+    padding-top:10px;
+    padding-bottom: 10px;
+    background-color:orange;
+    width: 100%;
+    justify-content: center;
+    border-radius: 4px;
+}
 </style>
