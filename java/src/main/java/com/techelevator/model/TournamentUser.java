@@ -6,13 +6,15 @@ public class TournamentUser {
     private int playerId;
     private String username;
     private boolean isOut;
+    private int seed;
 
     public TournamentUser() {};
 
-    public TournamentUser(int tournamentId, int playerId, boolean isOut) {
+    public TournamentUser(int tournamentId, int playerId, boolean isOut, int seed) {
         this.tournamentId = tournamentId;
         this.playerId = playerId;
         this.isOut = isOut;
+        this.seed = seed;
     }
 
     public boolean isOut() {
@@ -45,5 +47,13 @@ public class TournamentUser {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getSeed() {
+        return seed;
+    }
+
+    public void setSeed(int seed) {
+        this.seed = seed;
     }
 }
