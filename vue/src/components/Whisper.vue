@@ -67,6 +67,9 @@ name: 'whispers',
 </script>
 
 <style>
+#backToConversations:hover{
+    color:silver;
+}
 #backToConversations{
     color:white;
     text-decoration: none;
