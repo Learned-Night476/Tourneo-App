@@ -84,7 +84,7 @@ methods: {
         tournamentStatus: this.tournament.tournamentStatus,
         tournamentType: this.tournament.tournamentType,
         tournamentName: this.tournament.tournamentName,
-        winner: 1
+        winner: 0
       };
 
 

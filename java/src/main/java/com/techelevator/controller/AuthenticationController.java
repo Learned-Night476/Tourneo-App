@@ -262,6 +262,12 @@ public class AuthenticationController {
     }
 
 
+    @RequestMapping(path = "tournamentStatus/{tournamentId}", method = RequestMethod.PUT)
+    public Integer markTournamentCompleted(@PathVariable int tournamentId){
+        return tournamentsDao.markTournamentCompleted(tournamentId);
+    }
+
+
 
 }
 

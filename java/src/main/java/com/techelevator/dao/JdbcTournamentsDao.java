@@ -96,6 +96,14 @@ public class JdbcTournamentsDao implements TournamentsDao {
 
     }
 
+    @Override
+    public Integer markTournamentCompleted(int tournamentId) {
+        String sql = "update tournaments set tournament_status = 'Completed' where tournament_id = ?;";
+        Integer placeHolder = jdbcTemplate.queryForObject(sql, Integer.class, tournamentId);
+
+        return placeHolder;
+    }
+
 
     private Tournaments mapRowToTournament(SqlRowSet rs) {
         Tournaments tournament = new Tournaments();

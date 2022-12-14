@@ -24,6 +24,7 @@
           <match v-for="n in updateRound5()" v-bind:key="n.id" :match="matchesRound5[n-1]"/>
       </div>
     </div>
+    <button type="button" v-on:click="markTournamentAsCompleted">Mark Tournament As Completed</button>
    
   </div>
 </template>
@@ -114,6 +115,11 @@ methods: {
     else {
       return this.tournament.participants / 32;
     }
+  },
+
+  markTournamentAsCompleted() {
+    authService.markTournamentCompleted(this.tournamentId);
+    this.$router.push('/');
   }
 }
 };

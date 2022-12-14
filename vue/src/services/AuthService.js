@@ -100,6 +100,10 @@ export default {
 
   sendWhisper(whisper) {
     return axios.post(`/whispers`, whisper)
+  },
+
+  markTournamentCompleted(tournamentId){
+    return axios.put(`/tournamentStatus/${tournamentId}`)
   }
 
 }
