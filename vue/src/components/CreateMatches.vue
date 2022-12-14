@@ -7,27 +7,25 @@
       <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
 
 
-        <div v-show="didYouMakeAllTheMatches">
-            <label for="homeUsername" v-show="this.num === this.tournament.participants">Last Seed {{this.num}}</label> &nbsp;
-            <select type="text" class="homePlayer" name="homeUsername" v-model="player" >
+        <div >
+            <label for="homeUsername" v-show="this.num - 1 != tournament.participants">Seed {{this.num}}</label> &nbsp;
+            <select type="text" class="homePlayer" v-show="tournament.participants != tournamentUsers.length" name="homeUsername" v-model="player" >
                 <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
         </div>
          <button id="addMatch" v-show="tournament.participants != tournamentUsers.length"  type="button" v-on:click="createTournamentUser" >Add user</button>
-          <button id="addMatch" v-show="tournament.participants === tournamentUsers.length"  type="button" v-on:click="createMatches" >Create Matches</button>
+          <button id="addMatch" v-show="tournament.participants === tournamentUsers.length && show"  type="button" v-on:click="createMatches" >Create Matches</button>
 
         <h3>Competitors Added</h3>
 
         <div v-for="match in matches" v-bind:key="match.id">
           <p>Matches : {{match.playerUsername}} vs {{match.awayPlayerUsername}}</p>
         </div>
-        <p>Matches You Have: {{matches.length}}</p>
-        <p>Matched You Need: {{tournament.participants / 2}}</p><br>
+        <p>Users You Have: {{tournamentUsers.length}}</p>
+        <div v-for="user in usernames" v-bind:key="user.id">
+            <p>{{user}}</p>
+        </div>
         <router-link id="toTourneyFromMatches" v-show="!didYouMakeAllTheMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
-        <!-- <button v-show="isDisabled2" v-on:click="createMatches">Add Players To Tournament</button> -->
-        <!-- <div v-for="player in players" v-bind:key="player.id">
-          <p>{{player.playerId}}</p>
-        </div> -->
   </div>
 </template>
 
@@ -44,7 +42,7 @@ data() {
     tournamentId : this.$route.params.tournamentId,
     tournament: {},
     tournamentName: "",
-    show: false,
+    show: true,
     player: "",
     player2: "",
     currentPlayers: [],
@@ -104,9 +102,11 @@ methods: {
     this.tournamentUsers.forEach( (x) => {
       if (x.playerId === this.player.playerId) {
         add = false;
+        this.isThereDuplicates = true;
       }
     })
     if (add) {
+      this.isThereDuplicates = false;
     authService.createTournamentUser(this.player.playerId, this.tournamentId, tournamentUser)
     this.num += 1;
 
@@ -130,6 +130,7 @@ methods: {
       }
 
       authService.createMatch(match);
+      this.show = false;
 
     }
     
