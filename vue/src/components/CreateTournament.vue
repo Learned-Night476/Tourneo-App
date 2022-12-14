@@ -56,7 +56,7 @@ data() {
       participants: null,
       adminUser: this.$store.state.user.id,
       tournamentStatus: "Ongoing",
-      tournamentType: 1,
+      tournamentType: '',
       tournamentName: "",
       winner: 'null'
     },

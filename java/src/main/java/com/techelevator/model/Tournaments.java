@@ -7,16 +7,16 @@ public class Tournaments {
     private String winner;
     private int adminUser;
     private String tournamentStatus;
-    private int tournamentTypeId;
+    private int tournamentType;
     private String tournamentName;
 
-    public Tournaments(int tournamentId, int participants, String winner, int adminUser, String tournamentStatus, int tournamentTypeId, String tournamentName) {
+    public Tournaments(int tournamentId, int participants, String winner, int adminUser, String tournamentStatus, int tournamentType, String tournamentName) {
         this.tournamentId = tournamentId;
         this.participants = participants;
         this.winner = winner;
         this.adminUser = adminUser;
         this.tournamentStatus = tournamentStatus;
-        this.tournamentTypeId = tournamentTypeId;
+        this.tournamentType = tournamentType;
         this.tournamentName = tournamentName;
     }
 
@@ -62,12 +62,12 @@ public class Tournaments {
         this.tournamentStatus = tournamentStatus;
     }
 
-    public int getTournamentTypeId() {
-        return tournamentTypeId;
+    public int getTournamentType() {
+        return tournamentType;
     }
 
-    public void setTournamentTypeId(int tournamentTypeId) {
-        this.tournamentTypeId = tournamentTypeId;
+    public void setTournamentType(int tournamentType) {
+        this.tournamentType = tournamentType;
     }
 
     public String getTournamentName() {
