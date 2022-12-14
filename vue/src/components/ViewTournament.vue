@@ -156,10 +156,11 @@ methods: {
   
 }
 .allRounds {
-  padding-top: 10%;
+  padding-top: 5%;
   display: flex;
   align-items: center;
   margin: auto;
+  margin-bottom: bottom;
 }
 
 .msgButton {
@@ -168,6 +169,8 @@ methods: {
   text-align: center;
   align-items: center;
   text-decoration: none;
+  font-family: Kanit;
+  align-content: center;
 }
 
 .givePlayers {
