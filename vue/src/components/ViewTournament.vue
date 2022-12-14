@@ -12,7 +12,7 @@
     <button class="roundButtons" id="updateMatchInVT" type="button" v-on:click="markTournamentAsCompleted">End Tournament</button>
  
     </div>
-    <h1>{{tournament.winner}}</h1>
+    <h1 class="championOfTheWorld">{{tournament.winner}}</h1>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
@@ -146,6 +146,22 @@ methods: {
 </script>
 
 <style scoped>
+.championOfTheWorld{
+  display:flex;
+  background-color: rgb(57,57,57);
+  background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/goldbranch.svg");
+  background-size: 170px;
+  background-repeat: no-repeat;
+  background-position: center;
+  color:white;
+  width: 350px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 100px;
+  margin-left: auto;
+  margin-right: auto;
+}
 #updateMatchInVT{
   margin: 20px
 }
