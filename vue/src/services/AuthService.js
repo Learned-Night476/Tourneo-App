@@ -104,6 +104,22 @@ export default {
 
   markTournamentCompleted(tournamentId){
     return axios.put(`/tournamentStatus/${tournamentId}`)
+  },
+
+  getMatch(tournamentId, playerId) {
+    return axios.get(`/tournamentMessage/${tournamentId}/${playerId}`)
+  },
+
+  updateMatchWinner(tournamentId, winner) {
+    return axios.put(`/tournaments/${tournamentId}/matches/${winner}`)
+  },
+
+  getTournamentUserById(tournamentId, playerId) {
+    return axios.get(`/${tournamentId}/tournamentUsers/${playerId}`)
+  },
+
+  getActiveTournamentUsers(tournamentId) {
+    return axios.get(`tournamentUsers/active/${tournamentId}`)
   }
 
 }

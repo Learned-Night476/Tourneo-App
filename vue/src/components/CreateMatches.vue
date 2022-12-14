@@ -6,22 +6,16 @@
       <h1 id="tourneyNameInMatch">{{tournament.tournamentName}}</h1>
       <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
 
+
         <div v-show="didYouMakeAllTheMatches">
-            <label for="homeUsername">Home Player</label> &nbsp;
+            <label for="homeUsername" v-show="this.num === this.tournament.participants">Seed {{this.num}}</label> &nbsp;
             <select type="text" class="homePlayer" name="homeUsername" v-model="player" >
                 <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
-
-            <label for="awayUsername">Away Player</label> &nbsp;
-            <select type="text" class="awayPlayer" name="awayUsername" v-model="player2" >
-                <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
-                </select> &nbsp;
-
-           
-            <button id="verify" v-on:click="verifyMatches">Verify</button>
-
         </div>
-         <button id="addMatch" :disabled="isDisabled2 || isNotVerified"  type="button" v-on:click="createMatches"  >Add Match</button>
+         <button id="addMatch" v-show="tournament.participants != tournamentUsers.length"  type="button" v-on:click="createTournamentUser" >Add user</button>
+          <button id="addMatch" v-show="tournament.participants === tournamentUsers.length"  type="button" v-on:click="createMatches" >Create Matches</button>
+
         <h3>Competitors Added</h3>
 
         <div v-for="match in matches" v-bind:key="match.id">
@@ -45,6 +39,8 @@ export default {
 data() {
   return {
     players: [],
+    usernames: [],
+    tournamentUsers: [],
     tournamentId : this.$route.params.tournamentId,
     tournament: {},
     tournamentName: "",
@@ -56,7 +52,7 @@ data() {
     usernameIncorrect: false,
     matches: [],
     didYouMakeAllTheMatches: true,
-    isNotVerified: true,
+    isNotVerified: false,
     num: 1
  
   };
@@ -70,6 +66,7 @@ created() {
    authService.getTournamentById(this.tournamentId).then((response) =>{
     this.tournament = response.data;
   });
+
 },
 
 methods: {
@@ -94,40 +91,47 @@ methods: {
   clearPlayers(){
     this.currentPlayers = [];
   },
+  createTournamentUser() {
 
-  createMatches(){
-      let match = {
-          round: 1,
-          winner: 0,
-          tournamentId: this.tournamentId,
-          playerId: this.player.playerId,
-          awayPlayerId: this.player2.playerId,
-          playerUsername: this.player.username,
-          awayPlayerUsername: this.player2.username
-      }
-
-      let tournamentUser = {
+    let add = true;
+  
+    let tournamentUser = {
         tournamentId: this.tournamentId,
         playerId: this.player.playerId,
         seed: this.num
       }
-      this.num += 1;
 
-           authService.createTournamentUser(this.player.playerId, this.tournamentId, tournamentUser)
-
-        tournamentUser = {
-        tournamentId: this.tournamentId,
-        playerId: this.player2.playerId,
-        seed: this.num
+    this.tournamentUsers.forEach( (x) => {
+      if (x.playerId === this.player.playerId) {
+        add = false;
       }
-       authService.createTournamentUser(this.player2.playerId, this.tournamentId, tournamentUser)
-             this.num += 1;
+    })
+    if (add) {
+    authService.createTournamentUser(this.player.playerId, this.tournamentId, tournamentUser)
+    this.num += 1;
 
+    this.tournamentUsers.unshift(tournamentUser)
+    this.usernames.unshift(this.player.username)
+    }
 
-        this.matches.push(match)
-       authService.createMatch(match);
-       this.finishedCreatingMatches();
-       this.isNotVerified = true;
+  },
+  createMatches(){
+
+    for (let i = 0; i <  (this.tournament.participants) / 2; i++) {
+      let j = i + 1;
+      let match = {
+          round: 1,
+          winner: 0,
+          tournamentId: this.tournamentId,
+          playerId: this.tournamentUsers[i].playerId,
+          awayPlayerId: this.tournamentUsers[this.tournament.participants - j].playerId,
+          playerUsername: this.usernames[i],
+          awayPlayerUsername: this.usernames[this.usernames.length - j]
+      }
+
+      authService.createMatch(match);
+
+    }
     
   },
 
@@ -148,7 +152,7 @@ methods: {
   },
 
 finishedCreatingMatches() {
-    if(this.matches.length === this.tournament.participants / 2) {
+    if(this.matches.length === this.tournament.participants) {
         this.didYouMakeAllTheMatches = false;
     }
 

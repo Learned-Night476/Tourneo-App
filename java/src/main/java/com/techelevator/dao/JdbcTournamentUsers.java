@@ -45,6 +45,35 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
         return tournamentUsers;
     }
 
+    @Override
+    public List<TournamentUser> getActiveTournamentUsers(int tournamentId) {
+
+        List<TournamentUser> tournamentUsers = new ArrayList<>();
+        String sql = "select player_id, tournament_id, isOut, seed FROM tournament_users  WHERE tournament_id = ? and isOut = false order by seed";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, tournamentId);
+
+        while (rs.next()) {
+            TournamentUser tournamentUser = mapRowToTournamentUser(rs);
+            tournamentUsers.add(tournamentUser);
+        }
+
+        return tournamentUsers;
+    }
+
+    @Override
+    public TournamentUser tournamentUser(int playerId, int tournamentId) {
+        TournamentUser tournamentUser = new TournamentUser();
+
+        String sql = "Select * from tournament_users where player_id = ? and tournament_id = ?";
+        SqlRowSet rs = jdbcTemplate.queryForRowSet(sql, playerId, tournamentId);
+
+        if (rs.next()) {
+            return mapRowToTournamentUser(rs);
+        }
+
+        return null;
+    }
+
     private TournamentUser mapRowToTournamentUser(SqlRowSet rs) {
 
         TournamentUser tournamentUser = new TournamentUser();
