@@ -8,7 +8,7 @@
 
 
         <div v-show="didYouMakeAllTheMatches">
-            <label for="homeUsername" v-show="this.num === this.tournament.participants">Seed {{this.num}}</label> &nbsp;
+            <label for="homeUsername" v-show="this.num === this.tournament.participants">Last Seed {{this.num}}</label> &nbsp;
             <select type="text" class="homePlayer" name="homeUsername" v-model="player" >
                 <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
