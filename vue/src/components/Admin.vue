@@ -1,5 +1,6 @@
 <template>
   <div>
+    <router-link style="color: white;" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
     <h1> {{ this.tournament.tournamentName }} </h1>
     <div v-for="player in players" v-bind:key="player.playerId">
     <router-link style="color: white;" v-bind:to="{name: 'givePlayerWins', params: {tournamentId: tournament.tournamentId, playerId: player.playerId}}" >

@@ -3,6 +3,7 @@
     <p v-show="isThereDuplicates">You Cannot Have A Player Be In The Tournament Twice</p>
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
+      <p>{{tournament.tournamentType}}</p>
       <label id="tournamentName" for="tName">Name Your Tournament</label> &nbsp;
       <input class="createTournamentName" type="text" id="tName" name="tName" v-model="tournament.tournamentName" ><br><br>
      
@@ -82,7 +83,7 @@ methods: {
         participants: this.tournament.participants,
         adminUser: this.tournament.adminUser,
         tournamentStatus: this.tournament.tournamentStatus,
-        tournamentType: this.tournament.tournamentType,
+        tournamentType: parseInt(this.tournament.tournamentType, 10),
         tournamentName: this.tournament.tournamentName,
         winner: 0
       };
