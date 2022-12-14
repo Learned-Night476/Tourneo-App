@@ -104,6 +104,14 @@ public class JdbcTournamentsDao implements TournamentsDao {
         return placeHolder;
     }
 
+    @Override
+    public Integer setTournamentWinner(String username, int tournamentId) {
+        String sql = "update tournaments set winner = ? where tournament_id = ?";
+        Integer placeHolder = jdbcTemplate.queryForObject(sql, Integer.class, username, tournamentId);
+
+        return placeHolder;
+    }
+
 
     private Tournaments mapRowToTournament(SqlRowSet rs) {
         Tournaments tournament = new Tournaments();

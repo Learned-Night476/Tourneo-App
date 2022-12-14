@@ -17,5 +17,7 @@ public interface TournamentsDao {
 
      Integer markTournamentCompleted(int tournamentId);
 
+     Integer setTournamentWinner(String username, int tournamentId);
+
 
 }
