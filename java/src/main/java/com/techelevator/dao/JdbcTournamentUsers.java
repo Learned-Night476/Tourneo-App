@@ -20,11 +20,11 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
     }
 
     @Override
-    public boolean createTournamentUser(int tournamentId, int playerId, int seed) {
+    public boolean createTournamentUser(TournamentUser tournamentUser) {
 
         String sql = "INSERT INTO tournament_users (tournament_id, player_id, isOut, seed) values (?, ?, false, ?); ";
 
-        jdbcTemplate.update(sql, tournamentId, playerId,  seed);
+        jdbcTemplate.update(sql, tournamentUser.getTournamentId(), tournamentUser.getPlayerId(),  tournamentUser.getSeed());
 
         return true;
 
