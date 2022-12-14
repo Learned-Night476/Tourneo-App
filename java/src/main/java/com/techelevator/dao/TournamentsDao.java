@@ -15,5 +15,7 @@ public interface TournamentsDao {
 
      List<Tournaments> getTournamentsByUserId(int id);
 
+     Integer markTournamentCompleted(int tournamentId);
+
 
 }

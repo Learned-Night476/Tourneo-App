@@ -2,7 +2,7 @@
   <div>
       <h2 class="tourneyLinkHeader">Tournaments You Are In</h2>
       <div class="tournamentsIn" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
-          <router-link id="linkToTournamentsIn" v-bind:to="{name: 'nonAdminView', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}}</router-link>
+          <router-link id="linkToTournamentsIn" v-bind:to="{name: 'nonAdminView', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}} <p>Status: {{tournament.tournamentStatus}}</p></router-link>
 
       </div>
   </div>
