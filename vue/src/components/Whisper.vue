@@ -81,10 +81,11 @@ name: 'whispers',
     display: flex;
     padding-top:20px;
     padding-bottom: 20px;
-    background-color:black;
+    color: black;
+    background-color:orange;
     justify-content: space-between;
     align-items: center;
-    border-radius: 4;
+    border-radius: 4px;
 
 
 }
