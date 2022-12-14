@@ -2,7 +2,7 @@
   <div>
       <h2 class="tourneyLinkHeader">Tournaments You Created</h2>
       <div class="usersTournaments" v-for="tournament in tournaments" v-bind:key="tournament.tournamentId">
-          <router-link id="linkToMyTournaments" v-bind:to="{name: 'viewTournament', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}} <p> Status: {{tournament.tournamentStatus}}</p></router-link>
+          <router-link id="linkToMyTournaments" v-bind:to="{name: 'viewTournament', params: {tournamentId: tournament.tournamentId}}">{{tournament.tournamentName}} <p> Status: {{tournament.tournamentStatus}}</p><p> Winner: {{tournament.winner}}</p></router-link>
       </div>
   </div>
 </template>
