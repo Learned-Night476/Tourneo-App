@@ -1,7 +1,7 @@
 <template>
   <div>
       <input id="whisperInput" type="text" v-model="whisper.whisperMessage" ><br>
-      <button id="sendWhisperButton" type="button" v-on:click="submitWhisper" >Whisper</button>
+      <button id="sendWhisperButton" type="button" v-on:click="submitWhisper" >Send Whisper</button>
   </div>
 </template>
 
