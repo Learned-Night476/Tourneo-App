@@ -39,6 +39,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
+        title: "Home",
         requiresAuth: true
       }
     },
@@ -47,6 +48,7 @@ const router = new Router({
       name: "login",
       component: Login,
       meta: {
+        title: "Login",
         requiresAuth: false
       }
     },
@@ -55,6 +57,7 @@ const router = new Router({
       name: "logout",
       component: Logout,
       meta: {
+        title: "Logout",
         requiresAuth: false
       }
     },
@@ -63,6 +66,7 @@ const router = new Router({
       name: "register",
       component: Register,
       meta: {
+        title: "Register",
         requiresAuth: false
       }
     },
@@ -72,6 +76,7 @@ const router = new Router({
       name: "newTournament",
       component: CreateTournament,
       meta: {
+        title: "Create A Tournament",
         requiresAuth: true
       }
     },
@@ -81,6 +86,7 @@ const router = new Router({
       name: "viewTournament",
       component: viewTournament,
       meta: {
+        title: "Tournament",
         requiresAuth: true
       }
     },
@@ -89,6 +95,7 @@ const router = new Router({
       name: "termsOfService",
       component: termsOfService,
       meta: {
+        title: "Terms of Service",
         requiresAuth: false
       }
     },
@@ -98,6 +105,7 @@ const router = new Router({
       name: 'createMatches',
       component: CreateMatches,
       meta: {
+        title: "Set Your Matches",
         requiresAuth: true
       }
     },
@@ -106,6 +114,7 @@ const router = new Router({
       name: "admin",
       component: Admin,
       meta: {
+        title: "Your Tournament",
         requiresAuth: true
       }
     },
@@ -115,6 +124,7 @@ const router = new Router({
       name: "sendMessage",
       component: SendMessage,
       meta: {
+        title: "Send A Ticket",
         requiresAuth: true
       }
     },
@@ -124,6 +134,7 @@ const router = new Router({
       name: "viewMessages",
       component: ViewMessages,
       meta: {
+        title: "View Tickets",
         requiresAuth: true
       }
     },
@@ -133,6 +144,7 @@ const router = new Router({
       name: "viewAMessage",
       component: ViewAMessage,
       meta: {
+        title: "Ticket",
         requiresAuth: true
       }
     },
@@ -142,6 +154,7 @@ const router = new Router({
       name: 'createNewRounds',
       component: CreateNewRounds,
       meta: {
+        title: "Set Rounds",
         requiresAuth: true
       }
     },
@@ -151,6 +164,7 @@ const router = new Router({
       name: 'nonAdminView',
       component: TournamentNonAdminView,
       meta: {
+        title: "Tournament",
         requiresAuth: false
       }
     },
@@ -159,6 +173,7 @@ const router = new Router({
       name: 'conversations',
       component: Conversation,
       meta: {
+        title: "Your Conversations",
         requiresAuth: true
       }
     },
@@ -167,6 +182,7 @@ const router = new Router({
       name: 'whispers',
       component: Whisper,
       meta: {
+        title: "Your Conversation",
         requiresAuth: true
       }
     },
@@ -176,6 +192,7 @@ const router = new Router({
       name: "givePlayerWins",
       component: GivePlayerWins,
       meta: {
+        title: "Record",
         requiresAuth: false
       }
 
@@ -196,4 +213,8 @@ router.beforeEach((to, from, next) => {
   }
 });
 
+router.beforeEach((to, from, next) => {
+  document.title = `${to.meta.title} | Tourneo`;
+  next();
+});
 export default router;
