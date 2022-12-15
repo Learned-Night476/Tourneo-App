@@ -1,8 +1,10 @@
 <template>
 <div>
-<router-link id="backToProfileFromConvo" :to="{ name: 'home' }">Back to Profile</router-link>
+<router-link id="backToProfileFromConvo" :to="{ name: 'home' }">Back to Home</router-link>
 <div id="allOfConversations">
     <header id="yourConversations">Your Conversations</header>
+      <input class="createTournamentName" type="text" id="tName" name="tName" v-model="playo" >
+    <router-link id="linkToConversation"  v-bind:to="{name: 'whispers', params: {playerId: playo}}">  {{playo}} </router-link>
   <div v-for="playa in players" v-bind:key="playa.playerId">
       <router-link id="linkToConversation"  v-bind:to="{name: 'whispers', params: {playerId: playa.playerId}}"> {{playa.username}} </router-link>
   </div>
@@ -24,6 +26,7 @@ name: 'conversation',
                 playerId: '',
                 username: ''
             },
+            playo: ''
         };
     },
     created() {

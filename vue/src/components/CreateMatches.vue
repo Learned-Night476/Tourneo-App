@@ -4,18 +4,23 @@
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
       <h1 id="tourneyNameInMatch">{{tournament.tournamentName}}</h1>
+<<<<<<< HEAD
       <p id="displayRoman" >{{ displayParticipantsRoman() }}</p>
 
+=======
+      <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
+  
+>>>>>>> 30323e983e1752060b73e8ba5024623a989a2598
 
         <div >
-            <label for="homeUsername" v-show="this.num - 1 != tournament.participants">Seed {{this.num}}</label> &nbsp;
+            <label id="inputLabel" for="homeUsername" v-show="this.num - 1 != tournament.participants">Seed {{this.num}}</label> &nbsp;
             <select type="text" class="homePlayer" v-show="tournament.participants != tournamentUsers.length" name="homeUsername" v-model="player" >
                 <option v-for="player in players" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
         </div>
          <button id="addMatch" v-show="tournament.participants != tournamentUsers.length"  type="button" v-on:click="createTournamentUser" >Add user</button>
           <button id="addMatch" v-show="tournament.participants === tournamentUsers.length && show"  type="button" v-on:click="createMatches" >Create Matches</button>
-
+          
         <h3>Competitors Added</h3>
 
         <div v-for="match in matches" v-bind:key="match.id">
@@ -25,7 +30,8 @@
         <div v-for="user in usernames" v-bind:key="user.id">
             <p>{{user}}</p>
         </div>
-        <router-link id="toTourneyFromMatches" v-show="!didYouMakeAllTheMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
+       <router-link id="toTourneyFromMatches" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}"><button class="backToTourny"> Back To Tournament</button></router-link>
+                                             <!-- v-show="!didYouMakeAllTheMatches" logic is wrong -->
   </div>
 </template>
 
@@ -177,6 +183,7 @@ finishedCreatingMatches() {
 </script>
 
 <style>
+
 #displayRoman {
   display: flex;
   font-size: 60px;
@@ -193,6 +200,11 @@ finishedCreatingMatches() {
   justify-content: space-evenly;
   align-items: center;
   
+ }
+
+ #inputSeed {
+   display: flex;
+   padding-left: 300px;
  }
  
 #tourneyNameInMatch {
@@ -244,6 +256,7 @@ finishedCreatingMatches() {
   width: 200px;
   height: 40px;
   text-align:center;
+  margin-right: 30px;
 }
 .awayPlayer {
   background: rgba(128, 128, 128, 0.664);
