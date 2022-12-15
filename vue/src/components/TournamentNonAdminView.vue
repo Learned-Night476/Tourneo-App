@@ -1,6 +1,6 @@
 <template>
   <div>
-      <router-link id="sendAdmin" v-bind:to="{name: 'sendMessage', params: {tournamentId: this.tournamentId}}">Send The Admin Your Match Score</router-link>
+      <router-link id="sendAdmin" v-bind:to="{name: 'sendMessage', params: {tournamentId: this.tournamentId}}"><button class="scoreTicket">Score Ticket</button></router-link>
       <h1 v-show="tournament.winner != 'N/A'" class="championOfTheWorld">{{tournament.winner}}</h1>
     <div class="allRounds">
       <div class="round1">
@@ -123,6 +123,7 @@ methods: {
   display:flex;
   background-color: rgb(57,57,57);
   background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/src/capstone-images/goldbranch.svg");
+  text-shadow: 5px 5px 5px black;
   background-size: 170px;
   background-repeat: no-repeat;
   background-position: center;
@@ -135,6 +136,19 @@ methods: {
   margin-left: auto;
   margin-right: auto;
 }
+.scoreTicket {
+  text-decoration: none;
+  background-color: orange;
+  color: black;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+  font-family: Kanit;
+}
+.scoreTicket:hover {
+  background-color: rgb(255, 182, 46);
+}
+
 
 .allRounds {
   padding-top: 10%;

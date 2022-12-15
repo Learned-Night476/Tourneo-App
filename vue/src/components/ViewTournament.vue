@@ -31,9 +31,10 @@
           <match v-for="n in updateRound5()" v-bind:key="n.id" :match="matchesRound5[n-1]"/>
       </div>
     </div>
-    <button v-show="isTournamentCompleted" type="button" v-on:click="addWinner">Declare A Winner</button> &nbsp;
-    <label v-show="isTournamentCompleted" for="winner">Winner Username</label> &nbsp;
-    <input v-show="isTournamentCompleted" name="winner" type="text" v-model="winner"/><br>
+    
+    <input id="winnerPlaceholder" placeholder="Winner's Username" v-show="isTournamentCompleted" name="winner" type="text" v-model="winner"/><br>
+    <button class="declareWinnerButton" v-show="isTournamentCompleted" type="button" v-on:click="addWinner">Declare A Winner</button> &nbsp;
+    
     
    
   </div>
@@ -153,6 +154,7 @@ methods: {
   background-size: 170px;
   background-repeat: no-repeat;
   background-position: center;
+  text-shadow: 5px 5px 5px black;
   color:white;
   width: 350px;
   height: 150px;
@@ -196,10 +198,29 @@ methods: {
 .roundButtons:hover {
   background-color: rgb(255, 182, 46);
 }
-
+.declareWinnerButton{
+  text-decoration: none;
+  background-color: orange;
+  margin-left: 20px;
+  margin-top: 20px;
+  color: black;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+  font-family: Kanit;
+}
+.declareWinnerButton:hover{
+  background-color: rgb(255, 182, 46);
+}
 
 .viewMsgBtn:hover {
   background-color: rgb(255, 182, 46);
+}
+#winnerPlaceholder{
+  text-align: center;
+  margin-top: 30px;
+  margin-left: 21px;
+  width: 190px;
 }
 
 
