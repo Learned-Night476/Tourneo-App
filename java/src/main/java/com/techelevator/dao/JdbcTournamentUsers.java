@@ -92,7 +92,7 @@ public class JdbcTournamentUsers implements TournamentUsersDao {
         tournamentUser.setTournamentId(rs.getInt("tournament_id"));
         tournamentUser.setPlayerId(rs.getInt("player_id"));
         tournamentUser.setOut(rs.getBoolean("isOut"));
-        tournamentUser.setSeed(rs.getInt("seed"));
+//        tournamentUser.setSeed(rs.getInt("seed"));
         tournamentUser.setUsername(rs.getString("username"));
 
         return tournamentUser;
