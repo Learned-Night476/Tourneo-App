@@ -3,8 +3,11 @@
 <router-link id="backToProfileFromConvo" :to="{ name: 'home' }">Back to Home</router-link>
 <div id="allOfConversations">
     <header id="yourConversations">Your Conversations</header>
-      <input class="createTournamentName" type="text" id="tName" name="tName" v-model="playo" >
-    <router-link id="linkToConversation"  v-bind:to="{name: 'whispers', params: {playerId: playo}}">  {{playo}} </router-link>
+    <p>Start a new whisper</p>
+    <select type="text" class="homePlayer" name="homeUsername" v-model="playo" >
+                <option v-for="player in allPlayers" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
+                </select> &nbsp;
+    <router-link id="linkToConversation" v-show="playo.playerId" v-bind:to="{name: 'whispers', params: {playerId: playo.playerId}}" v-on:click="addToPlayers(playo)">  Start whisper with {{playo.username}} </router-link>
   <div v-for="playa in players" v-bind:key="playa.playerId">
       <router-link id="linkToConversation"  v-bind:to="{name: 'whispers', params: {playerId: playa.playerId}}"> {{playa.username}} </router-link>
   </div>
@@ -21,6 +24,7 @@ name: 'conversation',
             whispers: [],
             conversations: [],
             people: [],
+            allPlayers: [],
             players: [],
             player: {
                 playerId: '',
@@ -30,6 +34,9 @@ name: 'conversation',
         };
     },
     created() {
+        AuthService.getAllPlayers().then( response => {
+            this.allPlayers = response.data;
+        })
 
         AuthService.getProfile(this.$store.state.user.id).then( response => {
          this.player = response.data;
@@ -65,7 +72,25 @@ name: 'conversation',
                     this.people.unshift(this.whispers[i].playerId);
                     }
                 }
+                
             }
+            for (let i = 0; i < this.whispers.length; i++) {
+                let loop = true;
+                if (this.whispers[i].toPlayerId != this.player.playerId) {
+                    for (let j = 0; j < this.people.length; j++) {
+                        if (this.people[j] === this.whispers[i].toPlayerId) {
+                            loop = false
+                        }
+                    }
+                    if (loop) {
+                    this.people.unshift(this.whispers[i].toPlayerId);
+                    }
+                }
+                
+            }
+        },
+        addToPlayers(playerId) {
+            this.players.unshift(playerId);
         }
     }
 }
