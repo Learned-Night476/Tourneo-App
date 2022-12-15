@@ -28,6 +28,8 @@ export default {
 </script>
 
 <style>
+
+
 .allRounds {
   padding-top: 10%;
   display: flex;

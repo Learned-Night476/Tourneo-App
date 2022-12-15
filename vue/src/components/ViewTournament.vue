@@ -12,7 +12,7 @@
     <button class="roundButtons" id="updateMatchInVT" type="button" v-on:click="markTournamentAsCompleted">End Tournament</button>
  
     </div>
-    <h1 class="championOfTheWorld">{{tournament.winner}}</h1>
+    <h1 v-show="tournament.winner != 'N/A'" class="championOfTheWorld">{{tournament.winner}}</h1>
     <div class="allRounds">
       <div class="round1">
           <match v-for="n in (tournament.participants / 2)" v-bind:key="n.id" :match="matchesRound1[n-1]" />
