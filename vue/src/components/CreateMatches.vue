@@ -4,8 +4,13 @@
     <p v-show="usernameIncorrect">The Username You Put In Does Not Exist</p>
       <br>
       <h1 id="tourneyNameInMatch">{{tournament.tournamentName}}</h1>
+<<<<<<< HEAD
+      <p id="displayRoman" >{{ displayParticipantsRoman() }}</p>
+
+=======
       <p id=displayRoman >{{ displayParticipantsRoman() }}</p>
   
+>>>>>>> 30323e983e1752060b73e8ba5024623a989a2598
 
         <div >
             <label id="inputLabel" for="homeUsername" v-show="this.num - 1 != tournament.participants">Seed {{this.num}}</label> &nbsp;
