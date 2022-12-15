@@ -1,6 +1,6 @@
 <template>
-    <div class="roundButtons">
-        <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}" ><button>Go Back</button></router-link>
+    <div >
+        <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}" ><button class="roundButtons">Go Back</button></router-link>
   
   <div class="playerWins">
       
@@ -8,7 +8,7 @@
       <p>{{player.username}} has {{player.wins}} wins</p>
       <p>{{player.username}} has {{player.losses}} losses</p>
       <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}" style="color: white;">
-      <button class="msgButton" type="button" v-on:click="givePlayerAWin">Give Player A Win</button> &nbsp;
+      <button class="msgButton" type="button" v-on:click="givePlayerAWin">Give Player A Win</button>
         </router-link>
       <router-link v-bind:to="{name: 'admin', params: {tournamentId: this.tournamentId}}" style="color: white;">
       <button class="msgButton" :disabled="!addedALoss" type="button" v-on:click="givePlayerALoss">Give Player A Loss</button>
@@ -62,7 +62,7 @@ computed: {
     border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
-    height: 528px;
+    height: 500px;
     width: 800px;
     text-align: center;
     background: rgba(57, 57, 57);
