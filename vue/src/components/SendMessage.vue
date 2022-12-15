@@ -4,7 +4,7 @@
       <input class="msgInput" type="text" name="winner" v-model="winner"/><br><br>
       <label for="matchDescription">What Was The Score And What Happened?</label> &nbsp;
       <input class="msgInput" type="text" name="matchDescription" v-model="matchDescription" /><br><br>
-      <button class="msgButton" :disabled="isDisabled" type="button" v-on:click="sendMessage">Send Message</button>
+      <button class="msgButton" :disabled="isDisabled" type="button" v-on:click="sendMessage">Send Ticket</button>
       <router-link v-bind:to="{name: 'nonAdminView', params: {tournamentId: this.tournamentId}}"><button class="msgButton">Cancel</button></router-link>
       <!-- <p>{{tournament.adminUser}}</p>
       <p>{{senderUsername}}</p> -->
