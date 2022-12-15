@@ -104,7 +104,7 @@ computed: {
   border-radius: 4px;
   border: 1px solid black;
   align-self: center;
-text-decoration: none;
+  text-decoration: none;
 }
 
 .msgButton:hover {

@@ -120,6 +120,10 @@ export default {
 
   getActiveTournamentUsers(tournamentId) {
     return axios.get(`tournamentUsers/active/${tournamentId}`)
+  },
+
+  setTournamentWinner(tournamentId, username) {
+    return axios.put(`tournamentWinner/${tournamentId}/${username}`)
   }
 
 }
