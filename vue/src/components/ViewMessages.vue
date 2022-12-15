@@ -3,7 +3,7 @@
     <div>
        <router-link class="backToTourneyFromMessages" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
     </div>
-    <div v-for="message in messages" v-bind:key="message.id">
+    <div class="inboxDisplay" v-for="message in messages" v-bind:key="message.id">
       <router-link id="fromWhom" v-bind:to="{name: 'viewAMessage', params: {tournamentId: tournament.tournamentId, messageId: message.tournamentMessageId}}"> From: {{message.senderUsername}}</router-link>
 
     </div>
@@ -59,5 +59,26 @@ created() {
   margin-right: auto;
   justify-content: center;
   width: 400px;
+}
+
+.inboxDisplay {
+    display: flex;
+    background: rgb(57, 57, 57);
+    background-repeat: no-repeat;
+    background-position:center;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+    text-align: center;
+    width: 35%;
+    height: 50px;
+    font-size: 20px;
+    color: white;
+    border-radius: 5px;
+}
+
+.inboxDisplay:hover {
+  background-color: rgba(36, 36, 92, 0.65);
 }
 </style>
