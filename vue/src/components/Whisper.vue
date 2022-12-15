@@ -4,7 +4,7 @@
           <router-link id="backToConversations"  v-bind:to="{name: 'conversations', params: {playerId: player.playerId}}"> Go back </router-link>
           </header>
       <div v-for="whisper in realWhispers" v-bind:key="whisper.whisperId">
-          <p class= "whisperSender" v-if="whisper.playerId === player.playerId">{{ player.username }}: {{whisper.whisperMessage}} </p>
+          <p class= "whisperSender" v-if="whisper.playerId === player.playerId"> {{whisper.whisperMessage}} </p>
           <p class= "whisperReceiver" v-else>{{ player2.username }}:  {{whisper.whisperMessage}} {{ whisper.isRead }}</p>
       </div>
       <send-whisper/>
@@ -109,9 +109,11 @@ name: 'whispers',
 .whisperSender{
     margin: 20px;
     color:orange;
+    text-align: right;
 }
 .whisperReceiver{
     margin: 20px;
+    text-align: left;
 }
 
 </style>

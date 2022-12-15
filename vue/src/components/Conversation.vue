@@ -1,10 +1,10 @@
 <template>
 <div>
-<router-link id="backToProfileFromConvo" :to="{ name: 'home' }">Back to Home</router-link>
+<router-link :to="{ name: 'home' }"><button id="backToProfileFromConvo">Back to Home</button></router-link>
 <div id="allOfConversations">
     <header id="yourConversations">Your Conversations</header>
     <p>Start a new whisper</p>
-    <select type="text" class="homePlayer" name="homeUsername" v-model="playo" >
+    <select type="text" class="whoToSendTo" name="whoToSendTo" v-model="playo" >
                 <option v-for="player in allPlayers" v-bind:key="player.playerId" v-bind:value="player">{{player.username}}</option>
                 </select> &nbsp;
     <router-link id="linkToConversation" v-show="playo.playerId" v-bind:to="{name: 'whispers', params: {playerId: playo.playerId}}" v-on:click="addToPlayers(playo)">  Start whisper with {{playo.username}} </router-link>
@@ -98,16 +98,31 @@ name: 'conversation',
 
 <style>
 
-#backToProfileFromConvo {
+.whoToSendTo{
+display:flex;
+background: rgba(128, 128, 128, 0.664);
+text-align: center;
   color: white;
+  margin-bottom: 20px;
+  width: 80%;
+  height: 20px;
+  text-align: center;
+}
+
+#backToProfileFromConvo {
+    margin: 20px;
   text-decoration: none;
-  margin-left: 20px;
+  background-color: orange;
+  color: black;
+  height: 40px;
+  width: 200px;
+  border-radius: 4px;
+  font-family: Kanit;
 
 }
 
 #backToProfileFromConvo:hover {
-  color: silver;
-  text-decoration: none;
+ background-color: rgb(255, 182, 46);
 }
 #allOfConversations{
     display: flex;
@@ -116,12 +131,14 @@ name: 'conversation',
     margin-top: 100px;
     margin-left: auto;
     margin-right: auto;
+    align-items: center;
     width: 60%;
     min-height: 250px;
     height: auto;
     font-size: 15px;
     color: white;
     border-radius: 4px;
+    text-align: left;
 
 
 }
