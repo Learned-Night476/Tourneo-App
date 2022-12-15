@@ -1,6 +1,6 @@
 <template>
   <div>
-    <router-link style="color: white;" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
+    <router-link class="backToTournament" v-bind:to="{name: 'viewTournament', params: {tournamentId: this.tournamentId}}">Go Back To Tournament</router-link>
     <header id="tourNameHeader">
     <h1 > {{ this.tournament.tournamentName }}  </h1>
     </header>
@@ -87,5 +87,14 @@ export default {
   margin-right: auto;
   border-radius: 4px;
   align-items: center;
+}
+
+.backToTournament {
+  text-decoration: none;
+  color: white;
+}
+
+.backToTournament:hover {
+ color: silver;
 }
 </style>
