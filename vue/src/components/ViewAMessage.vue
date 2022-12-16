@@ -5,7 +5,7 @@
   </div>
   <div class="msgDisplay">
       <p>From: {{message.senderUsername}}<br>
-                {{message.winner}}  {{message.matchDescription}} <br>
+              Winner:  {{message.winner}} <br> Score: {{message.matchDescription}} <br>
         </p>
   </div>
 
