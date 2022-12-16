@@ -39,29 +39,7 @@
           
            /</avatar>
      </div>
-      <!-- <label>
-        image="https://placekitten.com/200/200" this works
-         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
-        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
-      </label>
-         
-         
       
-        <label>
-         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
-        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
-      </label>
-      
-      <label>
-         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
-        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
-      </label>
-
-      <label>
-         <img src="../capstone-images/sword2.svg" id="img1" alt="button1" />
-        <input type="radio" class="avatarButtons" name="avatar" checked id="button1" />
-      </label> -->
-      <!-- </div> -->
     
       <router-link class="needAnAccount" :to="{ name: 'login' }">Have an account?</router-link>
       <router-link  id="termsText" :to="{ name: 'termsOfService'}" target="_blank"> 
@@ -260,64 +238,5 @@ input[type=checkbox] {
 #checkbox {
   margin-right: 15px;
 }
-
-
-
- /* .avatars:hover {
-background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-
-}  */
-/* 
-[type=radio] {
-  position: absolute;
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-[type=radio] + img {
-  cursor: pointer;
-}
-
-[type=radio]:checked + img {
-  outline: 2px solid #f00;
-} */
-/* .radio {
-   background-image: url("C:/Users/Student/workspace/java-finalcapstone-team0/vue/capstone-images/sword2.svg");
-    background-repeat: no-repeat;
-    background-position: center;
-    background-color: gray;
-    text-align:left;
-    padding: 10px;
-    height: 200px;
-    font-size: x-large;
-    text-decoration: none;
-}   */
-/* .img {
-  display: flex;
-  align-items: end;
-}
-
-img {
-  border: 1px solid black;
-}
-
-.radio {
-  position: relative;
-  height: 50px;
-}
-
-input[type="radio"] {
-  position: absolute;
-  top: calc(50% - 4px);
-  right: 0;
-  margin: 0;
-} */
-
-
-
-
 
 </style>
